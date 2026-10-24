@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Analisis Kualitas Jaringan Internet &amp; Implementasi PCC MikroTik (50 Client Ujian) - Muh. Sattar Barakati | Studi Kasus IT Ternate</title>
+    <meta name="description" content="Implementasi rekayasa jaringan berbasis MikroTik saat menjabat operator di MIS Integral Hidayatullah Kota Ternate, mengeliminasi bottleneck hingga sanggup...">
+    <meta name="keywords" content="Muh Sattar Barakati, Sattar Barakati, Owen Barakati, MSB Computer, servis laptop ternate, servis komputer ternate, teknisi jaringan ternate, pasang starlink ternate maluku utara, web developer ternate, operator MIS Integral Hidayatullah, load balancing mikrotik ternate, skripsi informatika unkhair, undangan-kita.online, servis printer ternate">
+    <meta name="author" content="Muh. Sattar Barakati">
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+    <link rel="canonical" href="https://muhsattarbarakati.my.id/project/implementasi-pcc-mikrotik-mis-integral-hidayatullah">
+
+    <!-- Open Graph / Facebook / WhatsApp Preview -->
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://muhsattarbarakati.my.id/project/implementasi-pcc-mikrotik-mis-integral-hidayatullah">
+    <meta property="og:title" content="Analisis Kualitas Jaringan Internet &amp; Implementasi PCC MikroTik (50 Client Ujian) - Muh. Sattar Barakati | Studi Kasus IT Ternate">
+    <meta property="og:description" content="Implementasi rekayasa jaringan berbasis MikroTik saat menjabat operator di MIS Integral Hidayatullah Kota Ternate, mengeliminasi bottleneck hingga sanggup...">
+    <meta property="og:image" content="https://muhsattarbarakati.my.id/images/mockup-mikrotik-pcc.png">
+    <meta property="og:site_name" content="MSB Masterpiece">
+    <meta property="og:locale" content="id_ID">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Analisis Kualitas Jaringan Internet &amp; Implementasi PCC MikroTik (50 Client Ujian) - Muh. Sattar Barakati | Studi Kasus IT Ternate">
+    <meta name="twitter:description" content="Implementasi rekayasa jaringan berbasis MikroTik saat menjabat operator di MIS Integral Hidayatullah Kota Ternate, mengeliminasi bottleneck hingga sanggup...">
+    <meta name="twitter:image" content="https://muhsattarbarakati.my.id/images/mockup-mikrotik-pcc.png">
+
+    <!-- Schema.org JSON-LD (Google Rich Knowledge Graph) -->
+        <script type="application/ld+json">
+    {
+    "@context": "https://schema.org",
+    "@graph": [
+        {
+            "@type": "Person",
+            "@id": "https://muhsattarbarakati.my.id/#person",
+            "name": "Muh. Sattar Barakati",
+            "alternateName": [
+                "Sattar Barakati",
+                "Owen Barakati",
+                "MSB"
+            ],
+            "birthDate": "2002-07-02",
+            "birthPlace": {
+                "@type": "Place",
+                "name": "Amasing Bukit Sere, Halmahera Selatan"
+            },
+            "homeLocation": {
+                "@type": "Place",
+                "name": "Kalumata, Kota Ternate, Maluku Utara"
+            },
+            "alumniOf": {
+                "@type": "EducationalOrganization",
+                "name": "Universitas Khairun Ternate",
+                "sameAs": "https://unkhair.ac.id"
+            },
+            "jobTitle": "Network Engineer & Web Developer",
+            "telephone": "+6285218403629",
+            "url": "https://muhsattarbarakati.my.id",
+            "image": "https://muhsattarbarakati.my.id/images/sattar-portrait-operator.jpg",
+            "sameAs": [
+                "https://www.linkedin.com/in/muh-sattar-barakati-16b48a2b6/",
+                "https://github.com/owensavala",
+                "https://www.tiktok.com/@str_wtx"
+            ]
+        },
+        {
+            "@type": "ProfessionalService",
+            "@id": "https://muhsattarbarakati.my.id/#business",
+            "name": "MSB Computer & Network Solutions",
+            "image": "https://muhsattarbarakati.my.id/images/sattar-portrait-operator.jpg",
+            "telephone": "+6285218403629",
+            "priceRange": "Rp 50.000 - Rp 25.000.000",
+            "address": {
+                "@type": "PostalAddress",
+                "streetAddress": "Kalumata",
+                "addressLocality": "Kota Ternate",
+                "addressRegion": "Maluku Utara",
+                "addressCountry": "ID"
+            },
+            "areaServed": [
+                "Kota Ternate",
+                "Kepulauan Kayoa",
+                "Pulau Bacan",
+                "Subaim",
+                "Maluku Utara"
+            ],
+            "hasOfferCatalog": {
+                "@type": "OfferCatalog",
+                "name": "Layanan IT & Servis MSB",
+                "itemListElement": [
+                    {
+                        "@type": "Offer",
+                        "itemOffered": {
+                            "@type": "Service",
+                            "name": "Servis Laptop, PC & Printer Panggilan Ternate"
+                        }
+                    },
+                    {
+                        "@type": "Offer",
+                        "itemOffered": {
+                            "@type": "Service",
+                            "name": "Instalasi Internet Satelit Starlink & Voucher Hotspot Kepulauan"
+                        }
+                    },
+                    {
+                        "@type": "Offer",
+                        "itemOffered": {
+                            "@type": "Service",
+                            "name": "Konfigurasi MikroTik Load Balancing & Jaringan Ujian Sekolah"
+                        }
+                    },
+                    {
+                        "@type": "Offer",
+                        "itemOffered": {
+                            "@type": "Service",
+                            "name": "Pengembangan Sistem Informasi Web & SaaS Berbasis Laravel"
+                        }
+                    }
+                ]
+            },
+            "founder": {
+                "@id": "https://muhsattarbarakati.my.id/#person"
+            }
+        }
+    ]
+}
+    </script>
+    
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        cyber: {
+                            cyan: '#06b6d4',
+                            orange: '#f97316',
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Plus Jakarta Sans', 'Inter', 'system-ui', 'sans-serif'],
+                        mono: ['JetBrains Mono', 'monospace'],
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- Alpine.js CDN -->
+    <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+
+    <!-- Google Fonts & Lucide Icons -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <style>
+        body { font-family: 'Plus Jakarta Sans', sans-serif; background-color: #030712; }
+        .font-mono { font-family: 'JetBrains Mono', monospace; }
+        .bento-card {
+            background: rgba(17, 24, 39, 0.75);
+            backdrop-filter: blur(14px);
+            -webkit-backdrop-filter: blur(14px);
+            border: 1px solid rgba(55, 65, 81, 0.6);
+        }
+    </style>
+</head>
+<body class="bg-gray-950 text-gray-100 antialiased selection:bg-cyan-500 selection:text-gray-950 min-h-screen flex flex-col justify-between">
+
+    <!-- Top Navbar -->
+    <header class="sticky top-0 z-50 bg-gray-950/80 backdrop-blur-md border-b border-gray-800/80">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            <!-- Brand -->
+            <a href="https://muhsattarbarakati.my.id" class="flex items-center gap-3 group">
+                <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-cyan-500 to-orange-500 flex items-center justify-center text-gray-950 font-black text-lg shadow-lg shadow-cyan-500/20 group-hover:scale-105 transition duration-300">
+                    MSB
+                </div>
+                <div>
+                    <span class="font-extrabold text-white text-base block tracking-tight group-hover:text-cyan-400 transition">MSB Masterpiece</span>
+                    <span class="text-xs text-gray-400 font-mono">Muh. Sattar Barakati</span>
+                </div>
+            </a>
+
+            <!-- Navigation Links -->
+            <nav class="hidden md:flex items-center gap-8 text-sm font-medium">
+                <a href="https://muhsattarbarakati.my.id" class="text-gray-300 hover:text-white transition">
+                    Katalog Proyek
+                </a>
+                <a href="https://muhsattarbarakati.my.id/about" class="text-gray-300 hover:text-white transition">
+                    Tentang (Bento Profile)
+                </a>
+            </nav>
+
+            <!-- Quick WhatsApp CTA -->
+            <div class="flex items-center gap-3">
+                <a href="https://wa.me/6285218403629?text=Halo%20Sattar%20(Owen),%20saya%20tertarik%20untuk%20diskusi%20proyek%20atau%20servis..." target="_blank" class="px-4 py-2 rounded-xl bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 text-gray-950 font-bold text-xs sm:text-sm flex items-center gap-2 shadow-md shadow-cyan-500/20 transition hover:scale-105">
+                    <i data-lucide="message-square" class="w-4 h-4"></i>
+                    <span>Mari Diskusi (0852-1840-3629)</span>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content Slot -->
+    <main class="flex-1">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-12 space-y-14">
+
+    <!-- Top Navigation & Breadcrumbs -->
+    <div>
+        <a href="https://muhsattarbarakati.my.id" class="inline-flex items-center gap-2 text-xs font-mono text-gray-400 hover:text-cyan-400 transition mb-6">
+            <i data-lucide="arrow-left" class="w-4 h-4"></i>
+            <span>Kembali ke Katalog Proyek</span>
+        </a>
+
+        <div class="flex flex-wrap items-center gap-3 mb-4">
+            <span class="px-3 py-1 rounded-md text-xs font-mono uppercase bg-cyan-500/10 text-cyan-400 border border-cyan-500/25">
+                Network &amp; Starlink Antar-Pulau
+            </span>
+                        <span class="text-xs font-mono text-gray-400">
+                Klien: <span class="text-white">MIS Integral Hidayatullah Kota Ternate (Tempat Kerja Operator &amp; Riset Skripsi)</span>
+            </span>
+                        <span class="px-2.5 py-1 rounded-md text-[11px] font-mono bg-emerald-950/60 text-emerald-400 border border-emerald-800/60 flex items-center gap-1.5">
+                <span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>
+                Status: Selesai Diserahterimakan
+            </span>
+        </div>
+
+        <h1 class="text-3xl sm:text-5xl font-black text-white tracking-tight leading-tight">
+            Analisis Kualitas Jaringan Internet &amp; Implementasi PCC MikroTik (50 Client Ujian)
+        </h1>
+        
+        <p class="text-base sm:text-xl text-gray-300 mt-4 leading-relaxed max-w-3xl">
+            Implementasi rekayasa jaringan berbasis MikroTik saat menjabat operator di MIS Integral Hidayatullah Kota Ternate, mengeliminasi bottleneck hingga sanggup melayani 50 laptop client ujian serentak tanpa gangguan.
+        </p>
+    </div>
+
+    <!-- Featured Banner Image -->
+    <div class="rounded-3xl overflow-hidden border border-gray-800 bg-gray-900 shadow-2xl">
+        <img src="https://muhsattarbarakati.my.id/images/mockup-mikrotik-pcc.png" alt="Analisis Kualitas Jaringan Internet &amp; Implementasi PCC MikroTik (50 Client Ujian)" class="w-full max-h-[32rem] object-cover object-center">
+    </div>
+
+    <!-- Tech Stack Pill Row -->
+    <div class="bento-card rounded-2xl p-6 border border-gray-800">
+        <span class="text-xs font-mono text-gray-400 uppercase tracking-wider block mb-3">Teknologi & Instrumen yang Digunakan:</span>
+        <div class="flex flex-wrap gap-2">
+                        <span class="px-3 py-1.5 rounded-lg bg-gray-900 border border-gray-800 text-xs font-mono text-cyan-300">
+                MikroTik RouterOS
+            </span>
+                        <span class="px-3 py-1.5 rounded-lg bg-gray-900 border border-gray-800 text-xs font-mono text-cyan-300">
+                PCC Load Balancing
+            </span>
+                        <span class="px-3 py-1.5 rounded-lg bg-gray-900 border border-gray-800 text-xs font-mono text-cyan-300">
+                Automated Failover
+            </span>
+                        <span class="px-3 py-1.5 rounded-lg bg-gray-900 border border-gray-800 text-xs font-mono text-cyan-300">
+                Bandwidth Queue Tree
+            </span>
+                        <span class="px-3 py-1.5 rounded-lg bg-gray-900 border border-gray-800 text-xs font-mono text-cyan-300">
+                CBT Network Optimization
+            </span>
+                        <span class="px-3 py-1.5 rounded-lg bg-gray-900 border border-gray-800 text-xs font-mono text-cyan-300">
+                VLAN Subnetting
+            </span>
+                                </div>
+    </div>
+
+    <!-- CASE STUDY NARRATIVE: Typography focused on readability -->
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
+        
+        <!-- Section: Problem Statement -->
+        <div class="bento-card rounded-3xl p-8 border-l-4 border-l-orange-500 space-y-4">
+            <div class="flex items-center gap-2.5 text-orange-400">
+                <i data-lucide="alert-triangle" class="w-5 h-5"></i>
+                <h2 class="text-lg font-bold uppercase tracking-wider font-mono">Tantangan & Masalah Klien</h2>
+            </div>
+            <p class="text-gray-300 text-base sm:text-lg leading-relaxed font-sans">
+                Ujian Berbasis Komputer (ANBK &amp; CBT) serta sinkronisasi sistem EMIS/RDM di madrasah seringkali crash atau mengalami latency tinggi saat puluhan laptop mengakses server secara bersamaan. Ketergantungan pada satu jalur internet menyebabkan koneksi sering putus (timeout), menghambat jalannya asesmen nasional para siswa.
+            </p>
+        </div>
+
+        <!-- Section: Solution Statement -->
+        <div class="bento-card rounded-3xl p-8 border-l-4 border-l-cyan-500 space-y-4">
+            <div class="flex items-center gap-2.5 text-cyan-400">
+                <i data-lucide="check-circle-2" class="w-5 h-5"></i>
+                <h2 class="text-lg font-bold uppercase tracking-wider font-mono">Solusi Lapangan</h2>
+            </div>
+            <p class="text-gray-300 text-base sm:text-lg leading-relaxed font-sans">
+                Menerapkan arsitektur Load Balancing multi-ISP menggunakan MikroTik RouterOS dengan metode PCC (Per Connection Classifier) sesuai penelitian skripsi: &quot;ANALISIS KUALITAS JARINGAN INTERNET DAN IMPLEMENTASI PER CONNECTION CLASSIFIER (PCC) PADA MIKROTIK DI MIS INTEGRAL HIDAYATULLAH KOTA TERNATE&quot;. Mengatur pembagian traffic data, failover otomatis tanpa jeda (zero-downtime switch), manajemen bandwidth per client, serta isolasi subnet agar 50 laptop client ujian dapat mengerjakan tes secara bersamaan dengan ping stabil di bawah 20ms.
+            </p>
+        </div>
+
+    </div>
+
+    <!-- PROJECT GALLERY (Full Scale Images Grid) -->
+        <div class="space-y-6 pt-6">
+        <div>
+            <span class="text-xs font-mono text-cyan-400 uppercase tracking-wider block">DOKUMENTASI FOTO</span>
+            <h2 class="text-2xl font-bold text-white mt-1">Galeri Dokumentasi Lapangan</h2>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                        <div class="bento-card rounded-2xl overflow-hidden border border-gray-800 group">
+                <div class="h-64 bg-gray-900 overflow-hidden">
+                    <img src="https://muhsattarbarakati.my.id/images/mockup-mikrotik-pcc.png" alt="Monitoring real-time traffic PCC Load Balancing dan status stabil 50 laptop ujian CBT" class="w-full h-full object-cover group-hover:scale-105 transition duration-300">
+                </div>
+                                <div class="p-3.5 text-xs text-gray-400 font-mono border-t border-gray-800">
+                    Monitoring real-time traffic PCC Load Balancing dan status stabil 50 laptop ujian CBT
+                </div>
+                            </div>
+                        <div class="bento-card rounded-2xl overflow-hidden border border-gray-800 group">
+                <div class="h-64 bg-gray-900 overflow-hidden">
+                    <img src="https://muhsattarbarakati.my.id/images/network-tools.jpg" alt="Perangkat routerboard MikroTik dan pengujian throughput multi-gateway" class="w-full h-full object-cover group-hover:scale-105 transition duration-300">
+                </div>
+                                <div class="p-3.5 text-xs text-gray-400 font-mono border-t border-gray-800">
+                    Perangkat routerboard MikroTik dan pengujian throughput multi-gateway
+                </div>
+                            </div>
+                        <div class="bento-card rounded-2xl overflow-hidden border border-gray-800 group">
+                <div class="h-64 bg-gray-900 overflow-hidden">
+                    <img src="https://muhsattarbarakati.my.id/images/wifi6-router.jpg" alt="Distribusi Access Point frekuensi ganda untuk 50 laptop peserta ujian" class="w-full h-full object-cover group-hover:scale-105 transition duration-300">
+                </div>
+                                <div class="p-3.5 text-xs text-gray-400 font-mono border-t border-gray-800">
+                    Distribusi Access Point frekuensi ganda untuk 50 laptop peserta ujian
+                </div>
+                            </div>
+                    </div>
+    </div>
+    
+    <!-- BOTTOM ACTION CTA BOX -->
+    <div class="bento-card rounded-3xl p-8 sm:p-12 text-center border-2 border-cyan-500/30 space-y-4">
+        <h3 class="text-2xl sm:text-3xl font-extrabold text-white">
+            Tertarik Mengimplementasikan Solusi Serupa?
+        </h3>
+        <p class="text-gray-300 text-sm sm:text-base max-w-xl mx-auto">
+            Diskusikan kebutuhan jaringan, perbaikan armada komputer, atau sistem web Anda bersama Muh. Sattar Barakati.
+        </p>
+        <div class="pt-4 flex flex-wrap justify-center gap-4">
+            <a href="https://wa.me/6285218403629?text=Halo%20Sattar,%20saya%20tertarik%20dengan%20proyek%20Analisis+Kualitas+Jaringan+Internet+%26+Implementasi+PCC+MikroTik+%2850+Client+Ujian%29..." target="_blank" class="px-6 py-3.5 rounded-xl bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 text-gray-950 font-bold text-sm flex items-center gap-2 transition hover:scale-105">
+                <i data-lucide="message-square" class="w-4 h-4"></i>
+                <span>Hubungi via WhatsApp (0852-1840-3629)</span>
+            </a>
+            <a href="https://muhsattarbarakati.my.id" class="px-6 py-3.5 rounded-xl bg-gray-900 hover:bg-gray-800 text-white font-semibold text-sm border border-gray-700 transition">
+                Lihat Proyek Lain
+            </a>
+        </div>
+    </div>
+
+</div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="border-t border-gray-800/80 bg-gray-950 py-12 text-xs text-gray-500 font-mono mt-20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4">
+            <div>
+                <p class="text-gray-400 font-semibold text-sm">Muh. Sattar Barakati (Owen)</p>
+                <p class="text-gray-500 mt-0.5">Amasing Bukit Sere, 02 Juli 2002 • Kalumata, Kota Ternate</p>
+                <p class="text-gray-600 mt-0.5">Operator MIS Integral Hidayatullah • WhatsApp/Telp: <span class="text-cyan-400 font-bold">0852-1840-3629</span></p>
+            </div>
+            <div class="flex items-center gap-6">
+                <a href="https://www.linkedin.com/in/muh-sattar-barakati-16b48a2b6/" target="_blank" class="hover:text-cyan-400 transition">LinkedIn</a>
+                <a href="https://github.com/owensavala" target="_blank" class="hover:text-cyan-400 transition">GitHub</a>
+                <a href="https://www.tiktok.com/@str_wtx" target="_blank" class="hover:text-cyan-400 transition">TikTok</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        lucide.createIcons();
+    </script>
+</body>
+</html>
