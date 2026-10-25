@@ -167,6 +167,8 @@
             -webkit-backdrop-filter: blur(14px);
             border: 1px solid rgba(55, 65, 81, 0.6);
         }
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
     </style>
     <!-- Favicon & Touch Icons -->
     <link rel="icon" type="image/svg+xml" href="/favicon.svg">
@@ -178,20 +180,20 @@
 <body class="bg-gray-950 text-gray-100 antialiased selection:bg-cyan-500 selection:text-gray-950 min-h-screen flex flex-col justify-between">
 
     <!-- Top Navbar -->
-    <header class="sticky top-0 z-50 bg-gray-950/80 backdrop-blur-md border-b border-gray-800/80">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+    <header x-data="{ mobileNav: false }" class="sticky top-0 z-50 bg-gray-950/90 backdrop-blur-md border-b border-gray-800/80">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 sm:h-20 flex items-center justify-between">
             <!-- Brand -->
-            <a href="https://muhsattarbarakati.my.id" class="flex items-center gap-3 group">
-                <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-cyan-500 to-orange-500 flex items-center justify-center text-gray-950 font-black text-lg shadow-lg shadow-cyan-500/20 group-hover:scale-105 transition duration-300">
+            <a href="https://muhsattarbarakati.my.id" class="flex items-center gap-2.5 sm:gap-3 group shrink-0">
+                <div class="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-gradient-to-tr from-cyan-500 to-orange-500 flex items-center justify-center text-gray-950 font-black text-base sm:text-lg shadow-lg shadow-cyan-500/20 group-hover:scale-105 transition duration-300 shrink-0">
                     MSB
                 </div>
                 <div>
-                    <span class="font-extrabold text-white text-base block tracking-tight group-hover:text-cyan-400 transition">MSB Masterpiece</span>
-                    <span class="text-xs text-gray-400 font-mono">Muh. Sattar Barakati</span>
+                    <span class="font-extrabold text-white text-sm sm:text-base block tracking-tight group-hover:text-cyan-400 transition leading-tight">MSB Masterpiece</span>
+                    <span class="text-[10px] sm:text-xs text-gray-400 font-mono hidden sm:block">Muh. Sattar Barakati</span>
                 </div>
             </a>
 
-            <!-- Navigation Links -->
+            <!-- Navigation Links (Desktop) -->
             <nav class="hidden md:flex items-center gap-8 text-sm font-medium">
                 <a href="https://muhsattarbarakati.my.id" class="text-cyan-400 font-bold transition">
                     Katalog Proyek
@@ -201,13 +203,36 @@
                 </a>
             </nav>
 
-            <!-- Quick WhatsApp CTA -->
-            <div class="flex items-center gap-3">
-                <a href="https://wa.me/6285218403629?text=Halo%20Sattar%20(Owen),%20saya%20tertarik%20untuk%20diskusi%20proyek%20atau%20servis..." target="_blank" class="px-4 py-2 rounded-xl bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 text-gray-950 font-bold text-xs sm:text-sm flex items-center gap-2 shadow-md shadow-cyan-500/20 transition hover:scale-105">
-                    <i data-lucide="message-square" class="w-4 h-4"></i>
-                    <span>Mari Diskusi (0852-1840-3629)</span>
+            <!-- Quick WhatsApp CTA & Hamburger -->
+            <div class="flex items-center gap-2 sm:gap-3">
+                <a href="https://wa.me/6285218403629?text=Halo%20Sattar%20(Owen),%20saya%20tertarik%20untuk%20diskusi%20proyek%20atau%20servis..." target="_blank" class="px-3 sm:px-4 py-2 rounded-xl bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 text-gray-950 font-bold text-xs sm:text-sm flex items-center gap-1.5 sm:gap-2 shadow-md shadow-cyan-500/20 transition hover:scale-105 shrink-0">
+                    <i data-lucide="message-square" class="w-3.5 h-3.5 sm:w-4 sm:h-4"></i>
+                    <span class="hidden md:inline">Mari Diskusi (0852-1840-3629)</span>
+                    <span class="hidden sm:inline md:hidden">WhatsApp</span>
+                    <span class="sm:hidden">Chat WA</span>
                 </a>
+                <!-- Mobile Menu Button -->
+                <button @click="mobileNav = !mobileNav" class="md:hidden p-2 rounded-xl bg-gray-900 border border-gray-800 text-gray-300 hover:text-white focus:outline-none cursor-pointer" aria-label="Toggle Menu">
+                    <i data-lucide="menu" class="w-5 h-5" x-show="!mobileNav"></i>
+                    <i data-lucide="x" class="w-5 h-5" x-show="mobileNav" style="display:none"></i>
+                </button>
             </div>
+        </div>
+
+        <!-- Mobile Dropdown Drawer -->
+        <div x-show="mobileNav" x-transition class="md:hidden border-t border-gray-800/80 bg-gray-950/95 px-4 py-3 space-y-1.5" style="display:none">
+            <a href="https://muhsattarbarakati.my.id" class="flex items-center gap-2 px-3.5 py-2.5 rounded-xl text-xs font-bold text-cyan-400 bg-cyan-500/10 border border-cyan-500/20">
+                <i data-lucide="layout-grid" class="w-4 h-4"></i>
+                <span>Katalog Proyek</span>
+            </a>
+            <a href="https://muhsattarbarakati.my.id/about" class="flex items-center gap-2 px-3.5 py-2.5 rounded-xl text-xs font-semibold text-gray-300 hover:text-white hover:bg-gray-900 transition">
+                <i data-lucide="user" class="w-4 h-4 text-orange-400"></i>
+                <span>Tentang (Bento Profile)</span>
+            </a>
+            <a href="https://wa.me/6285218403629" target="_blank" class="flex items-center gap-2 px-3.5 py-2.5 rounded-xl text-xs font-semibold text-emerald-400 bg-emerald-950/30 border border-emerald-800/30">
+                <i data-lucide="phone-call" class="w-4 h-4"></i>
+                <span>WhatsApp: 0852-1840-3629</span>
+            </a>
         </div>
     </header>
 
@@ -228,44 +253,44 @@
                 <span>Open for Projects & Field IT Engagements (Ternate & Kepulauan)</span>
             </div>
 
-            <h1 class="text-4xl sm:text-6xl lg:text-7xl font-black text-white tracking-tight leading-[1.08]">
+            <h1 class="text-3xl sm:text-5xl lg:text-7xl font-black text-white tracking-tight leading-tight sm:leading-[1.08] break-words">
                 Membangun Infrastruktur Digital Maluku Utara. <br>
                 <span class="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-blue-400 to-orange-400">
                     Dari Web SaaS Hingga Arsitektur Jaringan.
                 </span>
             </h1>
 
-            <p class="text-base sm:text-xl text-gray-300 max-w-3xl leading-relaxed">
+            <p class="text-sm sm:text-xl text-gray-300 max-w-3xl leading-relaxed">
                 Portofolio resmi <strong>Muh. Sattar Barakati (Owen)</strong>. Praktisi IT multidisiplin: teknisi servis panggilan harian sejak semester 5, operator sekolah perancang load balancing 50 laptop ujian, pembuat sistem web dinas Rp 25 juta, hingga installer internet satelit <strong>Starlink</strong> di pulau-pulau 3T (Bacan, Kayoa, Subaim).
             </p>
 
-            <div class="flex flex-wrap items-center gap-4 pt-2">
-                <a href="#proyek" class="px-6 py-3.5 rounded-xl bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 text-gray-950 font-extrabold text-sm shadow-lg shadow-cyan-500/20 transition hover:scale-105">
+            <div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 sm:gap-4 pt-2">
+                <a href="#proyek" class="px-6 py-3.5 rounded-xl bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 text-gray-950 font-extrabold text-sm shadow-lg shadow-cyan-500/20 transition hover:scale-105 text-center justify-center flex items-center">
                     Jelajahi Etalase Proyek
                 </a>
-                <a href="https://muhsattarbarakati.my.id/about" class="px-6 py-3.5 rounded-xl bg-gray-900 hover:bg-gray-800 text-gray-200 font-semibold text-sm border border-gray-800 hover:border-cyan-500/40 transition flex items-center gap-2">
+                <a href="https://muhsattarbarakati.my.id/about" class="px-6 py-3.5 rounded-xl bg-gray-900 hover:bg-gray-800 text-gray-200 font-semibold text-sm border border-gray-800 hover:border-cyan-500/40 transition flex items-center justify-center gap-2 text-center">
                     <i data-lucide="user" class="w-4 h-4 text-orange-400"></i>
                     <span>Kisah & Bento Profile</span>
                 </a>
             </div>
 
             <!-- Key Milestones Strip -->
-            <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 pt-8 border-t border-gray-800/80">
-                <div class="p-3.5 rounded-2xl bg-gray-950/80 border border-gray-800/80">
-                    <div class="text-2xl font-black text-cyan-400 font-mono">Rp 25 Jt</div>
-                    <div class="text-xs text-gray-400 mt-0.5">Kontrak Web Dinas (5 Bulan Coding)</div>
+            <div class="grid grid-cols-2 sm:grid-cols-4 gap-2.5 sm:gap-4 pt-6 sm:pt-8 border-t border-gray-800/80">
+                <div class="p-3 sm:p-3.5 rounded-xl sm:rounded-2xl bg-gray-950/80 border border-gray-800/80">
+                    <div class="text-xl sm:text-2xl font-black text-cyan-400 font-mono">Rp 25 Jt</div>
+                    <div class="text-[11px] sm:text-xs text-gray-400 mt-1 leading-snug">Kontrak Web Dinas (5 Bulan Coding)</div>
                 </div>
-                <div class="p-3.5 rounded-2xl bg-gray-950/80 border border-gray-800/80">
-                    <div class="text-2xl font-black text-orange-400 font-mono">50 Client</div>
-                    <div class="text-xs text-gray-400 mt-0.5">Stabil Ujian Sekolah (MikroTik PCC)</div>
+                <div class="p-3 sm:p-3.5 rounded-xl sm:rounded-2xl bg-gray-950/80 border border-gray-800/80">
+                    <div class="text-xl sm:text-2xl font-black text-orange-400 font-mono">50 Client</div>
+                    <div class="text-[11px] sm:text-xs text-gray-400 mt-1 leading-snug">Stabil Ujian Sekolah (MikroTik PCC)</div>
                 </div>
-                <div class="p-3.5 rounded-2xl bg-gray-950/80 border border-gray-800/80">
-                    <div class="text-2xl font-black text-emerald-400 font-mono">Sem 5 - Kini</div>
-                    <div class="text-xs text-gray-400 mt-0.5">Servis Panggilan Harian Aktif</div>
+                <div class="p-3 sm:p-3.5 rounded-xl sm:rounded-2xl bg-gray-950/80 border border-gray-800/80">
+                    <div class="text-xl sm:text-2xl font-black text-emerald-400 font-mono">Sem 5 - Kini</div>
+                    <div class="text-[11px] sm:text-xs text-gray-400 mt-1 leading-snug">Servis Panggilan Harian Aktif</div>
                 </div>
-                <div class="p-3.5 rounded-2xl bg-gray-950/80 border border-gray-800/80">
-                    <div class="text-2xl font-black text-white font-mono">4+ Wilayah</div>
-                    <div class="text-xs text-gray-400 mt-0.5">Ternate, Bacan, Kayoa, Subaim</div>
+                <div class="p-3 sm:p-3.5 rounded-xl sm:rounded-2xl bg-gray-950/80 border border-gray-800/80">
+                    <div class="text-xl sm:text-2xl font-black text-white font-mono">4+ Wilayah</div>
+                    <div class="text-[11px] sm:text-xs text-gray-400 mt-1 leading-snug">Ternate, Bacan, Kayoa, Subaim</div>
                 </div>
             </div>
         </div>
@@ -281,8 +306,9 @@
                 <p class="text-xs text-gray-400 mt-1">Studi kasus nyata penyelesaian masalah perangkat, jaringan, dan software.</p>
             </div>
 
-            <!-- Alpine.js Filter Buttons -->
-            <div class="flex flex-wrap items-center gap-2 p-1.5 rounded-2xl bg-gray-900 border border-gray-800">
+            <!-- Alpine.js Filter Buttons (Horizontal swipe on mobile) -->
+            <div class="overflow-x-auto pb-2 -mb-2 sm:pb-0 sm:mb-0 no-scrollbar max-w-full">
+                <div class="flex items-center gap-1.5 sm:gap-2 p-1.5 rounded-2xl bg-gray-900 border border-gray-800 w-max sm:w-auto sm:flex-wrap">
                 <button 
                     @click="activeCategory = 'all'" 
                     :class="activeCategory === 'all' ? 'bg-cyan-500 text-gray-950 font-bold shadow-md shadow-cyan-500/20' : 'text-gray-400 hover:text-white'" 
@@ -310,10 +336,11 @@
                                 <button 
                     @click="activeCategory = 'automation-ai'" 
                     :class="activeCategory === 'automation-ai' ? 'bg-cyan-500 text-gray-950 font-bold shadow-md shadow-cyan-500/20' : 'text-gray-400 hover:text-white'" 
-                    class="px-4 py-2 rounded-xl text-xs font-semibold transition duration-200">
+                    class="px-4 py-2 rounded-xl text-xs font-semibold transition duration-200 whitespace-nowrap">
                     Otomatisasi &amp; AI Agent (1)
                 </button>
-                            </div>
+                </div>
+            </div>
         </div>
 
         <!-- Dynamic Grid -->
@@ -701,16 +728,16 @@
                 <p class="text-gray-300 text-sm sm:text-base leading-relaxed">
                     Konsultasikan langsung dengan <strong>Muh. Sattar Barakati (Owen)</strong>. Baik untuk perbaikan perangkat darurat, persiapan lab komputer ujian, voucher internet desa, maupun pembuatan aplikasi digital.
                 </p>
-                <div class="pt-4 flex flex-wrap items-center gap-4">
-                    <a href="https://wa.me/6285218403629?text=Halo%20Sattar,%20saya%20melihat%20portofolio%20Anda%20dan%20ingin%20berdiskusi%20tentang%20proyek/servis..." target="_blank" class="px-8 py-4 rounded-xl bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 text-gray-950 font-bold text-sm sm:text-base flex items-center gap-3 shadow-xl shadow-cyan-500/25 transition hover:scale-105">
+                <div class="pt-4 flex flex-col sm:flex-row flex-wrap items-stretch sm:items-center gap-3 sm:gap-4">
+                    <a href="https://wa.me/6285218403629?text=Halo%20Sattar,%20saya%20melihat%20portofolio%20Anda%20dan%20ingin%20berdiskusi%20tentang%20proyek/servis..." target="_blank" class="w-full sm:w-auto px-6 sm:px-8 py-3.5 sm:py-4 rounded-xl bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 text-gray-950 font-bold text-sm sm:text-base flex items-center justify-center gap-3 shadow-xl shadow-cyan-500/25 transition hover:scale-105 text-center">
                         <i data-lucide="message-square" class="w-5 h-5"></i>
-                        <span>Mari Diskusi (WhatsApp: 0852-1840-3629)</span>
+                        <span>Mari Diskusi (WhatsApp)</span>
                     </a>
-                    <a href="tel:085218403629" class="px-6 py-4 rounded-xl bg-gray-900 hover:bg-gray-800 text-gray-300 hover:text-white font-mono text-sm border border-gray-800 transition flex items-center gap-2">
+                    <a href="tel:085218403629" class="w-full sm:w-auto px-5 sm:px-6 py-3.5 sm:py-4 rounded-xl bg-gray-900 hover:bg-gray-800 text-gray-300 hover:text-white font-mono text-xs sm:text-sm border border-gray-800 transition flex items-center justify-center gap-2 text-center">
                         <i data-lucide="phone" class="w-4 h-4 text-cyan-400"></i>
-                        <span>Telepon: 0852-1840-3629</span>
+                        <span>Telp: 0852-1840-3629</span>
                     </a>
-                    <a href="https://muhsattarbarakati.my.id/about" class="px-6 py-4 rounded-xl bg-gray-900 hover:bg-gray-800 text-gray-300 hover:text-white font-mono text-sm border border-gray-800 transition">
+                    <a href="https://muhsattarbarakati.my.id/about" class="w-full sm:w-auto px-5 sm:px-6 py-3.5 sm:py-4 rounded-xl bg-gray-900 hover:bg-gray-800 text-gray-300 hover:text-white font-mono text-xs sm:text-sm border border-gray-800 transition text-center justify-center flex items-center">
                         Buka Bento Profile
                     </a>
                 </div>
