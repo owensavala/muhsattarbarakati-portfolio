@@ -11,6 +11,13 @@
     <meta name="google-site-verification" content="PUCUn-oLljIsSY1wGCmGZrETJJTmvtut8x_ex9UIWgw" />
     <link rel="canonical" href="https://muhsattarbarakati.my.id">
 
+    <!-- Favicon & Touch Icons -->
+    <link rel="icon" type="image/svg+xml" href="https://muhsattarbarakati.my.id/favicon.svg">
+    <link rel="icon" type="image/png" sizes="32x32" href="https://muhsattarbarakati.my.id/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="https://muhsattarbarakati.my.id/favicon-16x16.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="https://muhsattarbarakati.my.id/apple-touch-icon.png">
+    <link rel="shortcut icon" href="https://muhsattarbarakati.my.id/favicon.ico">
+
     <!-- Open Graph / Facebook / WhatsApp Preview -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://muhsattarbarakati.my.id">
@@ -131,13 +138,16 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
-            darkMode: 'class',
             theme: {
                 extend: {
                     colors: {
-                        cyber: {
-                            cyan: '#06b6d4',
-                            orange: '#f97316',
+                        cream: {
+                            bg: '#F6EFE6',
+                            surface: '#E9DCCB',
+                            text: '#2B1D14',
+                            accent: '#A8643A',
+                            'accent-hover': '#8F522D',
+                            muted: '#8C7B6B',
                         }
                     },
                     fontFamily: {
@@ -159,80 +169,57 @@
     <script src="https://unpkg.com/lucide@latest"></script>
 
     <style>
-        body { font-family: 'Plus Jakarta Sans', sans-serif; background-color: #030712; }
+        body { 
+            font-family: 'Plus Jakarta Sans', sans-serif; 
+            background-color: #F6EFE6; 
+            color: #2B1D14;
+        }
         .font-mono { font-family: 'JetBrains Mono', monospace; }
         .bento-card {
-            background: rgba(17, 24, 39, 0.75);
-            backdrop-filter: blur(14px);
-            -webkit-backdrop-filter: blur(14px);
-            border: 1px solid rgba(55, 65, 81, 0.6);
+            background-color: #E9DCCB;
+            border: 1px solid rgba(140, 123, 107, 0.28);
+            box-shadow: 0 4px 20px -2px rgba(43, 29, 20, 0.05);
+            transition: all 0.3s ease;
         }
-        .no-scrollbar::-webkit-scrollbar { display: none; }
-        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+        .bento-card:hover {
+            border-color: rgba(168, 100, 58, 0.6);
+            box-shadow: 0 12px 28px -4px rgba(43, 29, 20, 0.12);
+        }
     </style>
-    <!-- Favicon & Touch Icons -->
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
-    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
-    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-    <link rel="shortcut icon" href="/favicon.ico">
 </head>
-<body class="bg-gray-950 text-gray-100 antialiased selection:bg-cyan-500 selection:text-gray-950 min-h-screen flex flex-col justify-between">
+<body class="bg-[#F6EFE6] text-[#2B1D14] antialiased selection:bg-[#A8643A] selection:text-white min-h-screen flex flex-col justify-between">
 
     <!-- Top Navbar -->
-    <header x-data="{ mobileNav: false }" class="sticky top-0 z-50 bg-gray-950/90 backdrop-blur-md border-b border-gray-800/80">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 sm:h-20 flex items-center justify-between">
+    <header class="sticky top-0 z-50 bg-[#F6EFE6]/90 backdrop-blur-md border-b border-[#8C7B6B]/25">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
             <!-- Brand -->
-            <a href="https://muhsattarbarakati.my.id" class="flex items-center gap-2.5 sm:gap-3 group shrink-0">
-                <div class="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-gradient-to-tr from-cyan-500 to-orange-500 flex items-center justify-center text-gray-950 font-black text-base sm:text-lg shadow-lg shadow-cyan-500/20 group-hover:scale-105 transition duration-300 shrink-0">
+            <a href="https://muhsattarbarakati.my.id" class="flex items-center gap-3 group">
+                <div class="w-10 h-10 rounded-xl bg-[#A8643A] flex items-center justify-center text-white font-black text-lg shadow-md shadow-[#A8643A]/25 group-hover:scale-105 group-hover:bg-[#8F522D] transition duration-300">
                     MSB
                 </div>
                 <div>
-                    <span class="font-extrabold text-white text-sm sm:text-base block tracking-tight group-hover:text-cyan-400 transition leading-tight">MSB Masterpiece</span>
-                    <span class="text-[10px] sm:text-xs text-gray-400 font-mono hidden sm:block">Muh. Sattar Barakati</span>
+                    <span class="font-extrabold text-[#2B1D14] text-base block tracking-tight group-hover:text-[#A8643A] transition">MSB Masterpiece</span>
+                    <span class="text-xs text-[#8C7B6B] font-mono">Muh. Sattar Barakati</span>
                 </div>
             </a>
 
-            <!-- Navigation Links (Desktop) -->
-            <nav class="hidden md:flex items-center gap-8 text-sm font-medium">
-                <a href="https://muhsattarbarakati.my.id" class="text-cyan-400 font-bold transition">
+            <!-- Navigation Links -->
+            <nav class="hidden md:flex items-center gap-8 text-sm font-semibold">
+                <a href="https://muhsattarbarakati.my.id" class="text-[#A8643A] font-extrabold transition">
                     Katalog Proyek
                 </a>
-                <a href="https://muhsattarbarakati.my.id/about" class="text-gray-300 hover:text-white transition">
+                <a href="https://muhsattarbarakati.my.id/about" class="text-[#8C7B6B] hover:text-[#2B1D14] transition">
                     Tentang (Bento Profile)
                 </a>
             </nav>
 
-            <!-- Quick WhatsApp CTA & Hamburger -->
-            <div class="flex items-center gap-2 sm:gap-3">
-                <a href="https://wa.me/6285218403629?text=Halo%20Sattar%20(Owen),%20saya%20tertarik%20untuk%20diskusi%20proyek%20atau%20servis..." target="_blank" class="px-3 sm:px-4 py-2 rounded-xl bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 text-gray-950 font-bold text-xs sm:text-sm flex items-center gap-1.5 sm:gap-2 shadow-md shadow-cyan-500/20 transition hover:scale-105 shrink-0">
-                    <i data-lucide="message-square" class="w-3.5 h-3.5 sm:w-4 sm:h-4"></i>
-                    <span class="hidden md:inline">Mari Diskusi (0852-1840-3629)</span>
-                    <span class="hidden sm:inline md:hidden">WhatsApp</span>
-                    <span class="sm:hidden">Chat WA</span>
+            <!-- Quick WhatsApp CTA -->
+            <div class="flex items-center gap-3">
+                <a href="https://wa.me/6285218403629?text=Halo%20Sattar%20(Owen),%20saya%20tertarik%20untuk%20diskusi%20proyek%20atau%20servis..." target="_blank" class="px-4 py-2 rounded-xl bg-[#A8643A] hover:bg-[#8F522D] text-white font-bold text-xs sm:text-sm flex items-center gap-2 shadow-md shadow-[#A8643A]/25 transition hover:scale-105">
+                    <i data-lucide="message-square" class="w-4 h-4"></i>
+                    <span>Mari Diskusi (0852-1840-3629)</span>
                 </a>
-                <!-- Mobile Menu Button -->
-                <button @click="mobileNav = !mobileNav" class="md:hidden p-2 rounded-xl bg-gray-900 border border-gray-800 text-gray-300 hover:text-white focus:outline-none cursor-pointer" aria-label="Toggle Menu">
-                    <i data-lucide="menu" class="w-5 h-5" x-show="!mobileNav"></i>
-                    <i data-lucide="x" class="w-5 h-5" x-show="mobileNav" style="display:none"></i>
-                </button>
             </div>
-        </div>
-
-        <!-- Mobile Dropdown Drawer -->
-        <div x-show="mobileNav" x-transition class="md:hidden border-t border-gray-800/80 bg-gray-950/95 px-4 py-3 space-y-1.5" style="display:none">
-            <a href="https://muhsattarbarakati.my.id" class="flex items-center gap-2 px-3.5 py-2.5 rounded-xl text-xs font-bold text-cyan-400 bg-cyan-500/10 border border-cyan-500/20">
-                <i data-lucide="layout-grid" class="w-4 h-4"></i>
-                <span>Katalog Proyek</span>
-            </a>
-            <a href="https://muhsattarbarakati.my.id/about" class="flex items-center gap-2 px-3.5 py-2.5 rounded-xl text-xs font-semibold text-gray-300 hover:text-white hover:bg-gray-900 transition">
-                <i data-lucide="user" class="w-4 h-4 text-orange-400"></i>
-                <span>Tentang (Bento Profile)</span>
-            </a>
-            <a href="https://wa.me/6285218403629" target="_blank" class="flex items-center gap-2 px-3.5 py-2.5 rounded-xl text-xs font-semibold text-emerald-400 bg-emerald-950/30 border border-emerald-800/30">
-                <i data-lucide="phone-call" class="w-4 h-4"></i>
-                <span>WhatsApp: 0852-1840-3629</span>
-            </a>
         </div>
     </header>
 
@@ -245,52 +232,52 @@
     }
 }" class="space-y-16">
 
-    <!-- HERO SECTION: Big Bold Problem-Solver Headline -->
+    <!-- HERO SECTION: Warm, High-End Problem-Solver Headline -->
     <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-14 lg:pt-20 pb-6">
         <div class="max-w-4xl space-y-6">
-            <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-xs font-semibold bg-cyan-500/10 text-cyan-400 border border-cyan-500/25">
-                <span class="w-2 h-2 rounded-full bg-cyan-400 animate-ping"></span>
+            <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-xs font-semibold bg-[#E9DCCB] text-[#A8643A] border border-[#8C7B6B]/30">
+                <span class="w-2 h-2 rounded-full bg-[#A8643A] animate-ping"></span>
                 <span>Open for Projects & Field IT Engagements (Ternate & Kepulauan)</span>
             </div>
 
-            <h1 class="text-3xl sm:text-5xl lg:text-7xl font-black text-white tracking-tight leading-tight sm:leading-[1.08] break-words">
+            <h1 class="text-4xl sm:text-6xl lg:text-7xl font-black text-[#2B1D14] tracking-tight leading-[1.08]">
                 Membangun Infrastruktur Digital Maluku Utara. <br>
-                <span class="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-blue-400 to-orange-400">
+                <span class="text-transparent bg-clip-text bg-gradient-to-r from-[#A8643A] via-[#8F522D] to-[#2B1D14]">
                     Dari Web SaaS Hingga Arsitektur Jaringan.
                 </span>
             </h1>
 
-            <p class="text-sm sm:text-xl text-gray-300 max-w-3xl leading-relaxed">
+            <p class="text-base sm:text-xl text-[#2B1D14]/80 max-w-3xl leading-relaxed">
                 Portofolio resmi <strong>Muh. Sattar Barakati (Owen)</strong>. Praktisi IT multidisiplin: teknisi servis panggilan harian sejak semester 5, operator sekolah perancang load balancing 50 laptop ujian, pembuat sistem web dinas Rp 25 juta, hingga installer internet satelit <strong>Starlink</strong> di pulau-pulau 3T (Bacan, Kayoa, Subaim).
             </p>
 
-            <div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 sm:gap-4 pt-2">
-                <a href="#proyek" class="px-6 py-3.5 rounded-xl bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 text-gray-950 font-extrabold text-sm shadow-lg shadow-cyan-500/20 transition hover:scale-105 text-center justify-center flex items-center">
+            <div class="flex flex-wrap items-center gap-4 pt-2">
+                <a href="#proyek" class="px-6 py-3.5 rounded-xl bg-[#A8643A] hover:bg-[#8F522D] text-white font-extrabold text-sm shadow-lg shadow-[#A8643A]/25 transition hover:scale-105">
                     Jelajahi Etalase Proyek
                 </a>
-                <a href="https://muhsattarbarakati.my.id/about" class="px-6 py-3.5 rounded-xl bg-gray-900 hover:bg-gray-800 text-gray-200 font-semibold text-sm border border-gray-800 hover:border-cyan-500/40 transition flex items-center justify-center gap-2 text-center">
-                    <i data-lucide="user" class="w-4 h-4 text-orange-400"></i>
+                <a href="https://muhsattarbarakati.my.id/about" class="px-6 py-3.5 rounded-xl bg-[#E9DCCB] hover:bg-[#ded0bd] text-[#2B1D14] font-bold text-sm border border-[#8C7B6B]/30 hover:border-[#A8643A]/40 transition flex items-center gap-2">
+                    <i data-lucide="user" class="w-4 h-4 text-[#A8643A]"></i>
                     <span>Kisah & Bento Profile</span>
                 </a>
             </div>
 
-            <!-- Key Milestones Strip -->
-            <div class="grid grid-cols-2 sm:grid-cols-4 gap-2.5 sm:gap-4 pt-6 sm:pt-8 border-t border-gray-800/80">
-                <div class="p-3 sm:p-3.5 rounded-xl sm:rounded-2xl bg-gray-950/80 border border-gray-800/80">
-                    <div class="text-xl sm:text-2xl font-black text-cyan-400 font-mono">Rp 25 Jt</div>
-                    <div class="text-[11px] sm:text-xs text-gray-400 mt-1 leading-snug">Kontrak Web Dinas (5 Bulan Coding)</div>
+            <!-- Key Milestones Strip (Cream Mocha Cards) -->
+            <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 pt-8 border-t border-[#8C7B6B]/25">
+                <div class="p-4 rounded-2xl bg-[#E9DCCB] border border-[#8C7B6B]/25">
+                    <div class="text-2xl font-black text-[#A8643A] font-mono">Rp 25 Jt</div>
+                    <div class="text-xs text-[#8C7B6B] mt-0.5 font-medium">Kontrak Web Dinas (5 Bulan Coding)</div>
                 </div>
-                <div class="p-3 sm:p-3.5 rounded-xl sm:rounded-2xl bg-gray-950/80 border border-gray-800/80">
-                    <div class="text-xl sm:text-2xl font-black text-orange-400 font-mono">50 Client</div>
-                    <div class="text-[11px] sm:text-xs text-gray-400 mt-1 leading-snug">Stabil Ujian Sekolah (MikroTik PCC)</div>
+                <div class="p-4 rounded-2xl bg-[#E9DCCB] border border-[#8C7B6B]/25">
+                    <div class="text-2xl font-black text-[#2B1D14] font-mono">50 Client</div>
+                    <div class="text-xs text-[#8C7B6B] mt-0.5 font-medium">Stabil Ujian Sekolah (MikroTik PCC)</div>
                 </div>
-                <div class="p-3 sm:p-3.5 rounded-xl sm:rounded-2xl bg-gray-950/80 border border-gray-800/80">
-                    <div class="text-xl sm:text-2xl font-black text-emerald-400 font-mono">Sem 5 - Kini</div>
-                    <div class="text-[11px] sm:text-xs text-gray-400 mt-1 leading-snug">Servis Panggilan Harian Aktif</div>
+                <div class="p-4 rounded-2xl bg-[#E9DCCB] border border-[#8C7B6B]/25">
+                    <div class="text-2xl font-black text-[#A8643A] font-mono">Sem 5 - Kini</div>
+                    <div class="text-xs text-[#8C7B6B] mt-0.5 font-medium">Servis Panggilan Harian Aktif</div>
                 </div>
-                <div class="p-3 sm:p-3.5 rounded-xl sm:rounded-2xl bg-gray-950/80 border border-gray-800/80">
-                    <div class="text-xl sm:text-2xl font-black text-white font-mono">4+ Wilayah</div>
-                    <div class="text-[11px] sm:text-xs text-gray-400 mt-1 leading-snug">Ternate, Bacan, Kayoa, Subaim</div>
+                <div class="p-4 rounded-2xl bg-[#E9DCCB] border border-[#8C7B6B]/25">
+                    <div class="text-2xl font-black text-[#2B1D14] font-mono">4+ Wilayah</div>
+                    <div class="text-xs text-[#8C7B6B] mt-0.5 font-medium">Ternate, Bacan, Kayoa, Subaim</div>
                 </div>
             </div>
         </div>
@@ -299,48 +286,46 @@
     <!-- FILTERABLE PROJECT GRID (Alpine.js No-Reload Filtering) -->
     <section id="proyek" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 space-y-8">
         
-        <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 border-b border-gray-800/80 pb-6">
+        <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 border-b border-[#8C7B6B]/25 pb-6">
             <div>
-                <span class="text-xs font-mono text-cyan-400 uppercase tracking-wider block">SHOWCASE REKAYASA TEKNOLOGI</span>
-                <h2 class="text-2xl sm:text-3xl font-extrabold text-white mt-1">Daftar Proyek & Implementasi</h2>
-                <p class="text-xs text-gray-400 mt-1">Studi kasus nyata penyelesaian masalah perangkat, jaringan, dan software.</p>
+                <span class="text-xs font-mono text-[#A8643A] uppercase tracking-wider block font-bold">SHOWCASE REKAYASA TEKNOLOGI</span>
+                <h2 class="text-2xl sm:text-3xl font-extrabold text-[#2B1D14] mt-1">Daftar Proyek & Implementasi</h2>
+                <p class="text-xs text-[#8C7B6B] mt-1">Studi kasus nyata penyelesaian masalah perangkat, jaringan, deployment Vercel, dan software open-source.</p>
             </div>
 
-            <!-- Alpine.js Filter Buttons (Horizontal swipe on mobile) -->
-            <div class="overflow-x-auto pb-2 -mb-2 sm:pb-0 sm:mb-0 no-scrollbar max-w-full">
-                <div class="flex items-center gap-1.5 sm:gap-2 p-1.5 rounded-2xl bg-gray-900 border border-gray-800 w-max sm:w-auto sm:flex-wrap">
+            <!-- Alpine.js Filter Buttons -->
+            <div class="flex flex-wrap items-center gap-2 p-1.5 rounded-2xl bg-[#E9DCCB] border border-[#8C7B6B]/30">
                 <button 
                     @click="activeCategory = 'all'" 
-                    :class="activeCategory === 'all' ? 'bg-cyan-500 text-gray-950 font-bold shadow-md shadow-cyan-500/20' : 'text-gray-400 hover:text-white'" 
+                    :class="activeCategory === 'all' ? 'bg-[#A8643A] text-white font-bold shadow-md shadow-[#A8643A]/20' : 'text-[#8C7B6B] hover:text-[#2B1D14]'" 
                     class="px-4 py-2 rounded-xl text-xs font-semibold transition duration-200">
-                    Semua (6)
+                    Semua (12)
                 </button>
                                 <button 
                     @click="activeCategory = 'web-dev'" 
-                    :class="activeCategory === 'web-dev' ? 'bg-cyan-500 text-gray-950 font-bold shadow-md shadow-cyan-500/20' : 'text-gray-400 hover:text-white'" 
+                    :class="activeCategory === 'web-dev' ? 'bg-[#A8643A] text-white font-bold shadow-md shadow-[#A8643A]/20' : 'text-[#8C7B6B] hover:text-[#2B1D14]'" 
                     class="px-4 py-2 rounded-xl text-xs font-semibold transition duration-200">
-                    Web Development &amp; SaaS (2)
+                    Web Development &amp; SaaS (6)
                 </button>
                                 <button 
                     @click="activeCategory = 'network-hardware'" 
-                    :class="activeCategory === 'network-hardware' ? 'bg-cyan-500 text-gray-950 font-bold shadow-md shadow-cyan-500/20' : 'text-gray-400 hover:text-white'" 
+                    :class="activeCategory === 'network-hardware' ? 'bg-[#A8643A] text-white font-bold shadow-md shadow-[#A8643A]/20' : 'text-[#8C7B6B] hover:text-[#2B1D14]'" 
                     class="px-4 py-2 rounded-xl text-xs font-semibold transition duration-200">
                     Network &amp; Starlink Antar-Pulau (2)
                 </button>
                                 <button 
                     @click="activeCategory = 'hardware-service'" 
-                    :class="activeCategory === 'hardware-service' ? 'bg-cyan-500 text-gray-950 font-bold shadow-md shadow-cyan-500/20' : 'text-gray-400 hover:text-white'" 
+                    :class="activeCategory === 'hardware-service' ? 'bg-[#A8643A] text-white font-bold shadow-md shadow-[#A8643A]/20' : 'text-[#8C7B6B] hover:text-[#2B1D14]'" 
                     class="px-4 py-2 rounded-xl text-xs font-semibold transition duration-200">
-                    Hardware, Lab &amp; Servis Panggilan (1)
+                    Hardware, Lab &amp; Servis Panggilan (3)
                 </button>
                                 <button 
                     @click="activeCategory = 'automation-ai'" 
-                    :class="activeCategory === 'automation-ai' ? 'bg-cyan-500 text-gray-950 font-bold shadow-md shadow-cyan-500/20' : 'text-gray-400 hover:text-white'" 
-                    class="px-4 py-2 rounded-xl text-xs font-semibold transition duration-200 whitespace-nowrap">
+                    :class="activeCategory === 'automation-ai' ? 'bg-[#A8643A] text-white font-bold shadow-md shadow-[#A8643A]/20' : 'text-[#8C7B6B] hover:text-[#2B1D14]'" 
+                    class="px-4 py-2 rounded-xl text-xs font-semibold transition duration-200">
                     Otomatisasi &amp; AI Agent (1)
                 </button>
-                </div>
-            </div>
+                            </div>
         </div>
 
         <!-- Dynamic Grid -->
@@ -350,60 +335,67 @@
                 x-transition:enter="transition ease-out duration-300"
                 x-transition:enter-start="opacity-0 transform scale-95"
                 x-transition:enter-end="opacity-100 transform scale-100"
-                class="bento-card rounded-2xl overflow-hidden hover:border-cyan-500/50 transition-all duration-300 flex flex-col justify-between group hover:-translate-y-1">
+                class="bento-card rounded-2xl overflow-hidden flex flex-col justify-between group hover:-translate-y-1">
                 
                 <div>
                     <!-- Thumbnail with client pill -->
-                    <div class="relative h-56 bg-gray-900 overflow-hidden">
+                    <div class="relative h-56 bg-[#F6EFE6] overflow-hidden border-b border-[#8C7B6B]/20">
                         <img src="https://muhsattarbarakati.my.id/images/mockup-web-dinas-real.png" alt="Sistem Informasi Web &amp; CMS Dinas Kebudayaan Kota Ternate (Kontrak Rp 25 Juta)" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
-                        <div class="absolute inset-0 bg-gradient-to-t from-gray-950 via-gray-950/20 to-transparent"></div>
+                        <div class="absolute inset-0 bg-gradient-to-t from-[#2B1D14]/70 via-transparent to-transparent"></div>
                         
-                        <div class="absolute top-3 left-3 px-3 py-1 rounded-lg bg-gray-950/80 backdrop-blur-md text-[11px] font-mono border border-gray-800 text-orange-400">
+                        <div class="absolute top-3 left-3 px-3 py-1 rounded-lg bg-[#F6EFE6]/95 backdrop-blur-md text-[11px] font-mono border border-[#8C7B6B]/30 font-bold text-[#A8643A]">
                             Web Development &amp; SaaS
                         </div>
 
-                                                <div class="absolute bottom-3 left-3 right-3 text-xs text-gray-300 truncate font-mono">
-                            <span class="text-gray-500">Klien:</span> Dinas Kebudayaan Pemerintah Kota Ternate
+                                                <div class="absolute bottom-3 left-3 right-3 text-xs text-white truncate font-mono drop-shadow-md">
+                            <span class="text-[#E9DCCB]">Klien:</span> Dinas Kebudayaan Pemerintah Kota Ternate
                         </div>
                                             </div>
 
                     <!-- Details -->
                     <div class="p-6 space-y-3">
-                        <h3 class="text-xl font-bold text-white group-hover:text-cyan-400 transition leading-snug">
+                        <h3 class="text-xl font-bold text-[#2B1D14] group-hover:text-[#A8643A] transition leading-snug">
                             <a href="https://muhsattarbarakati.my.id/project/web-dinas-kebudayaan-kota-ternate">
                                 Sistem Informasi Web &amp; CMS Dinas Kebudayaan Kota Ternate (Kontrak Rp 25 Juta)
                             </a>
                         </h3>
-                        <p class="text-gray-400 text-xs sm:text-sm line-clamp-3 leading-relaxed">
+                        <p class="text-[#8C7B6B] text-xs sm:text-sm line-clamp-3 leading-relaxed">
                             Milestone besar di Semester 7: Membangun portal resmi dan CMS admin mandiri untuk Dinas Kebudayaan Kota Ternate selama 5 bulan pengerjaan dengan koding manual murni sebelum era otomatisasi AI.
                         </p>
                     </div>
                 </div>
 
-                <!-- Footer with Tech Stack & CTA -->
-                <div class="p-6 pt-0 border-t border-gray-800/60 mt-4 space-y-4">
+                <!-- Footer with Tech Stack & CTAs -->
+                <div class="p-6 pt-0 border-t border-[#8C7B6B]/20 mt-4 space-y-4">
                     <div class="flex flex-wrap gap-1.5 pt-3">
-                                                <span class="px-2 py-0.5 rounded-md bg-gray-900 text-gray-400 text-[11px] font-mono border border-gray-800">
+                                                <span class="px-2 py-0.5 rounded-md bg-[#F6EFE6] text-[#2B1D14] text-[11px] font-mono border border-[#8C7B6B]/25">
                             Native PHP
                         </span>
-                                                <span class="px-2 py-0.5 rounded-md bg-gray-900 text-gray-400 text-[11px] font-mono border border-gray-800">
+                                                <span class="px-2 py-0.5 rounded-md bg-[#F6EFE6] text-[#2B1D14] text-[11px] font-mono border border-[#8C7B6B]/25">
                             MySQL Relational DB
                         </span>
-                                                <span class="px-2 py-0.5 rounded-md bg-gray-900 text-gray-400 text-[11px] font-mono border border-gray-800">
+                                                <span class="px-2 py-0.5 rounded-md bg-[#F6EFE6] text-[#2B1D14] text-[11px] font-mono border border-[#8C7B6B]/25">
                             Custom CMS Admin
                         </span>
-                                                <span class="px-2 py-0.5 rounded-md bg-gray-900 text-gray-400 text-[11px] font-mono border border-gray-800">
+                                                <span class="px-2 py-0.5 rounded-md bg-[#F6EFE6] text-[#2B1D14] text-[11px] font-mono border border-[#8C7B6B]/25">
                             HTML5 &amp; CSS3
                         </span>
-                                                                        <span class="px-2 py-0.5 rounded-md bg-gray-900 text-gray-500 text-[11px] font-mono">
+                                                                        <span class="px-2 py-0.5 rounded-md bg-[#F6EFE6] text-[#8C7B6B] text-[11px] font-mono border border-[#8C7B6B]/25">
                             +2
                         </span>
                                             </div>
 
-                    <a href="https://muhsattarbarakati.my.id/project/web-dinas-kebudayaan-kota-ternate" class="inline-flex items-center gap-2 text-xs font-bold text-cyan-400 hover:text-cyan-300 group-hover:translate-x-1 transition duration-200">
-                        <span>Baca Studi Kasus Masalah & Solusi</span>
-                        <i data-lucide="arrow-right" class="w-4 h-4"></i>
-                    </a>
+                    <!-- Action Link Row: Live Demo + GitHub + Case Study -->
+                    <div class="flex flex-wrap items-center justify-between gap-2 pt-1 border-t border-[#8C7B6B]/15">
+                        <a href="https://muhsattarbarakati.my.id/project/web-dinas-kebudayaan-kota-ternate" class="inline-flex items-center gap-1.5 text-xs font-bold text-[#A8643A] hover:text-[#8F522D] group-hover:translate-x-1 transition duration-200">
+                            <span>Studi Kasus</span>
+                            <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
+                        </a>
+
+                        <div class="flex items-center gap-2">
+                            
+                                                    </div>
+                    </div>
                 </div>
             </div>
                         <div 
@@ -411,60 +403,67 @@
                 x-transition:enter="transition ease-out duration-300"
                 x-transition:enter-start="opacity-0 transform scale-95"
                 x-transition:enter-end="opacity-100 transform scale-100"
-                class="bento-card rounded-2xl overflow-hidden hover:border-cyan-500/50 transition-all duration-300 flex flex-col justify-between group hover:-translate-y-1">
+                class="bento-card rounded-2xl overflow-hidden flex flex-col justify-between group hover:-translate-y-1">
                 
                 <div>
                     <!-- Thumbnail with client pill -->
-                    <div class="relative h-56 bg-gray-900 overflow-hidden">
+                    <div class="relative h-56 bg-[#F6EFE6] overflow-hidden border-b border-[#8C7B6B]/20">
                         <img src="https://muhsattarbarakati.my.id/images/mockup-mikrotik-pcc.png" alt="Analisis Kualitas Jaringan Internet &amp; Implementasi PCC MikroTik (50 Client Ujian)" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
-                        <div class="absolute inset-0 bg-gradient-to-t from-gray-950 via-gray-950/20 to-transparent"></div>
+                        <div class="absolute inset-0 bg-gradient-to-t from-[#2B1D14]/70 via-transparent to-transparent"></div>
                         
-                        <div class="absolute top-3 left-3 px-3 py-1 rounded-lg bg-gray-950/80 backdrop-blur-md text-[11px] font-mono border border-gray-800 text-cyan-400">
+                        <div class="absolute top-3 left-3 px-3 py-1 rounded-lg bg-[#F6EFE6]/95 backdrop-blur-md text-[11px] font-mono border border-[#8C7B6B]/30 font-bold text-[#A8643A]">
                             Network &amp; Starlink Antar-Pulau
                         </div>
 
-                                                <div class="absolute bottom-3 left-3 right-3 text-xs text-gray-300 truncate font-mono">
-                            <span class="text-gray-500">Klien:</span> MIS Integral Hidayatullah Kota Ternate (Tempat Kerja Operator &amp; Riset Skripsi)
+                                                <div class="absolute bottom-3 left-3 right-3 text-xs text-white truncate font-mono drop-shadow-md">
+                            <span class="text-[#E9DCCB]">Klien:</span> MIS Integral Hidayatullah Kota Ternate (Tempat Kerja Operator &amp; Riset Skripsi)
                         </div>
                                             </div>
 
                     <!-- Details -->
                     <div class="p-6 space-y-3">
-                        <h3 class="text-xl font-bold text-white group-hover:text-cyan-400 transition leading-snug">
+                        <h3 class="text-xl font-bold text-[#2B1D14] group-hover:text-[#A8643A] transition leading-snug">
                             <a href="https://muhsattarbarakati.my.id/project/implementasi-pcc-mikrotik-mis-integral-hidayatullah">
                                 Analisis Kualitas Jaringan Internet &amp; Implementasi PCC MikroTik (50 Client Ujian)
                             </a>
                         </h3>
-                        <p class="text-gray-400 text-xs sm:text-sm line-clamp-3 leading-relaxed">
+                        <p class="text-[#8C7B6B] text-xs sm:text-sm line-clamp-3 leading-relaxed">
                             Implementasi rekayasa jaringan berbasis MikroTik saat menjabat operator di MIS Integral Hidayatullah Kota Ternate, mengeliminasi bottleneck hingga sanggup melayani 50 laptop client ujian serentak tanpa gangguan.
                         </p>
                     </div>
                 </div>
 
-                <!-- Footer with Tech Stack & CTA -->
-                <div class="p-6 pt-0 border-t border-gray-800/60 mt-4 space-y-4">
+                <!-- Footer with Tech Stack & CTAs -->
+                <div class="p-6 pt-0 border-t border-[#8C7B6B]/20 mt-4 space-y-4">
                     <div class="flex flex-wrap gap-1.5 pt-3">
-                                                <span class="px-2 py-0.5 rounded-md bg-gray-900 text-gray-400 text-[11px] font-mono border border-gray-800">
+                                                <span class="px-2 py-0.5 rounded-md bg-[#F6EFE6] text-[#2B1D14] text-[11px] font-mono border border-[#8C7B6B]/25">
                             MikroTik RouterOS
                         </span>
-                                                <span class="px-2 py-0.5 rounded-md bg-gray-900 text-gray-400 text-[11px] font-mono border border-gray-800">
+                                                <span class="px-2 py-0.5 rounded-md bg-[#F6EFE6] text-[#2B1D14] text-[11px] font-mono border border-[#8C7B6B]/25">
                             PCC Load Balancing
                         </span>
-                                                <span class="px-2 py-0.5 rounded-md bg-gray-900 text-gray-400 text-[11px] font-mono border border-gray-800">
+                                                <span class="px-2 py-0.5 rounded-md bg-[#F6EFE6] text-[#2B1D14] text-[11px] font-mono border border-[#8C7B6B]/25">
                             Automated Failover
                         </span>
-                                                <span class="px-2 py-0.5 rounded-md bg-gray-900 text-gray-400 text-[11px] font-mono border border-gray-800">
+                                                <span class="px-2 py-0.5 rounded-md bg-[#F6EFE6] text-[#2B1D14] text-[11px] font-mono border border-[#8C7B6B]/25">
                             Bandwidth Queue Tree
                         </span>
-                                                                        <span class="px-2 py-0.5 rounded-md bg-gray-900 text-gray-500 text-[11px] font-mono">
+                                                                        <span class="px-2 py-0.5 rounded-md bg-[#F6EFE6] text-[#8C7B6B] text-[11px] font-mono border border-[#8C7B6B]/25">
                             +2
                         </span>
                                             </div>
 
-                    <a href="https://muhsattarbarakati.my.id/project/implementasi-pcc-mikrotik-mis-integral-hidayatullah" class="inline-flex items-center gap-2 text-xs font-bold text-cyan-400 hover:text-cyan-300 group-hover:translate-x-1 transition duration-200">
-                        <span>Baca Studi Kasus Masalah & Solusi</span>
-                        <i data-lucide="arrow-right" class="w-4 h-4"></i>
-                    </a>
+                    <!-- Action Link Row: Live Demo + GitHub + Case Study -->
+                    <div class="flex flex-wrap items-center justify-between gap-2 pt-1 border-t border-[#8C7B6B]/15">
+                        <a href="https://muhsattarbarakati.my.id/project/implementasi-pcc-mikrotik-mis-integral-hidayatullah" class="inline-flex items-center gap-1.5 text-xs font-bold text-[#A8643A] hover:text-[#8F522D] group-hover:translate-x-1 transition duration-200">
+                            <span>Studi Kasus</span>
+                            <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
+                        </a>
+
+                        <div class="flex items-center gap-2">
+                            
+                                                    </div>
+                    </div>
                 </div>
             </div>
                         <div 
@@ -472,60 +471,67 @@
                 x-transition:enter="transition ease-out duration-300"
                 x-transition:enter-start="opacity-0 transform scale-95"
                 x-transition:enter-end="opacity-100 transform scale-100"
-                class="bento-card rounded-2xl overflow-hidden hover:border-cyan-500/50 transition-all duration-300 flex flex-col justify-between group hover:-translate-y-1">
+                class="bento-card rounded-2xl overflow-hidden flex flex-col justify-between group hover:-translate-y-1">
                 
                 <div>
                     <!-- Thumbnail with client pill -->
-                    <div class="relative h-56 bg-gray-900 overflow-hidden">
+                    <div class="relative h-56 bg-[#F6EFE6] overflow-hidden border-b border-[#8C7B6B]/20">
                         <img src="https://muhsattarbarakati.my.id/images/mockup-starlink-island.png" alt="Pemasangan Starlink &amp; Sistem Voucher WiFi Kepulauan (Bacan, Kayoa, Subaim)" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
-                        <div class="absolute inset-0 bg-gradient-to-t from-gray-950 via-gray-950/20 to-transparent"></div>
+                        <div class="absolute inset-0 bg-gradient-to-t from-[#2B1D14]/70 via-transparent to-transparent"></div>
                         
-                        <div class="absolute top-3 left-3 px-3 py-1 rounded-lg bg-gray-950/80 backdrop-blur-md text-[11px] font-mono border border-gray-800 text-cyan-400">
+                        <div class="absolute top-3 left-3 px-3 py-1 rounded-lg bg-[#F6EFE6]/95 backdrop-blur-md text-[11px] font-mono border border-[#8C7B6B]/30 font-bold text-[#A8643A]">
                             Network &amp; Starlink Antar-Pulau
                         </div>
 
-                                                <div class="absolute bottom-3 left-3 right-3 text-xs text-gray-300 truncate font-mono">
-                            <span class="text-gray-500">Klien:</span> Sekolah, Balai Desa &amp; Warga Komersial (Kayoa, Bacan, Subaim)
+                                                <div class="absolute bottom-3 left-3 right-3 text-xs text-white truncate font-mono drop-shadow-md">
+                            <span class="text-[#E9DCCB]">Klien:</span> Sekolah, Balai Desa &amp; Warga Komersial (Kayoa, Bacan, Subaim)
                         </div>
                                             </div>
 
                     <!-- Details -->
                     <div class="p-6 space-y-3">
-                        <h3 class="text-xl font-bold text-white group-hover:text-cyan-400 transition leading-snug">
+                        <h3 class="text-xl font-bold text-[#2B1D14] group-hover:text-[#A8643A] transition leading-snug">
                             <a href="https://muhsattarbarakati.my.id/project/starlink-voucher-wifi-bacan-kayoa-subaim">
                                 Pemasangan Starlink &amp; Sistem Voucher WiFi Kepulauan (Bacan, Kayoa, Subaim)
                             </a>
                         </h3>
-                        <p class="text-gray-400 text-xs sm:text-sm line-clamp-3 leading-relaxed">
+                        <p class="text-[#8C7B6B] text-xs sm:text-sm line-clamp-3 leading-relaxed">
                             Penugasan lintas laut dari Ternate ke Bacan, kepulauan Kayoa (Pulau Siko, Pulau Gafi), hingga Subaim untuk instalasi internet satelit Starlink dan sistem billing hotspot voucher MikroTik.
                         </p>
                     </div>
                 </div>
 
-                <!-- Footer with Tech Stack & CTA -->
-                <div class="p-6 pt-0 border-t border-gray-800/60 mt-4 space-y-4">
+                <!-- Footer with Tech Stack & CTAs -->
+                <div class="p-6 pt-0 border-t border-[#8C7B6B]/20 mt-4 space-y-4">
                     <div class="flex flex-wrap gap-1.5 pt-3">
-                                                <span class="px-2 py-0.5 rounded-md bg-gray-900 text-gray-400 text-[11px] font-mono border border-gray-800">
+                                                <span class="px-2 py-0.5 rounded-md bg-[#F6EFE6] text-[#2B1D14] text-[11px] font-mono border border-[#8C7B6B]/25">
                             Starlink Gen 3
                         </span>
-                                                <span class="px-2 py-0.5 rounded-md bg-gray-900 text-gray-400 text-[11px] font-mono border border-gray-800">
+                                                <span class="px-2 py-0.5 rounded-md bg-[#F6EFE6] text-[#2B1D14] text-[11px] font-mono border border-[#8C7B6B]/25">
                             MikroTik Hotspot
                         </span>
-                                                <span class="px-2 py-0.5 rounded-md bg-gray-900 text-gray-400 text-[11px] font-mono border border-gray-800">
+                                                <span class="px-2 py-0.5 rounded-md bg-[#F6EFE6] text-[#2B1D14] text-[11px] font-mono border border-[#8C7B6B]/25">
                             Mikhmon Voucher System
                         </span>
-                                                <span class="px-2 py-0.5 rounded-md bg-gray-900 text-gray-400 text-[11px] font-mono border border-gray-800">
+                                                <span class="px-2 py-0.5 rounded-md bg-[#F6EFE6] text-[#2B1D14] text-[11px] font-mono border border-[#8C7B6B]/25">
                             Outdoor Shielded Cat6
                         </span>
-                                                                        <span class="px-2 py-0.5 rounded-md bg-gray-900 text-gray-500 text-[11px] font-mono">
+                                                                        <span class="px-2 py-0.5 rounded-md bg-[#F6EFE6] text-[#8C7B6B] text-[11px] font-mono border border-[#8C7B6B]/25">
                             +2
                         </span>
                                             </div>
 
-                    <a href="https://muhsattarbarakati.my.id/project/starlink-voucher-wifi-bacan-kayoa-subaim" class="inline-flex items-center gap-2 text-xs font-bold text-cyan-400 hover:text-cyan-300 group-hover:translate-x-1 transition duration-200">
-                        <span>Baca Studi Kasus Masalah & Solusi</span>
-                        <i data-lucide="arrow-right" class="w-4 h-4"></i>
-                    </a>
+                    <!-- Action Link Row: Live Demo + GitHub + Case Study -->
+                    <div class="flex flex-wrap items-center justify-between gap-2 pt-1 border-t border-[#8C7B6B]/15">
+                        <a href="https://muhsattarbarakati.my.id/project/starlink-voucher-wifi-bacan-kayoa-subaim" class="inline-flex items-center gap-1.5 text-xs font-bold text-[#A8643A] hover:text-[#8F522D] group-hover:translate-x-1 transition duration-200">
+                            <span>Studi Kasus</span>
+                            <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
+                        </a>
+
+                        <div class="flex items-center gap-2">
+                            
+                                                    </div>
+                    </div>
                 </div>
             </div>
                         <div 
@@ -533,60 +539,67 @@
                 x-transition:enter="transition ease-out duration-300"
                 x-transition:enter-start="opacity-0 transform scale-95"
                 x-transition:enter-end="opacity-100 transform scale-100"
-                class="bento-card rounded-2xl overflow-hidden hover:border-cyan-500/50 transition-all duration-300 flex flex-col justify-between group hover:-translate-y-1">
+                class="bento-card rounded-2xl overflow-hidden flex flex-col justify-between group hover:-translate-y-1">
                 
                 <div>
                     <!-- Thumbnail with client pill -->
-                    <div class="relative h-56 bg-gray-900 overflow-hidden">
+                    <div class="relative h-56 bg-[#F6EFE6] overflow-hidden border-b border-[#8C7B6B]/20">
                         <img src="https://muhsattarbarakati.my.id/images/servis-lab-modayama-wide.jpg" alt="Layanan Servis Panggilan MSB &amp; Rekondisi Massal Lab Sekolah" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
-                        <div class="absolute inset-0 bg-gradient-to-t from-gray-950 via-gray-950/20 to-transparent"></div>
+                        <div class="absolute inset-0 bg-gradient-to-t from-[#2B1D14]/70 via-transparent to-transparent"></div>
                         
-                        <div class="absolute top-3 left-3 px-3 py-1 rounded-lg bg-gray-950/80 backdrop-blur-md text-[11px] font-mono border border-gray-800 text-cyan-400">
+                        <div class="absolute top-3 left-3 px-3 py-1 rounded-lg bg-[#F6EFE6]/95 backdrop-blur-md text-[11px] font-mono border border-[#8C7B6B]/30 font-bold text-[#A8643A]">
                             Hardware, Lab &amp; Servis Panggilan
                         </div>
 
-                                                <div class="absolute bottom-3 left-3 right-3 text-xs text-gray-300 truncate font-mono">
-                            <span class="text-gray-500">Klien:</span> SMK Pertanian Modayama &amp; Klien Panggilan Harian Ternate
+                                                <div class="absolute bottom-3 left-3 right-3 text-xs text-white truncate font-mono drop-shadow-md">
+                            <span class="text-[#E9DCCB]">Klien:</span> SMK Pertanian Modayama &amp; Klien Panggilan Harian Ternate
                         </div>
                                             </div>
 
                     <!-- Details -->
                     <div class="p-6 space-y-3">
-                        <h3 class="text-xl font-bold text-white group-hover:text-cyan-400 transition leading-snug">
+                        <h3 class="text-xl font-bold text-[#2B1D14] group-hover:text-[#A8643A] transition leading-snug">
                             <a href="https://muhsattarbarakati.my.id/project/servis-panggilan-msb-rekondisi-lab">
                                 Layanan Servis Panggilan MSB &amp; Rekondisi Massal Lab Sekolah
                             </a>
                         </h3>
-                        <p class="text-gray-400 text-xs sm:text-sm line-clamp-3 leading-relaxed">
+                        <p class="text-[#8C7B6B] text-xs sm:text-sm line-clamp-3 leading-relaxed">
                             Usaha mandiri sejak Semester 5 (2022) hingga kini: perbaikan harian laptop, PC, printer, sharing printer, penggantian LCD, keyboard, baterai, upgrade RAM/SSD, serta rekondisi massal lab sekolah.
                         </p>
                     </div>
                 </div>
 
-                <!-- Footer with Tech Stack & CTA -->
-                <div class="p-6 pt-0 border-t border-gray-800/60 mt-4 space-y-4">
+                <!-- Footer with Tech Stack & CTAs -->
+                <div class="p-6 pt-0 border-t border-[#8C7B6B]/20 mt-4 space-y-4">
                     <div class="flex flex-wrap gap-1.5 pt-3">
-                                                <span class="px-2 py-0.5 rounded-md bg-gray-900 text-gray-400 text-[11px] font-mono border border-gray-800">
+                                                <span class="px-2 py-0.5 rounded-md bg-[#F6EFE6] text-[#2B1D14] text-[11px] font-mono border border-[#8C7B6B]/25">
                             Hardware Diagnostics
                         </span>
-                                                <span class="px-2 py-0.5 rounded-md bg-gray-900 text-gray-400 text-[11px] font-mono border border-gray-800">
+                                                <span class="px-2 py-0.5 rounded-md bg-[#F6EFE6] text-[#2B1D14] text-[11px] font-mono border border-[#8C7B6B]/25">
                             LCD &amp; Keyboard Replacement
                         </span>
-                                                <span class="px-2 py-0.5 rounded-md bg-gray-900 text-gray-400 text-[11px] font-mono border border-gray-800">
+                                                <span class="px-2 py-0.5 rounded-md bg-[#F6EFE6] text-[#2B1D14] text-[11px] font-mono border border-[#8C7B6B]/25">
                             SMD Component Repair
                         </span>
-                                                <span class="px-2 py-0.5 rounded-md bg-gray-900 text-gray-400 text-[11px] font-mono border border-gray-800">
+                                                <span class="px-2 py-0.5 rounded-md bg-[#F6EFE6] text-[#2B1D14] text-[11px] font-mono border border-[#8C7B6B]/25">
                             Network Printer Sharing
                         </span>
-                                                                        <span class="px-2 py-0.5 rounded-md bg-gray-900 text-gray-500 text-[11px] font-mono">
+                                                                        <span class="px-2 py-0.5 rounded-md bg-[#F6EFE6] text-[#8C7B6B] text-[11px] font-mono border border-[#8C7B6B]/25">
                             +2
                         </span>
                                             </div>
 
-                    <a href="https://muhsattarbarakati.my.id/project/servis-panggilan-msb-rekondisi-lab" class="inline-flex items-center gap-2 text-xs font-bold text-cyan-400 hover:text-cyan-300 group-hover:translate-x-1 transition duration-200">
-                        <span>Baca Studi Kasus Masalah & Solusi</span>
-                        <i data-lucide="arrow-right" class="w-4 h-4"></i>
-                    </a>
+                    <!-- Action Link Row: Live Demo + GitHub + Case Study -->
+                    <div class="flex flex-wrap items-center justify-between gap-2 pt-1 border-t border-[#8C7B6B]/15">
+                        <a href="https://muhsattarbarakati.my.id/project/servis-panggilan-msb-rekondisi-lab" class="inline-flex items-center gap-1.5 text-xs font-bold text-[#A8643A] hover:text-[#8F522D] group-hover:translate-x-1 transition duration-200">
+                            <span>Studi Kasus</span>
+                            <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
+                        </a>
+
+                        <div class="flex items-center gap-2">
+                            
+                                                    </div>
+                    </div>
                 </div>
             </div>
                         <div 
@@ -594,60 +607,523 @@
                 x-transition:enter="transition ease-out duration-300"
                 x-transition:enter-start="opacity-0 transform scale-95"
                 x-transition:enter-end="opacity-100 transform scale-100"
-                class="bento-card rounded-2xl overflow-hidden hover:border-cyan-500/50 transition-all duration-300 flex flex-col justify-between group hover:-translate-y-1">
+                class="bento-card rounded-2xl overflow-hidden flex flex-col justify-between group hover:-translate-y-1">
                 
                 <div>
                     <!-- Thumbnail with client pill -->
-                    <div class="relative h-56 bg-gray-900 overflow-hidden">
-                        <img src="https://muhsattarbarakati.my.id/images/mockup-undangan-saas.png" alt="Katalog Web Mandiri: Undangan Nikah Online, Portal Kampus, Web Desa &amp; Laundry" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
-                        <div class="absolute inset-0 bg-gradient-to-t from-gray-950 via-gray-950/20 to-transparent"></div>
+                    <div class="relative h-56 bg-[#F6EFE6] overflow-hidden border-b border-[#8C7B6B]/20">
+                        <img src="https://muhsattarbarakati.my.id/images/mockup-portal-sekolah.png" alt="Portal Layanan Terpadu Sekolah &amp; Madrasah Modern (Portal Sekolah Pro)" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+                        <div class="absolute inset-0 bg-gradient-to-t from-[#2B1D14]/70 via-transparent to-transparent"></div>
                         
-                        <div class="absolute top-3 left-3 px-3 py-1 rounded-lg bg-gray-950/80 backdrop-blur-md text-[11px] font-mono border border-gray-800 text-orange-400">
+                        <div class="absolute top-3 left-3 px-3 py-1 rounded-lg bg-[#F6EFE6]/95 backdrop-blur-md text-[11px] font-mono border border-[#8C7B6B]/30 font-bold text-[#A8643A]">
                             Web Development &amp; SaaS
                         </div>
 
-                                                <div class="absolute bottom-3 left-3 right-3 text-xs text-gray-300 truncate font-mono">
-                            <span class="text-gray-500">Klien:</span> Produk Inisiatif Mandiri (MSB Software)
+                                                <div class="absolute bottom-3 left-3 right-3 text-xs text-white truncate font-mono drop-shadow-md">
+                            <span class="text-[#E9DCCB]">Klien:</span> SMP Negeri 1 Cerdas Mandiri / Portofolio Pendidikan
                         </div>
                                             </div>
 
                     <!-- Details -->
                     <div class="p-6 space-y-3">
-                        <h3 class="text-xl font-bold text-white group-hover:text-cyan-400 transition leading-snug">
-                            <a href="https://muhsattarbarakati.my.id/project/katalog-web-mandiri-desa-laundry-undangan">
-                                Katalog Web Mandiri: Undangan Nikah Online, Portal Kampus, Web Desa &amp; Laundry
+                        <h3 class="text-xl font-bold text-[#2B1D14] group-hover:text-[#A8643A] transition leading-snug">
+                            <a href="https://muhsattarbarakati.my.id/project/portal-sekolah-pro">
+                                Portal Layanan Terpadu Sekolah &amp; Madrasah Modern (Portal Sekolah Pro)
                             </a>
                         </h3>
-                        <p class="text-gray-400 text-xs sm:text-sm line-clamp-3 leading-relaxed">
-                            Portofolio platform web siap pakai untuk pasar lokal: undangan nikah digital interaktif (undangan-kita.online), SIM sekolah, sistem desa, portal kampus, dan SaaS kasir laundry.
+                        <p class="text-[#8C7B6B] text-xs sm:text-sm line-clamp-3 leading-relaxed">
+                            Portal web layanan terpadu sekolah dan madrasah modern dengan efek 3D Tilt Cards, Spotlight Cursor, Flat-JSON Zero MySQL database, serta arsitektur security yang diperketat.
                         </p>
                     </div>
                 </div>
 
-                <!-- Footer with Tech Stack & CTA -->
-                <div class="p-6 pt-0 border-t border-gray-800/60 mt-4 space-y-4">
+                <!-- Footer with Tech Stack & CTAs -->
+                <div class="p-6 pt-0 border-t border-[#8C7B6B]/20 mt-4 space-y-4">
                     <div class="flex flex-wrap gap-1.5 pt-3">
-                                                <span class="px-2 py-0.5 rounded-md bg-gray-900 text-gray-400 text-[11px] font-mono border border-gray-800">
-                            Laravel
+                                                <span class="px-2 py-0.5 rounded-md bg-[#F6EFE6] text-[#2B1D14] text-[11px] font-mono border border-[#8C7B6B]/25">
+                            PHP Modern
                         </span>
-                                                <span class="px-2 py-0.5 rounded-md bg-gray-900 text-gray-400 text-[11px] font-mono border border-gray-800">
-                            Tailwind CSS
+                                                <span class="px-2 py-0.5 rounded-md bg-[#F6EFE6] text-[#2B1D14] text-[11px] font-mono border border-[#8C7B6B]/25">
+                            Flat-JSON Storage
                         </span>
-                                                <span class="px-2 py-0.5 rounded-md bg-gray-900 text-gray-400 text-[11px] font-mono border border-gray-800">
-                            Alpine.js
+                                                <span class="px-2 py-0.5 rounded-md bg-[#F6EFE6] text-[#2B1D14] text-[11px] font-mono border border-[#8C7B6B]/25">
+                            3D Tilt Interactivity
                         </span>
-                                                <span class="px-2 py-0.5 rounded-md bg-gray-900 text-gray-400 text-[11px] font-mono border border-gray-800">
-                            MySQL
+                                                <span class="px-2 py-0.5 rounded-md bg-[#F6EFE6] text-[#2B1D14] text-[11px] font-mono border border-[#8C7B6B]/25">
+                            Spotlight Cursor
                         </span>
-                                                                        <span class="px-2 py-0.5 rounded-md bg-gray-900 text-gray-500 text-[11px] font-mono">
+                                                                        <span class="px-2 py-0.5 rounded-md bg-[#F6EFE6] text-[#8C7B6B] text-[11px] font-mono border border-[#8C7B6B]/25">
                             +2
                         </span>
                                             </div>
 
-                    <a href="https://muhsattarbarakati.my.id/project/katalog-web-mandiri-desa-laundry-undangan" class="inline-flex items-center gap-2 text-xs font-bold text-cyan-400 hover:text-cyan-300 group-hover:translate-x-1 transition duration-200">
-                        <span>Baca Studi Kasus Masalah & Solusi</span>
-                        <i data-lucide="arrow-right" class="w-4 h-4"></i>
-                    </a>
+                    <!-- Action Link Row: Live Demo + GitHub + Case Study -->
+                    <div class="flex flex-wrap items-center justify-between gap-2 pt-1 border-t border-[#8C7B6B]/15">
+                        <a href="https://muhsattarbarakati.my.id/project/portal-sekolah-pro" class="inline-flex items-center gap-1.5 text-xs font-bold text-[#A8643A] hover:text-[#8F522D] group-hover:translate-x-1 transition duration-200">
+                            <span>Studi Kasus</span>
+                            <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
+                        </a>
+
+                        <div class="flex items-center gap-2">
+                                                        <a href="https://portal-sekolah-pro.vercel.app" target="_blank" class="px-2.5 py-1 rounded-lg bg-[#F6EFE6] hover:bg-[#ede3d5] text-[#2B1D14] border border-[#8C7B6B]/30 text-[11px] font-mono flex items-center gap-1 transition" title="Buka Live Deployment di Vercel">
+                                <i data-lucide="globe" class="w-3 h-3 text-[#A8643A]"></i>
+                                <span>Demo</span>
+                            </a>
+                            
+                                                        <a href="https://github.com/owensavala/portal-sekolah-pro" target="_blank" class="px-2.5 py-1 rounded-lg bg-[#F6EFE6] hover:bg-[#ede3d5] text-[#2B1D14] border border-[#8C7B6B]/30 text-[11px] font-mono flex items-center gap-1 transition" title="Lihat Source Code di GitHub">
+                                <i data-lucide="github" class="w-3 h-3 text-[#2B1D14]"></i>
+                                <span>Code</span>
+                            </a>
+                                                    </div>
+                    </div>
+                </div>
+            </div>
+                        <div 
+                x-show="filterProject('web-dev')" 
+                x-transition:enter="transition ease-out duration-300"
+                x-transition:enter-start="opacity-0 transform scale-95"
+                x-transition:enter-end="opacity-100 transform scale-100"
+                class="bento-card rounded-2xl overflow-hidden flex flex-col justify-between group hover:-translate-y-1">
+                
+                <div>
+                    <!-- Thumbnail with client pill -->
+                    <div class="relative h-56 bg-[#F6EFE6] overflow-hidden border-b border-[#8C7B6B]/20">
+                        <img src="https://muhsattarbarakati.my.id/images/mockup-smart-cbt.png" alt="Smart CBT Pro: Platform Ujian &amp; Asesmen Digital Sekolah" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+                        <div class="absolute inset-0 bg-gradient-to-t from-[#2B1D14]/70 via-transparent to-transparent"></div>
+                        
+                        <div class="absolute top-3 left-3 px-3 py-1 rounded-lg bg-[#F6EFE6]/95 backdrop-blur-md text-[11px] font-mono border border-[#8C7B6B]/30 font-bold text-[#A8643A]">
+                            Web Development &amp; SaaS
+                        </div>
+
+                                                <div class="absolute bottom-3 left-3 right-3 text-xs text-white truncate font-mono drop-shadow-md">
+                            <span class="text-[#E9DCCB]">Klien:</span> Simulasi Ujian Sekolah &amp; Madrasah Digital
+                        </div>
+                                            </div>
+
+                    <!-- Details -->
+                    <div class="p-6 space-y-3">
+                        <h3 class="text-xl font-bold text-[#2B1D14] group-hover:text-[#A8643A] transition leading-snug">
+                            <a href="https://muhsattarbarakati.my.id/project/smart-cbt-pro">
+                                Smart CBT Pro: Platform Ujian &amp; Asesmen Digital Sekolah
+                            </a>
+                        </h3>
+                        <p class="text-[#8C7B6B] text-xs sm:text-sm line-clamp-3 leading-relaxed">
+                            Engine platform Computer-Based Test (CBT) modern, responsif, dan ringan untuk pelaksanaan simulasi asesmen sekolah, ujian semester, serta tes mandiri siswa.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Footer with Tech Stack & CTAs -->
+                <div class="p-6 pt-0 border-t border-[#8C7B6B]/20 mt-4 space-y-4">
+                    <div class="flex flex-wrap gap-1.5 pt-3">
+                                                <span class="px-2 py-0.5 rounded-md bg-[#F6EFE6] text-[#2B1D14] text-[11px] font-mono border border-[#8C7B6B]/25">
+                            TypeScript
+                        </span>
+                                                <span class="px-2 py-0.5 rounded-md bg-[#F6EFE6] text-[#2B1D14] text-[11px] font-mono border border-[#8C7B6B]/25">
+                            React / Next.js
+                        </span>
+                                                <span class="px-2 py-0.5 rounded-md bg-[#F6EFE6] text-[#2B1D14] text-[11px] font-mono border border-[#8C7B6B]/25">
+                            Tailwind CSS
+                        </span>
+                                                <span class="px-2 py-0.5 rounded-md bg-[#F6EFE6] text-[#2B1D14] text-[11px] font-mono border border-[#8C7B6B]/25">
+                            LocalStorage Autosave
+                        </span>
+                                                                        <span class="px-2 py-0.5 rounded-md bg-[#F6EFE6] text-[#8C7B6B] text-[11px] font-mono border border-[#8C7B6B]/25">
+                            +1
+                        </span>
+                                            </div>
+
+                    <!-- Action Link Row: Live Demo + GitHub + Case Study -->
+                    <div class="flex flex-wrap items-center justify-between gap-2 pt-1 border-t border-[#8C7B6B]/15">
+                        <a href="https://muhsattarbarakati.my.id/project/smart-cbt-pro" class="inline-flex items-center gap-1.5 text-xs font-bold text-[#A8643A] hover:text-[#8F522D] group-hover:translate-x-1 transition duration-200">
+                            <span>Studi Kasus</span>
+                            <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
+                        </a>
+
+                        <div class="flex items-center gap-2">
+                                                        <a href="https://smart-cbt-pro.vercel.app" target="_blank" class="px-2.5 py-1 rounded-lg bg-[#F6EFE6] hover:bg-[#ede3d5] text-[#2B1D14] border border-[#8C7B6B]/30 text-[11px] font-mono flex items-center gap-1 transition" title="Buka Live Deployment di Vercel">
+                                <i data-lucide="globe" class="w-3 h-3 text-[#A8643A]"></i>
+                                <span>Demo</span>
+                            </a>
+                            
+                                                        <a href="https://github.com/owensavala/smart-cbt-pro" target="_blank" class="px-2.5 py-1 rounded-lg bg-[#F6EFE6] hover:bg-[#ede3d5] text-[#2B1D14] border border-[#8C7B6B]/30 text-[11px] font-mono flex items-center gap-1 transition" title="Lihat Source Code di GitHub">
+                                <i data-lucide="github" class="w-3 h-3 text-[#2B1D14]"></i>
+                                <span>Code</span>
+                            </a>
+                                                    </div>
+                    </div>
+                </div>
+            </div>
+                        <div 
+                x-show="filterProject('web-dev')" 
+                x-transition:enter="transition ease-out duration-300"
+                x-transition:enter-start="opacity-0 transform scale-95"
+                x-transition:enter-end="opacity-100 transform scale-100"
+                class="bento-card rounded-2xl overflow-hidden flex flex-col justify-between group hover:-translate-y-1">
+                
+                <div>
+                    <!-- Thumbnail with client pill -->
+                    <div class="relative h-56 bg-[#F6EFE6] overflow-hidden border-b border-[#8C7B6B]/20">
+                        <img src="https://muhsattarbarakati.my.id/images/mockup-web-desa-laravel.png" alt="Sistem Informasi Desa &amp; Pelayanan Publik Modern Berbasis Laravel" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+                        <div class="absolute inset-0 bg-gradient-to-t from-[#2B1D14]/70 via-transparent to-transparent"></div>
+                        
+                        <div class="absolute top-3 left-3 px-3 py-1 rounded-lg bg-[#F6EFE6]/95 backdrop-blur-md text-[11px] font-mono border border-[#8C7B6B]/30 font-bold text-[#A8643A]">
+                            Web Development &amp; SaaS
+                        </div>
+
+                                                <div class="absolute bottom-3 left-3 right-3 text-xs text-white truncate font-mono drop-shadow-md">
+                            <span class="text-[#E9DCCB]">Klien:</span> Pemerintah Desa Kupal (Halmahera Selatan)
+                        </div>
+                                            </div>
+
+                    <!-- Details -->
+                    <div class="p-6 space-y-3">
+                        <h3 class="text-xl font-bold text-[#2B1D14] group-hover:text-[#A8643A] transition leading-snug">
+                            <a href="https://muhsattarbarakati.my.id/project/web-desa-laravel">
+                                Sistem Informasi Desa &amp; Pelayanan Publik Modern Berbasis Laravel
+                            </a>
+                        </h3>
+                        <p class="text-[#8C7B6B] text-xs sm:text-sm line-clamp-3 leading-relaxed">
+                            Sistem informasi profil desa terintegrasi dan modul pelayanan publik surat menyurat online berbasis Laravel, Tailwind CSS, dan visualisasi data statistik Chart.js.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Footer with Tech Stack & CTAs -->
+                <div class="p-6 pt-0 border-t border-[#8C7B6B]/20 mt-4 space-y-4">
+                    <div class="flex flex-wrap gap-1.5 pt-3">
+                                                <span class="px-2 py-0.5 rounded-md bg-[#F6EFE6] text-[#2B1D14] text-[11px] font-mono border border-[#8C7B6B]/25">
+                            Laravel Framework
+                        </span>
+                                                <span class="px-2 py-0.5 rounded-md bg-[#F6EFE6] text-[#2B1D14] text-[11px] font-mono border border-[#8C7B6B]/25">
+                            Tailwind CSS
+                        </span>
+                                                <span class="px-2 py-0.5 rounded-md bg-[#F6EFE6] text-[#2B1D14] text-[11px] font-mono border border-[#8C7B6B]/25">
+                            Chart.js Demografi
+                        </span>
+                                                <span class="px-2 py-0.5 rounded-md bg-[#F6EFE6] text-[#2B1D14] text-[11px] font-mono border border-[#8C7B6B]/25">
+                            Blade Engine
+                        </span>
+                                                                        <span class="px-2 py-0.5 rounded-md bg-[#F6EFE6] text-[#8C7B6B] text-[11px] font-mono border border-[#8C7B6B]/25">
+                            +2
+                        </span>
+                                            </div>
+
+                    <!-- Action Link Row: Live Demo + GitHub + Case Study -->
+                    <div class="flex flex-wrap items-center justify-between gap-2 pt-1 border-t border-[#8C7B6B]/15">
+                        <a href="https://muhsattarbarakati.my.id/project/web-desa-laravel" class="inline-flex items-center gap-1.5 text-xs font-bold text-[#A8643A] hover:text-[#8F522D] group-hover:translate-x-1 transition duration-200">
+                            <span>Studi Kasus</span>
+                            <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
+                        </a>
+
+                        <div class="flex items-center gap-2">
+                                                        <a href="https://web-desa-laravel.vercel.app" target="_blank" class="px-2.5 py-1 rounded-lg bg-[#F6EFE6] hover:bg-[#ede3d5] text-[#2B1D14] border border-[#8C7B6B]/30 text-[11px] font-mono flex items-center gap-1 transition" title="Buka Live Deployment di Vercel">
+                                <i data-lucide="globe" class="w-3 h-3 text-[#A8643A]"></i>
+                                <span>Demo</span>
+                            </a>
+                            
+                                                        <a href="https://github.com/owensavala/web-desa-laravel" target="_blank" class="px-2.5 py-1 rounded-lg bg-[#F6EFE6] hover:bg-[#ede3d5] text-[#2B1D14] border border-[#8C7B6B]/30 text-[11px] font-mono flex items-center gap-1 transition" title="Lihat Source Code di GitHub">
+                                <i data-lucide="github" class="w-3 h-3 text-[#2B1D14]"></i>
+                                <span>Code</span>
+                            </a>
+                                                    </div>
+                    </div>
+                </div>
+            </div>
+                        <div 
+                x-show="filterProject('web-dev')" 
+                x-transition:enter="transition ease-out duration-300"
+                x-transition:enter-start="opacity-0 transform scale-95"
+                x-transition:enter-end="opacity-100 transform scale-100"
+                class="bento-card rounded-2xl overflow-hidden flex flex-col justify-between group hover:-translate-y-1">
+                
+                <div>
+                    <!-- Thumbnail with client pill -->
+                    <div class="relative h-56 bg-[#F6EFE6] overflow-hidden border-b border-[#8C7B6B]/20">
+                        <img src="https://muhsattarbarakati.my.id/images/mockup-undangan-saas.png" alt="Platform Undangan Nikah Digital Interaktif (The Wedding of Mira &amp; Yudi)" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+                        <div class="absolute inset-0 bg-gradient-to-t from-[#2B1D14]/70 via-transparent to-transparent"></div>
+                        
+                        <div class="absolute top-3 left-3 px-3 py-1 rounded-lg bg-[#F6EFE6]/95 backdrop-blur-md text-[11px] font-mono border border-[#8C7B6B]/30 font-bold text-[#A8643A]">
+                            Web Development &amp; SaaS
+                        </div>
+
+                                                <div class="absolute bottom-3 left-3 right-3 text-xs text-white truncate font-mono drop-shadow-md">
+                            <span class="text-[#E9DCCB]">Klien:</span> Klien Pernikahan Digital (Mira &amp; Yudi)
+                        </div>
+                                            </div>
+
+                    <!-- Details -->
+                    <div class="p-6 space-y-3">
+                        <h3 class="text-xl font-bold text-[#2B1D14] group-hover:text-[#A8643A] transition leading-snug">
+                            <a href="https://muhsattarbarakati.my.id/project/undangan-nikah-digital-interaktif">
+                                Platform Undangan Nikah Digital Interaktif (The Wedding of Mira &amp; Yudi)
+                            </a>
+                        </h3>
+                        <p class="text-[#8C7B6B] text-xs sm:text-sm line-clamp-3 leading-relaxed">
+                            Undangan digital interaktif performa tinggi yang dibangun menggunakan React 18, Vite, Tailwind CSS, dan Framer Motion dengan fitur RSVP dan galeri foto WebP adaptif.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Footer with Tech Stack & CTAs -->
+                <div class="p-6 pt-0 border-t border-[#8C7B6B]/20 mt-4 space-y-4">
+                    <div class="flex flex-wrap gap-1.5 pt-3">
+                                                <span class="px-2 py-0.5 rounded-md bg-[#F6EFE6] text-[#2B1D14] text-[11px] font-mono border border-[#8C7B6B]/25">
+                            React 18
+                        </span>
+                                                <span class="px-2 py-0.5 rounded-md bg-[#F6EFE6] text-[#2B1D14] text-[11px] font-mono border border-[#8C7B6B]/25">
+                            Vite
+                        </span>
+                                                <span class="px-2 py-0.5 rounded-md bg-[#F6EFE6] text-[#2B1D14] text-[11px] font-mono border border-[#8C7B6B]/25">
+                            Tailwind CSS
+                        </span>
+                                                <span class="px-2 py-0.5 rounded-md bg-[#F6EFE6] text-[#2B1D14] text-[11px] font-mono border border-[#8C7B6B]/25">
+                            Framer Motion
+                        </span>
+                                                                        <span class="px-2 py-0.5 rounded-md bg-[#F6EFE6] text-[#8C7B6B] text-[11px] font-mono border border-[#8C7B6B]/25">
+                            +2
+                        </span>
+                                            </div>
+
+                    <!-- Action Link Row: Live Demo + GitHub + Case Study -->
+                    <div class="flex flex-wrap items-center justify-between gap-2 pt-1 border-t border-[#8C7B6B]/15">
+                        <a href="https://muhsattarbarakati.my.id/project/undangan-nikah-digital-interaktif" class="inline-flex items-center gap-1.5 text-xs font-bold text-[#A8643A] hover:text-[#8F522D] group-hover:translate-x-1 transition duration-200">
+                            <span>Studi Kasus</span>
+                            <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
+                        </a>
+
+                        <div class="flex items-center gap-2">
+                                                        <a href="https://undangan-nikah-three-navy.vercel.app" target="_blank" class="px-2.5 py-1 rounded-lg bg-[#F6EFE6] hover:bg-[#ede3d5] text-[#2B1D14] border border-[#8C7B6B]/30 text-[11px] font-mono flex items-center gap-1 transition" title="Buka Live Deployment di Vercel">
+                                <i data-lucide="globe" class="w-3 h-3 text-[#A8643A]"></i>
+                                <span>Demo</span>
+                            </a>
+                            
+                                                        <a href="https://github.com/owensavala/Undangan-nikah" target="_blank" class="px-2.5 py-1 rounded-lg bg-[#F6EFE6] hover:bg-[#ede3d5] text-[#2B1D14] border border-[#8C7B6B]/30 text-[11px] font-mono flex items-center gap-1 transition" title="Lihat Source Code di GitHub">
+                                <i data-lucide="github" class="w-3 h-3 text-[#2B1D14]"></i>
+                                <span>Code</span>
+                            </a>
+                                                    </div>
+                    </div>
+                </div>
+            </div>
+                        <div 
+                x-show="filterProject('web-dev')" 
+                x-transition:enter="transition ease-out duration-300"
+                x-transition:enter-start="opacity-0 transform scale-95"
+                x-transition:enter-end="opacity-100 transform scale-100"
+                class="bento-card rounded-2xl overflow-hidden flex flex-col justify-between group hover:-translate-y-1">
+                
+                <div>
+                    <!-- Thumbnail with client pill -->
+                    <div class="relative h-56 bg-[#F6EFE6] overflow-hidden border-b border-[#8C7B6B]/20">
+                        <img src="https://muhsattarbarakati.my.id/images/mockup-laundry-system.png" alt="Clean &amp; Fresh: Sistem Manajemen &amp; Kasir Laundry POS Real-Time" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+                        <div class="absolute inset-0 bg-gradient-to-t from-[#2B1D14]/70 via-transparent to-transparent"></div>
+                        
+                        <div class="absolute top-3 left-3 px-3 py-1 rounded-lg bg-[#F6EFE6]/95 backdrop-blur-md text-[11px] font-mono border border-[#8C7B6B]/30 font-bold text-[#A8643A]">
+                            Web Development &amp; SaaS
+                        </div>
+
+                                                <div class="absolute bottom-3 left-3 right-3 text-xs text-white truncate font-mono drop-shadow-md">
+                            <span class="text-[#E9DCCB]">Klien:</span> Usaha Jasa Laundry &amp; UMKM
+                        </div>
+                                            </div>
+
+                    <!-- Details -->
+                    <div class="p-6 space-y-3">
+                        <h3 class="text-xl font-bold text-[#2B1D14] group-hover:text-[#A8643A] transition leading-snug">
+                            <a href="https://muhsattarbarakati.my.id/project/laundry-management-system-pos">
+                                Clean &amp; Fresh: Sistem Manajemen &amp; Kasir Laundry POS Real-Time
+                            </a>
+                        </h3>
+                        <p class="text-[#8C7B6B] text-xs sm:text-sm line-clamp-3 leading-relaxed">
+                            Sistem POS kasir laundry dengan fitur pelacakan status cucian pelanggan secara real-time via kode resi, kalkulasi tarif kiloan/satuan, dan rekap omzet harian.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Footer with Tech Stack & CTAs -->
+                <div class="p-6 pt-0 border-t border-[#8C7B6B]/20 mt-4 space-y-4">
+                    <div class="flex flex-wrap gap-1.5 pt-3">
+                                                <span class="px-2 py-0.5 rounded-md bg-[#F6EFE6] text-[#2B1D14] text-[11px] font-mono border border-[#8C7B6B]/25">
+                            PHP
+                        </span>
+                                                <span class="px-2 py-0.5 rounded-md bg-[#F6EFE6] text-[#2B1D14] text-[11px] font-mono border border-[#8C7B6B]/25">
+                            Point of Sale (POS)
+                        </span>
+                                                <span class="px-2 py-0.5 rounded-md bg-[#F6EFE6] text-[#2B1D14] text-[11px] font-mono border border-[#8C7B6B]/25">
+                            Real-time Tracking
+                        </span>
+                                                <span class="px-2 py-0.5 rounded-md bg-[#F6EFE6] text-[#2B1D14] text-[11px] font-mono border border-[#8C7B6B]/25">
+                            Tailwind CSS
+                        </span>
+                                                                        <span class="px-2 py-0.5 rounded-md bg-[#F6EFE6] text-[#8C7B6B] text-[11px] font-mono border border-[#8C7B6B]/25">
+                            +2
+                        </span>
+                                            </div>
+
+                    <!-- Action Link Row: Live Demo + GitHub + Case Study -->
+                    <div class="flex flex-wrap items-center justify-between gap-2 pt-1 border-t border-[#8C7B6B]/15">
+                        <a href="https://muhsattarbarakati.my.id/project/laundry-management-system-pos" class="inline-flex items-center gap-1.5 text-xs font-bold text-[#A8643A] hover:text-[#8F522D] group-hover:translate-x-1 transition duration-200">
+                            <span>Studi Kasus</span>
+                            <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
+                        </a>
+
+                        <div class="flex items-center gap-2">
+                                                        <a href="https://laundrysystem-blush.vercel.app" target="_blank" class="px-2.5 py-1 rounded-lg bg-[#F6EFE6] hover:bg-[#ede3d5] text-[#2B1D14] border border-[#8C7B6B]/30 text-[11px] font-mono flex items-center gap-1 transition" title="Buka Live Deployment di Vercel">
+                                <i data-lucide="globe" class="w-3 h-3 text-[#A8643A]"></i>
+                                <span>Demo</span>
+                            </a>
+                            
+                                                        <a href="https://github.com/owensavala/laundry_system" target="_blank" class="px-2.5 py-1 rounded-lg bg-[#F6EFE6] hover:bg-[#ede3d5] text-[#2B1D14] border border-[#8C7B6B]/30 text-[11px] font-mono flex items-center gap-1 transition" title="Lihat Source Code di GitHub">
+                                <i data-lucide="github" class="w-3 h-3 text-[#2B1D14]"></i>
+                                <span>Code</span>
+                            </a>
+                                                    </div>
+                    </div>
+                </div>
+            </div>
+                        <div 
+                x-show="filterProject('hardware-service')" 
+                x-transition:enter="transition ease-out duration-300"
+                x-transition:enter-start="opacity-0 transform scale-95"
+                x-transition:enter-end="opacity-100 transform scale-100"
+                class="bento-card rounded-2xl overflow-hidden flex flex-col justify-between group hover:-translate-y-1">
+                
+                <div>
+                    <!-- Thumbnail with client pill -->
+                    <div class="relative h-56 bg-[#F6EFE6] overflow-hidden border-b border-[#8C7B6B]/20">
+                        <img src="https://muhsattarbarakati.my.id/images/mockup-hardware-diag.png" alt="MSB Hardware Diagnostic Tool (Titan Edition)" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+                        <div class="absolute inset-0 bg-gradient-to-t from-[#2B1D14]/70 via-transparent to-transparent"></div>
+                        
+                        <div class="absolute top-3 left-3 px-3 py-1 rounded-lg bg-[#F6EFE6]/95 backdrop-blur-md text-[11px] font-mono border border-[#8C7B6B]/30 font-bold text-[#A8643A]">
+                            Hardware, Lab &amp; Servis Panggilan
+                        </div>
+
+                                                <div class="absolute bottom-3 left-3 right-3 text-xs text-white truncate font-mono drop-shadow-md">
+                            <span class="text-[#E9DCCB]">Klien:</span> Karya Open Source untuk Teknisi Lapangan
+                        </div>
+                                            </div>
+
+                    <!-- Details -->
+                    <div class="p-6 space-y-3">
+                        <h3 class="text-xl font-bold text-[#2B1D14] group-hover:text-[#A8643A] transition leading-snug">
+                            <a href="https://muhsattarbarakati.my.id/project/msb-hardware-diagnostic-tool">
+                                MSB Hardware Diagnostic Tool (Titan Edition)
+                            </a>
+                        </h3>
+                        <p class="text-[#8C7B6B] text-xs sm:text-sm line-clamp-3 leading-relaxed">
+                            Aplikasi diagnostik hardware portable untuk teknisi komputer: inspeksi mendalam kesehatan baterai laptop (BMS cycle count &amp; wear level), benchmark NVMe/CPU, dan generator laporan servis.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Footer with Tech Stack & CTAs -->
+                <div class="p-6 pt-0 border-t border-[#8C7B6B]/20 mt-4 space-y-4">
+                    <div class="flex flex-wrap gap-1.5 pt-3">
+                                                <span class="px-2 py-0.5 rounded-md bg-[#F6EFE6] text-[#2B1D14] text-[11px] font-mono border border-[#8C7B6B]/25">
+                            Python 3
+                        </span>
+                                                <span class="px-2 py-0.5 rounded-md bg-[#F6EFE6] text-[#2B1D14] text-[11px] font-mono border border-[#8C7B6B]/25">
+                            WMI &amp; OS Telemetry
+                        </span>
+                                                <span class="px-2 py-0.5 rounded-md bg-[#F6EFE6] text-[#2B1D14] text-[11px] font-mono border border-[#8C7B6B]/25">
+                            Battery BMS Inspector
+                        </span>
+                                                <span class="px-2 py-0.5 rounded-md bg-[#F6EFE6] text-[#2B1D14] text-[11px] font-mono border border-[#8C7B6B]/25">
+                            NVMe SMART Telemetry
+                        </span>
+                                                                        <span class="px-2 py-0.5 rounded-md bg-[#F6EFE6] text-[#8C7B6B] text-[11px] font-mono border border-[#8C7B6B]/25">
+                            +2
+                        </span>
+                                            </div>
+
+                    <!-- Action Link Row: Live Demo + GitHub + Case Study -->
+                    <div class="flex flex-wrap items-center justify-between gap-2 pt-1 border-t border-[#8C7B6B]/15">
+                        <a href="https://muhsattarbarakati.my.id/project/msb-hardware-diagnostic-tool" class="inline-flex items-center gap-1.5 text-xs font-bold text-[#A8643A] hover:text-[#8F522D] group-hover:translate-x-1 transition duration-200">
+                            <span>Studi Kasus</span>
+                            <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
+                        </a>
+
+                        <div class="flex items-center gap-2">
+                            
+                                                        <a href="https://github.com/owensavala/hardware-diagnostic-tool" target="_blank" class="px-2.5 py-1 rounded-lg bg-[#F6EFE6] hover:bg-[#ede3d5] text-[#2B1D14] border border-[#8C7B6B]/30 text-[11px] font-mono flex items-center gap-1 transition" title="Lihat Source Code di GitHub">
+                                <i data-lucide="github" class="w-3 h-3 text-[#2B1D14]"></i>
+                                <span>Code</span>
+                            </a>
+                                                    </div>
+                    </div>
+                </div>
+            </div>
+                        <div 
+                x-show="filterProject('hardware-service')" 
+                x-transition:enter="transition ease-out duration-300"
+                x-transition:enter-start="opacity-0 transform scale-95"
+                x-transition:enter-end="opacity-100 transform scale-100"
+                class="bento-card rounded-2xl overflow-hidden flex flex-col justify-between group hover:-translate-y-1">
+                
+                <div>
+                    <!-- Thumbnail with client pill -->
+                    <div class="relative h-56 bg-[#F6EFE6] overflow-hidden border-b border-[#8C7B6B]/20">
+                        <img src="https://muhsattarbarakati.my.id/images/mockup-amunisi-teknisi.png" alt="Amunisi Teknisi Lapangan: All-in-One Field Engineering Toolkit" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+                        <div class="absolute inset-0 bg-gradient-to-t from-[#2B1D14]/70 via-transparent to-transparent"></div>
+                        
+                        <div class="absolute top-3 left-3 px-3 py-1 rounded-lg bg-[#F6EFE6]/95 backdrop-blur-md text-[11px] font-mono border border-[#8C7B6B]/30 font-bold text-[#A8643A]">
+                            Hardware, Lab &amp; Servis Panggilan
+                        </div>
+
+                                                <div class="absolute bottom-3 left-3 right-3 text-xs text-white truncate font-mono drop-shadow-md">
+                            <span class="text-[#E9DCCB]">Klien:</span> Toolkit Operasional Servis MSB
+                        </div>
+                                            </div>
+
+                    <!-- Details -->
+                    <div class="p-6 space-y-3">
+                        <h3 class="text-xl font-bold text-[#2B1D14] group-hover:text-[#A8643A] transition leading-snug">
+                            <a href="https://muhsattarbarakati.my.id/project/amunisi-teknisi-lapangan">
+                                Amunisi Teknisi Lapangan: All-in-One Field Engineering Toolkit
+                            </a>
+                        </h3>
+                        <p class="text-[#8C7B6B] text-xs sm:text-sm line-clamp-3 leading-relaxed">
+                            Kumpulan skrip otomasi perbaikan Windows untuk teknisi: perbaikan sharing printer error 0x0000011b dalam 1-klik, preparasi jaringan lab ANBK, serta parser panic log smartphone.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Footer with Tech Stack & CTAs -->
+                <div class="p-6 pt-0 border-t border-[#8C7B6B]/20 mt-4 space-y-4">
+                    <div class="flex flex-wrap gap-1.5 pt-3">
+                                                <span class="px-2 py-0.5 rounded-md bg-[#F6EFE6] text-[#2B1D14] text-[11px] font-mono border border-[#8C7B6B]/25">
+                            Batch Scripting
+                        </span>
+                                                <span class="px-2 py-0.5 rounded-md bg-[#F6EFE6] text-[#2B1D14] text-[11px] font-mono border border-[#8C7B6B]/25">
+                            PowerShell
+                        </span>
+                                                <span class="px-2 py-0.5 rounded-md bg-[#F6EFE6] text-[#2B1D14] text-[11px] font-mono border border-[#8C7B6B]/25">
+                            Windows Registry Tweak
+                        </span>
+                                                <span class="px-2 py-0.5 rounded-md bg-[#F6EFE6] text-[#2B1D14] text-[11px] font-mono border border-[#8C7B6B]/25">
+                            ANBK Optimization
+                        </span>
+                                                                        <span class="px-2 py-0.5 rounded-md bg-[#F6EFE6] text-[#8C7B6B] text-[11px] font-mono border border-[#8C7B6B]/25">
+                            +2
+                        </span>
+                                            </div>
+
+                    <!-- Action Link Row: Live Demo + GitHub + Case Study -->
+                    <div class="flex flex-wrap items-center justify-between gap-2 pt-1 border-t border-[#8C7B6B]/15">
+                        <a href="https://muhsattarbarakati.my.id/project/amunisi-teknisi-lapangan" class="inline-flex items-center gap-1.5 text-xs font-bold text-[#A8643A] hover:text-[#8F522D] group-hover:translate-x-1 transition duration-200">
+                            <span>Studi Kasus</span>
+                            <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
+                        </a>
+
+                        <div class="flex items-center gap-2">
+                            
+                                                        <a href="https://github.com/owensavala/amunisi-teknisi-lapangan" target="_blank" class="px-2.5 py-1 rounded-lg bg-[#F6EFE6] hover:bg-[#ede3d5] text-[#2B1D14] border border-[#8C7B6B]/30 text-[11px] font-mono flex items-center gap-1 transition" title="Lihat Source Code di GitHub">
+                                <i data-lucide="github" class="w-3 h-3 text-[#2B1D14]"></i>
+                                <span>Code</span>
+                            </a>
+                                                    </div>
+                    </div>
                 </div>
             </div>
                         <div 
@@ -655,60 +1131,71 @@
                 x-transition:enter="transition ease-out duration-300"
                 x-transition:enter-start="opacity-0 transform scale-95"
                 x-transition:enter-end="opacity-100 transform scale-100"
-                class="bento-card rounded-2xl overflow-hidden hover:border-cyan-500/50 transition-all duration-300 flex flex-col justify-between group hover:-translate-y-1">
+                class="bento-card rounded-2xl overflow-hidden flex flex-col justify-between group hover:-translate-y-1">
                 
                 <div>
                     <!-- Thumbnail with client pill -->
-                    <div class="relative h-56 bg-gray-900 overflow-hidden">
-                        <img src="https://muhsattarbarakati.my.id/images/mockup-ai-agent.png" alt="Riset Agen Otomatisasi AI &amp; Pipeline Workflow Cerdas" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
-                        <div class="absolute inset-0 bg-gradient-to-t from-gray-950 via-gray-950/20 to-transparent"></div>
+                    <div class="relative h-56 bg-[#F6EFE6] overflow-hidden border-b border-[#8C7B6B]/20">
+                        <img src="https://muhsattarbarakati.my.id/images/mockup-radar-loker.png" alt="Radar Loker AI Bot: Autonomous Scraper &amp; Gemini AI Filter" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+                        <div class="absolute inset-0 bg-gradient-to-t from-[#2B1D14]/70 via-transparent to-transparent"></div>
                         
-                        <div class="absolute top-3 left-3 px-3 py-1 rounded-lg bg-gray-950/80 backdrop-blur-md text-[11px] font-mono border border-gray-800 text-cyan-400">
+                        <div class="absolute top-3 left-3 px-3 py-1 rounded-lg bg-[#F6EFE6]/95 backdrop-blur-md text-[11px] font-mono border border-[#8C7B6B]/30 font-bold text-[#A8643A]">
                             Otomatisasi &amp; AI Agent
                         </div>
 
-                                                <div class="absolute bottom-3 left-3 right-3 text-xs text-gray-300 truncate font-mono">
-                            <span class="text-gray-500">Klien:</span> Eksplorasi R&amp;D Semester 13 (Persiapan Pasca Skripsi)
+                                                <div class="absolute bottom-3 left-3 right-3 text-xs text-white truncate font-mono drop-shadow-md">
+                            <span class="text-[#E9DCCB]">Klien:</span> Proyek R&amp;D Otomasi AI
                         </div>
                                             </div>
 
                     <!-- Details -->
                     <div class="p-6 space-y-3">
-                        <h3 class="text-xl font-bold text-white group-hover:text-cyan-400 transition leading-snug">
-                            <a href="https://muhsattarbarakati.my.id/project/riset-agen-otomatisasi-ai-modern">
-                                Riset Agen Otomatisasi AI &amp; Pipeline Workflow Cerdas
+                        <h3 class="text-xl font-bold text-[#2B1D14] group-hover:text-[#A8643A] transition leading-snug">
+                            <a href="https://muhsattarbarakati.my.id/project/radar-loker-bot-gemini-ai">
+                                Radar Loker AI Bot: Autonomous Scraper &amp; Gemini AI Filter
                             </a>
                         </h3>
-                        <p class="text-gray-400 text-xs sm:text-sm line-clamp-3 leading-relaxed">
-                            Mengembangkan integrasi sistem otomatisasi cerdas berbasis Agen AI lokal (Ollama / LLM API) untuk eksekusi workflow administrasi, customer service, dan monitoring jaringan.
+                        <p class="text-[#8C7B6B] text-xs sm:text-sm line-clamp-3 leading-relaxed">
+                            Bot autonomous AI yang secara berkala men-scrape feed Instagram lowongan kerja regional Maluku Utara, memfilter kualifikasi relevan menggunakan Google Gemini AI, dan mengirimkan alert ke Telegram.
                         </p>
                     </div>
                 </div>
 
-                <!-- Footer with Tech Stack & CTA -->
-                <div class="p-6 pt-0 border-t border-gray-800/60 mt-4 space-y-4">
+                <!-- Footer with Tech Stack & CTAs -->
+                <div class="p-6 pt-0 border-t border-[#8C7B6B]/20 mt-4 space-y-4">
                     <div class="flex flex-wrap gap-1.5 pt-3">
-                                                <span class="px-2 py-0.5 rounded-md bg-gray-900 text-gray-400 text-[11px] font-mono border border-gray-800">
-                            Autonomous Agents
-                        </span>
-                                                <span class="px-2 py-0.5 rounded-md bg-gray-900 text-gray-400 text-[11px] font-mono border border-gray-800">
+                                                <span class="px-2 py-0.5 rounded-md bg-[#F6EFE6] text-[#2B1D14] text-[11px] font-mono border border-[#8C7B6B]/25">
                             Python
                         </span>
-                                                <span class="px-2 py-0.5 rounded-md bg-gray-900 text-gray-400 text-[11px] font-mono border border-gray-800">
-                            Ollama Local LLM
+                                                <span class="px-2 py-0.5 rounded-md bg-[#F6EFE6] text-[#2B1D14] text-[11px] font-mono border border-[#8C7B6B]/25">
+                            Google Gemini AI API
                         </span>
-                                                <span class="px-2 py-0.5 rounded-md bg-gray-900 text-gray-400 text-[11px] font-mono border border-gray-800">
-                            REST API Automation
+                                                <span class="px-2 py-0.5 rounded-md bg-[#F6EFE6] text-[#2B1D14] text-[11px] font-mono border border-[#8C7B6B]/25">
+                            Instagram Web Scraping
                         </span>
-                                                                        <span class="px-2 py-0.5 rounded-md bg-gray-900 text-gray-500 text-[11px] font-mono">
+                                                <span class="px-2 py-0.5 rounded-md bg-[#F6EFE6] text-[#2B1D14] text-[11px] font-mono border border-[#8C7B6B]/25">
+                            Telegram Bot API
+                        </span>
+                                                                        <span class="px-2 py-0.5 rounded-md bg-[#F6EFE6] text-[#8C7B6B] text-[11px] font-mono border border-[#8C7B6B]/25">
                             +2
                         </span>
                                             </div>
 
-                    <a href="https://muhsattarbarakati.my.id/project/riset-agen-otomatisasi-ai-modern" class="inline-flex items-center gap-2 text-xs font-bold text-cyan-400 hover:text-cyan-300 group-hover:translate-x-1 transition duration-200">
-                        <span>Baca Studi Kasus Masalah & Solusi</span>
-                        <i data-lucide="arrow-right" class="w-4 h-4"></i>
-                    </a>
+                    <!-- Action Link Row: Live Demo + GitHub + Case Study -->
+                    <div class="flex flex-wrap items-center justify-between gap-2 pt-1 border-t border-[#8C7B6B]/15">
+                        <a href="https://muhsattarbarakati.my.id/project/radar-loker-bot-gemini-ai" class="inline-flex items-center gap-1.5 text-xs font-bold text-[#A8643A] hover:text-[#8F522D] group-hover:translate-x-1 transition duration-200">
+                            <span>Studi Kasus</span>
+                            <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
+                        </a>
+
+                        <div class="flex items-center gap-2">
+                            
+                                                        <a href="https://github.com/owensavala/radar-loker-bot" target="_blank" class="px-2.5 py-1 rounded-lg bg-[#F6EFE6] hover:bg-[#ede3d5] text-[#2B1D14] border border-[#8C7B6B]/30 text-[11px] font-mono flex items-center gap-1 transition" title="Lihat Source Code di GitHub">
+                                <i data-lucide="github" class="w-3 h-3 text-[#2B1D14]"></i>
+                                <span>Code</span>
+                            </a>
+                                                    </div>
+                    </div>
                 </div>
             </div>
                     </div>
@@ -717,27 +1204,27 @@
 
     <!-- CALL TO ACTION (CTA): Direct WhatsApp Discussion -->
     <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <div class="bento-card rounded-3xl p-8 sm:p-12 relative overflow-hidden border border-cyan-500/30">
-            <div class="absolute -right-20 -bottom-20 w-80 h-80 bg-cyan-500/10 rounded-full blur-3xl pointer-events-none"></div>
+        <div class="bento-card rounded-3xl p-8 sm:p-12 relative overflow-hidden border border-[#A8643A]/40 bg-[#E9DCCB]">
+            <div class="absolute -right-20 -bottom-20 w-80 h-80 bg-[#A8643A]/10 rounded-full blur-3xl pointer-events-none"></div>
 
             <div class="max-w-2xl space-y-4 relative z-10">
-                <span class="text-xs font-mono text-cyan-400 uppercase tracking-widest block">SIAP UNTUK PENUGASAN LAPANGAN</span>
-                <h2 class="text-2xl sm:text-4xl font-extrabold text-white tracking-tight">
+                <span class="text-xs font-mono text-[#A8643A] uppercase tracking-widest block font-bold">SIAP UNTUK PENUGASAN LAPANGAN</span>
+                <h2 class="text-2xl sm:text-4xl font-extrabold text-[#2B1D14] tracking-tight">
                     Punya Masalah Sistem, Laptop, atau Jaringan Sekolah & Desa?
                 </h2>
-                <p class="text-gray-300 text-sm sm:text-base leading-relaxed">
+                <p class="text-[#2B1D14]/80 text-sm sm:text-base leading-relaxed">
                     Konsultasikan langsung dengan <strong>Muh. Sattar Barakati (Owen)</strong>. Baik untuk perbaikan perangkat darurat, persiapan lab komputer ujian, voucher internet desa, maupun pembuatan aplikasi digital.
                 </p>
-                <div class="pt-4 flex flex-col sm:flex-row flex-wrap items-stretch sm:items-center gap-3 sm:gap-4">
-                    <a href="https://wa.me/6285218403629?text=Halo%20Sattar,%20saya%20melihat%20portofolio%20Anda%20dan%20ingin%20berdiskusi%20tentang%20proyek/servis..." target="_blank" class="w-full sm:w-auto px-6 sm:px-8 py-3.5 sm:py-4 rounded-xl bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 text-gray-950 font-bold text-sm sm:text-base flex items-center justify-center gap-3 shadow-xl shadow-cyan-500/25 transition hover:scale-105 text-center">
+                <div class="pt-4 flex flex-wrap items-center gap-4">
+                    <a href="https://wa.me/6285218403629?text=Halo%20Sattar,%20saya%20melihat%20portofolio%20Anda%20dan%20ingin%20berdiskusi%20tentang%20proyek/servis..." target="_blank" class="px-8 py-4 rounded-xl bg-[#A8643A] hover:bg-[#8F522D] text-white font-bold text-sm sm:text-base flex items-center gap-3 shadow-xl shadow-[#A8643A]/25 transition hover:scale-105">
                         <i data-lucide="message-square" class="w-5 h-5"></i>
-                        <span>Mari Diskusi (WhatsApp)</span>
+                        <span>Mari Diskusi (WhatsApp: 0852-1840-3629)</span>
                     </a>
-                    <a href="tel:085218403629" class="w-full sm:w-auto px-5 sm:px-6 py-3.5 sm:py-4 rounded-xl bg-gray-900 hover:bg-gray-800 text-gray-300 hover:text-white font-mono text-xs sm:text-sm border border-gray-800 transition flex items-center justify-center gap-2 text-center">
-                        <i data-lucide="phone" class="w-4 h-4 text-cyan-400"></i>
-                        <span>Telp: 0852-1840-3629</span>
+                    <a href="tel:085218403629" class="px-6 py-4 rounded-xl bg-[#F6EFE6] hover:bg-[#ede3d5] text-[#2B1D14] font-mono text-sm border border-[#8C7B6B]/30 transition flex items-center gap-2">
+                        <i data-lucide="phone" class="w-4 h-4 text-[#A8643A]"></i>
+                        <span>Telepon: 0852-1840-3629</span>
                     </a>
-                    <a href="https://muhsattarbarakati.my.id/about" class="w-full sm:w-auto px-5 sm:px-6 py-3.5 sm:py-4 rounded-xl bg-gray-900 hover:bg-gray-800 text-gray-300 hover:text-white font-mono text-xs sm:text-sm border border-gray-800 transition text-center justify-center flex items-center">
+                    <a href="https://muhsattarbarakati.my.id/about" class="px-6 py-4 rounded-xl bg-[#F6EFE6] hover:bg-[#ede3d5] text-[#2B1D14] font-mono text-sm border border-[#8C7B6B]/30 transition">
                         Buka Bento Profile
                     </a>
                 </div>
@@ -749,17 +1236,17 @@
     </main>
 
     <!-- Footer -->
-    <footer class="border-t border-gray-800/80 bg-gray-950 py-12 text-xs text-gray-500 font-mono mt-20">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4">
+    <footer class="border-t border-[#8C7B6B]/25 bg-[#E9DCCB] py-12 text-xs text-[#8C7B6B] font-mono mt-20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-6">
             <div>
-                <p class="text-gray-400 font-semibold text-sm">Muh. Sattar Barakati (Owen)</p>
-                <p class="text-gray-500 mt-0.5">Amasing Bukit Sere, 02 Juli 2002 • Kalumata, Kota Ternate</p>
-                <p class="text-gray-600 mt-0.5">Operator MIS Integral Hidayatullah • WhatsApp/Telp: <span class="text-cyan-400 font-bold">0852-1840-3629</span></p>
+                <p class="text-[#2B1D14] font-bold text-sm">Muh. Sattar Barakati (Owen)</p>
+                <p class="text-[#8C7B6B] mt-1">Amasing Bukit Sere, 02 Juli 2002 • Kalumata, Kota Ternate</p>
+                <p class="text-[#8C7B6B] mt-0.5">Operator MIS Integral Hidayatullah • WhatsApp/Telp: <span class="text-[#A8643A] font-bold">0852-1840-3629</span></p>
             </div>
-            <div class="flex items-center gap-6">
-                <a href="https://www.linkedin.com/in/muh-sattar-barakati-16b48a2b6/" target="_blank" class="hover:text-cyan-400 transition">LinkedIn</a>
-                <a href="https://github.com/owensavala" target="_blank" class="hover:text-cyan-400 transition">GitHub</a>
-                <a href="https://www.tiktok.com/@str_wtx" target="_blank" class="hover:text-cyan-400 transition">TikTok</a>
+            <div class="flex items-center gap-6 text-sm">
+                <a href="https://www.linkedin.com/in/muh-sattar-barakati-16b48a2b6/" target="_blank" class="hover:text-[#A8643A] font-semibold transition">LinkedIn</a>
+                <a href="https://github.com/owensavala" target="_blank" class="hover:text-[#A8643A] font-semibold transition">GitHub</a>
+                <a href="https://www.tiktok.com/@str_wtx" target="_blank" class="hover:text-[#A8643A] font-semibold transition">TikTok</a>
             </div>
         </div>
     </footer>

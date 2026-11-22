@@ -11,6 +11,13 @@
     <meta name="google-site-verification" content="PUCUn-oLljIsSY1wGCmGZrETJJTmvtut8x_ex9UIWgw" />
     <link rel="canonical" href="https://muhsattarbarakati.my.id/project/servis-panggilan-msb-rekondisi-lab">
 
+    <!-- Favicon & Touch Icons -->
+    <link rel="icon" type="image/svg+xml" href="https://muhsattarbarakati.my.id/favicon.svg">
+    <link rel="icon" type="image/png" sizes="32x32" href="https://muhsattarbarakati.my.id/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="https://muhsattarbarakati.my.id/favicon-16x16.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="https://muhsattarbarakati.my.id/apple-touch-icon.png">
+    <link rel="shortcut icon" href="https://muhsattarbarakati.my.id/favicon.ico">
+
     <!-- Open Graph / Facebook / WhatsApp Preview -->
     <meta property="og:type" content="article">
     <meta property="og:url" content="https://muhsattarbarakati.my.id/project/servis-panggilan-msb-rekondisi-lab">
@@ -131,13 +138,16 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
-            darkMode: 'class',
             theme: {
                 extend: {
                     colors: {
-                        cyber: {
-                            cyan: '#06b6d4',
-                            orange: '#f97316',
+                        cream: {
+                            bg: '#F6EFE6',
+                            surface: '#E9DCCB',
+                            text: '#2B1D14',
+                            accent: '#A8643A',
+                            'accent-hover': '#8F522D',
+                            muted: '#8C7B6B',
                         }
                     },
                     fontFamily: {
@@ -159,77 +169,57 @@
     <script src="https://unpkg.com/lucide@latest"></script>
 
     <style>
-        body { font-family: 'Plus Jakarta Sans', sans-serif; background-color: #030712; }
+        body { 
+            font-family: 'Plus Jakarta Sans', sans-serif; 
+            background-color: #F6EFE6; 
+            color: #2B1D14;
+        }
         .font-mono { font-family: 'JetBrains Mono', monospace; }
         .bento-card {
-            background: rgba(17, 24, 39, 0.75);
-            backdrop-filter: blur(14px);
-            -webkit-backdrop-filter: blur(14px);
-            border: 1px solid rgba(55, 65, 81, 0.6);
+            background-color: #E9DCCB;
+            border: 1px solid rgba(140, 123, 107, 0.28);
+            box-shadow: 0 4px 20px -2px rgba(43, 29, 20, 0.05);
+            transition: all 0.3s ease;
+        }
+        .bento-card:hover {
+            border-color: rgba(168, 100, 58, 0.6);
+            box-shadow: 0 12px 28px -4px rgba(43, 29, 20, 0.12);
         }
     </style>
-    <!-- Favicon & Touch Icons -->
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
-    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
-    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-    <link rel="shortcut icon" href="/favicon.ico">
 </head>
-<body class="bg-gray-950 text-gray-100 antialiased selection:bg-cyan-500 selection:text-gray-950 min-h-screen flex flex-col justify-between">
+<body class="bg-[#F6EFE6] text-[#2B1D14] antialiased selection:bg-[#A8643A] selection:text-white min-h-screen flex flex-col justify-between">
 
     <!-- Top Navbar -->
-    <header x-data="{ mobileNav: false }" class="sticky top-0 z-50 bg-gray-950/90 backdrop-blur-md border-b border-gray-800/80">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 sm:h-20 flex items-center justify-between">
+    <header class="sticky top-0 z-50 bg-[#F6EFE6]/90 backdrop-blur-md border-b border-[#8C7B6B]/25">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
             <!-- Brand -->
-            <a href="https://muhsattarbarakati.my.id" class="flex items-center gap-2.5 sm:gap-3 group shrink-0">
-                <div class="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-gradient-to-tr from-cyan-500 to-orange-500 flex items-center justify-center text-gray-950 font-black text-base sm:text-lg shadow-lg shadow-cyan-500/20 group-hover:scale-105 transition duration-300 shrink-0">
+            <a href="https://muhsattarbarakati.my.id" class="flex items-center gap-3 group">
+                <div class="w-10 h-10 rounded-xl bg-[#A8643A] flex items-center justify-center text-white font-black text-lg shadow-md shadow-[#A8643A]/25 group-hover:scale-105 group-hover:bg-[#8F522D] transition duration-300">
                     MSB
                 </div>
                 <div>
-                    <span class="font-extrabold text-white text-sm sm:text-base block tracking-tight group-hover:text-cyan-400 transition leading-tight">MSB Masterpiece</span>
-                    <span class="text-[10px] sm:text-xs text-gray-400 font-mono hidden sm:block">Muh. Sattar Barakati</span>
+                    <span class="font-extrabold text-[#2B1D14] text-base block tracking-tight group-hover:text-[#A8643A] transition">MSB Masterpiece</span>
+                    <span class="text-xs text-[#8C7B6B] font-mono">Muh. Sattar Barakati</span>
                 </div>
             </a>
 
-            <!-- Navigation Links (Desktop) -->
-            <nav class="hidden md:flex items-center gap-8 text-sm font-medium">
-                <a href="https://muhsattarbarakati.my.id" class="text-gray-300 hover:text-white transition">
+            <!-- Navigation Links -->
+            <nav class="hidden md:flex items-center gap-8 text-sm font-semibold">
+                <a href="https://muhsattarbarakati.my.id" class="text-[#8C7B6B] hover:text-[#2B1D14] transition">
                     Katalog Proyek
                 </a>
-                <a href="https://muhsattarbarakati.my.id/about" class="text-gray-300 hover:text-white transition">
+                <a href="https://muhsattarbarakati.my.id/about" class="text-[#8C7B6B] hover:text-[#2B1D14] transition">
                     Tentang (Bento Profile)
                 </a>
             </nav>
 
-            <!-- Quick WhatsApp CTA & Hamburger -->
-            <div class="flex items-center gap-2 sm:gap-3">
-                <a href="https://wa.me/6285218403629?text=Halo%20Sattar%20(Owen),%20saya%20tertarik%20untuk%20diskusi%20proyek%20atau%20servis..." target="_blank" class="px-3 sm:px-4 py-2 rounded-xl bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 text-gray-950 font-bold text-xs sm:text-sm flex items-center gap-1.5 sm:gap-2 shadow-md shadow-cyan-500/20 transition hover:scale-105 shrink-0">
-                    <i data-lucide="message-square" class="w-3.5 h-3.5 sm:w-4 sm:h-4"></i>
-                    <span class="hidden md:inline">Mari Diskusi (0852-1840-3629)</span>
-                    <span class="hidden sm:inline md:hidden">WhatsApp</span>
-                    <span class="sm:hidden">Chat WA</span>
+            <!-- Quick WhatsApp CTA -->
+            <div class="flex items-center gap-3">
+                <a href="https://wa.me/6285218403629?text=Halo%20Sattar%20(Owen),%20saya%20tertarik%20untuk%20diskusi%20proyek%20atau%20servis..." target="_blank" class="px-4 py-2 rounded-xl bg-[#A8643A] hover:bg-[#8F522D] text-white font-bold text-xs sm:text-sm flex items-center gap-2 shadow-md shadow-[#A8643A]/25 transition hover:scale-105">
+                    <i data-lucide="message-square" class="w-4 h-4"></i>
+                    <span>Mari Diskusi (0852-1840-3629)</span>
                 </a>
-                <button @click="mobileNav = !mobileNav" class="md:hidden p-2 rounded-xl bg-gray-900 border border-gray-800 text-gray-300 hover:text-white focus:outline-none cursor-pointer" aria-label="Toggle Menu">
-                    <i data-lucide="menu" class="w-5 h-5" x-show="!mobileNav"></i>
-                    <i data-lucide="x" class="w-5 h-5" x-show="mobileNav" style="display:none"></i>
-                </button>
             </div>
-        </div>
-
-        <!-- Mobile Dropdown Drawer -->
-        <div x-show="mobileNav" x-transition class="md:hidden border-t border-gray-800/80 bg-gray-950/95 px-4 py-3 space-y-1.5" style="display:none">
-            <a href="https://muhsattarbarakati.my.id" class="flex items-center gap-2 px-3.5 py-2.5 rounded-xl text-xs font-semibold text-gray-300 hover:text-white hover:bg-gray-900 transition">
-                <i data-lucide="layout-grid" class="w-4 h-4"></i>
-                <span>Katalog Proyek</span>
-            </a>
-            <a href="https://muhsattarbarakati.my.id/about" class="flex items-center gap-2 px-3.5 py-2.5 rounded-xl text-xs font-semibold text-gray-300 hover:text-white hover:bg-gray-900 transition">
-                <i data-lucide="user" class="w-4 h-4 text-orange-400"></i>
-                <span>Tentang (Bento Profile)</span>
-            </a>
-            <a href="https://wa.me/6285218403629" target="_blank" class="flex items-center gap-2 px-3.5 py-2.5 rounded-xl text-xs font-semibold text-emerald-400 bg-emerald-950/30 border border-emerald-800/30">
-                <i data-lucide="phone-call" class="w-4 h-4"></i>
-                <span>WhatsApp: 0852-1840-3629</span>
-            </a>
         </div>
     </header>
 
@@ -239,84 +229,92 @@
 
     <!-- Top Navigation & Breadcrumbs -->
     <div>
-        <a href="https://muhsattarbarakati.my.id" class="inline-flex items-center gap-2 text-xs font-mono text-gray-400 hover:text-cyan-400 transition mb-6">
+        <a href="https://muhsattarbarakati.my.id" class="inline-flex items-center gap-2 text-xs font-mono text-[#8C7B6B] hover:text-[#A8643A] transition mb-6">
             <i data-lucide="arrow-left" class="w-4 h-4"></i>
             <span>Kembali ke Katalog Proyek</span>
         </a>
 
         <div class="flex flex-wrap items-center gap-3 mb-4">
-            <span class="px-3 py-1 rounded-md text-xs font-mono uppercase bg-cyan-500/10 text-cyan-400 border border-cyan-500/25">
+            <span class="px-3 py-1 rounded-md text-xs font-mono uppercase bg-[#E9DCCB] text-[#A8643A] border border-[#8C7B6B]/30 font-bold">
                 Hardware, Lab &amp; Servis Panggilan
             </span>
-                        <span class="text-xs font-mono text-gray-400">
-                Klien: <span class="text-white">SMK Pertanian Modayama &amp; Klien Panggilan Harian Ternate</span>
+                        <span class="text-xs font-mono text-[#8C7B6B]">
+                Klien: <span class="text-[#2B1D14] font-semibold">SMK Pertanian Modayama &amp; Klien Panggilan Harian Ternate</span>
             </span>
-                        <span class="px-2.5 py-1 rounded-md text-[11px] font-mono bg-emerald-950/60 text-emerald-400 border border-emerald-800/60 flex items-center gap-1.5">
-                <span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>
-                Status: Selesai Diserahterimakan
+                        <span class="px-2.5 py-1 rounded-md text-[11px] font-mono bg-[#E9DCCB] text-[#A8643A] border border-[#8C7B6B]/30 flex items-center gap-1.5 font-medium">
+                <span class="w-1.5 h-1.5 rounded-full bg-[#A8643A]"></span>
+                Status: Terverifikasi & Selesai
             </span>
         </div>
 
-        <h1 class="text-3xl sm:text-5xl font-black text-white tracking-tight leading-tight">
+        <h1 class="text-3xl sm:text-5xl font-black text-[#2B1D14] tracking-tight leading-tight">
             Layanan Servis Panggilan MSB &amp; Rekondisi Massal Lab Sekolah
         </h1>
         
-        <p class="text-base sm:text-xl text-gray-300 mt-4 leading-relaxed max-w-3xl">
+        <p class="text-base sm:text-xl text-[#2B1D14]/80 mt-4 leading-relaxed max-w-3xl">
             Usaha mandiri sejak Semester 5 (2022) hingga kini: perbaikan harian laptop, PC, printer, sharing printer, penggantian LCD, keyboard, baterai, upgrade RAM/SSD, serta rekondisi massal lab sekolah.
         </p>
     </div>
 
     <!-- Featured Banner Image -->
-    <div class="rounded-3xl overflow-hidden border border-gray-800 bg-gray-900 shadow-2xl">
+    <div class="rounded-3xl overflow-hidden border border-[#8C7B6B]/30 bg-[#E9DCCB] shadow-lg">
         <img src="https://muhsattarbarakati.my.id/images/servis-lab-modayama-wide.jpg" alt="Layanan Servis Panggilan MSB &amp; Rekondisi Massal Lab Sekolah" class="w-full max-h-[32rem] object-cover object-center">
     </div>
 
-    <!-- Tech Stack Pill Row -->
-    <div class="bento-card rounded-2xl p-6 border border-gray-800">
-        <span class="text-xs font-mono text-gray-400 uppercase tracking-wider block mb-3">Teknologi & Instrumen yang Digunakan:</span>
-        <div class="flex flex-wrap gap-2">
-                        <span class="px-3 py-1.5 rounded-lg bg-gray-900 border border-gray-800 text-xs font-mono text-cyan-300">
-                Hardware Diagnostics
-            </span>
-                        <span class="px-3 py-1.5 rounded-lg bg-gray-900 border border-gray-800 text-xs font-mono text-cyan-300">
-                LCD &amp; Keyboard Replacement
-            </span>
-                        <span class="px-3 py-1.5 rounded-lg bg-gray-900 border border-gray-800 text-xs font-mono text-cyan-300">
-                SMD Component Repair
-            </span>
-                        <span class="px-3 py-1.5 rounded-lg bg-gray-900 border border-gray-800 text-xs font-mono text-cyan-300">
-                Network Printer Sharing
-            </span>
-                        <span class="px-3 py-1.5 rounded-lg bg-gray-900 border border-gray-800 text-xs font-mono text-cyan-300">
-                Thermal Repasting
-            </span>
-                        <span class="px-3 py-1.5 rounded-lg bg-gray-900 border border-gray-800 text-xs font-mono text-cyan-300">
-                NVMe SSD Upgrade
-            </span>
-                                </div>
+    <!-- Tech Stack Pill Row & Action Buttons -->
+    <div class="bento-card rounded-2xl p-6 border border-[#8C7B6B]/30">
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+            <div>
+                <span class="text-xs font-mono text-[#8C7B6B] uppercase tracking-wider block mb-2 font-bold">Teknologi & Instrumen yang Digunakan:</span>
+                <div class="flex flex-wrap gap-2">
+                                        <span class="px-3 py-1.5 rounded-lg bg-[#F6EFE6] border border-[#8C7B6B]/25 text-xs font-mono text-[#2B1D14] font-medium">
+                        Hardware Diagnostics
+                    </span>
+                                        <span class="px-3 py-1.5 rounded-lg bg-[#F6EFE6] border border-[#8C7B6B]/25 text-xs font-mono text-[#2B1D14] font-medium">
+                        LCD &amp; Keyboard Replacement
+                    </span>
+                                        <span class="px-3 py-1.5 rounded-lg bg-[#F6EFE6] border border-[#8C7B6B]/25 text-xs font-mono text-[#2B1D14] font-medium">
+                        SMD Component Repair
+                    </span>
+                                        <span class="px-3 py-1.5 rounded-lg bg-[#F6EFE6] border border-[#8C7B6B]/25 text-xs font-mono text-[#2B1D14] font-medium">
+                        Network Printer Sharing
+                    </span>
+                                        <span class="px-3 py-1.5 rounded-lg bg-[#F6EFE6] border border-[#8C7B6B]/25 text-xs font-mono text-[#2B1D14] font-medium">
+                        Thermal Repasting
+                    </span>
+                                        <span class="px-3 py-1.5 rounded-lg bg-[#F6EFE6] border border-[#8C7B6B]/25 text-xs font-mono text-[#2B1D14] font-medium">
+                        NVMe SSD Upgrade
+                    </span>
+                                    </div>
+            </div>
+
+            <div class="flex items-center gap-3 shrink-0">
+                
+                            </div>
+        </div>
     </div>
 
-    <!-- CASE STUDY NARRATIVE: Typography focused on readability -->
+    <!-- CASE STUDY NARRATIVE: Warm Cream Mocha Typography -->
     <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
         
         <!-- Section: Problem Statement -->
-        <div class="bento-card rounded-3xl p-8 border-l-4 border-l-orange-500 space-y-4">
-            <div class="flex items-center gap-2.5 text-orange-400">
+        <div class="bento-card rounded-3xl p-8 border-l-4 border-l-[#A8643A] space-y-4">
+            <div class="flex items-center gap-2.5 text-[#A8643A]">
                 <i data-lucide="alert-triangle" class="w-5 h-5"></i>
                 <h2 class="text-lg font-bold uppercase tracking-wider font-mono">Tantangan & Masalah Klien</h2>
             </div>
-            <p class="text-gray-300 text-base sm:text-lg leading-relaxed font-sans">
+            <p class="text-[#2B1D14]/85 text-base sm:text-lg leading-relaxed font-sans">
                 Di kawasan Ternate dan kepulauan sekitar, institusi pendidikan dan perkantoran sering menghadapi kendala perangkat mati mendadak menjelang ujian, printer error/tinta macet, serta kesulitan sharing printer antar-ruangan yang memperlambat administrasi.
             </p>
         </div>
 
         <!-- Section: Solution Statement -->
-        <div class="bento-card rounded-3xl p-8 border-l-4 border-l-cyan-500 space-y-4">
-            <div class="flex items-center gap-2.5 text-cyan-400">
+        <div class="bento-card rounded-3xl p-8 border-l-4 border-l-[#2B1D14] space-y-4">
+            <div class="flex items-center gap-2.5 text-[#2B1D14]">
                 <i data-lucide="check-circle-2" class="w-5 h-5"></i>
                 <h2 class="text-lg font-bold uppercase tracking-wider font-mono">Solusi Lapangan</h2>
             </div>
-            <p class="text-gray-300 text-base sm:text-lg leading-relaxed font-sans">
+            <p class="text-[#2B1D14]/85 text-base sm:text-lg leading-relaxed font-sans">
                 Memberikan layanan on-site repair terpercaya: pembongkaran casing presisi, penggantian komponen internal (LCD pecah, keyboard error, baterai drop), upgrade storage NVMe SSD &amp; RAM berkecepatan tinggi, setup network sharing printer multi-PC, serta rekondisi maraton 15+ unit laptop lab sekolah (seperti di SMK Pertanian Modayama) agar 100% siap pakai untuk asesmen.
             </p>
         </div>
@@ -326,60 +324,52 @@
     <!-- PROJECT GALLERY (Full Scale Images Grid) -->
         <div class="space-y-6 pt-6">
         <div>
-            <span class="text-xs font-mono text-cyan-400 uppercase tracking-wider block">DOKUMENTASI FOTO</span>
-            <h2 class="text-2xl font-bold text-white mt-1">Galeri Dokumentasi Lapangan</h2>
+            <span class="text-xs font-mono text-[#A8643A] uppercase tracking-wider block font-bold">DOKUMENTASI FOTO</span>
+            <h2 class="text-2xl font-bold text-[#2B1D14] mt-1">Galeri Dokumentasi Lapangan</h2>
         </div>
 
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-                        <div class="bento-card rounded-2xl overflow-hidden border border-gray-800 group">
-                <div class="h-64 bg-gray-900 overflow-hidden">
+                        <div class="bento-card rounded-2xl overflow-hidden group">
+                <div class="h-64 bg-[#F6EFE6] overflow-hidden">
                     <img src="https://muhsattarbarakati.my.id/images/servis-lab-modayama-wide.jpg" alt="Laboratorium komputer SMK Pertanian Modayama: 15 laptop siap asesmen setelah direkondisi" class="w-full h-full object-cover group-hover:scale-105 transition duration-300">
                 </div>
-                                <div class="p-3.5 text-xs text-gray-400 font-mono border-t border-gray-800">
+                                <div class="p-3.5 text-xs text-[#8C7B6B] font-mono border-t border-[#8C7B6B]/20 bg-[#E9DCCB]">
                     Laboratorium komputer SMK Pertanian Modayama: 15 laptop siap asesmen setelah direkondisi
                 </div>
                             </div>
-                        <div class="bento-card rounded-2xl overflow-hidden border border-gray-800 group">
-                <div class="h-64 bg-gray-900 overflow-hidden">
+                        <div class="bento-card rounded-2xl overflow-hidden group">
+                <div class="h-64 bg-[#F6EFE6] overflow-hidden">
                     <img src="https://muhsattarbarakati.my.id/images/servis-toolkit-flatlay.jpg" alt="Toolkit presisi Jakemy, crimper, obeng multi-bit, dan suku cadang cadangan" class="w-full h-full object-cover group-hover:scale-105 transition duration-300">
                 </div>
-                                <div class="p-3.5 text-xs text-gray-400 font-mono border-t border-gray-800">
+                                <div class="p-3.5 text-xs text-[#8C7B6B] font-mono border-t border-[#8C7B6B]/20 bg-[#E9DCCB]">
                     Toolkit presisi Jakemy, crimper, obeng multi-bit, dan suku cadang cadangan
                 </div>
                             </div>
-                        <div class="bento-card rounded-2xl overflow-hidden border border-gray-800 group">
-                <div class="h-64 bg-gray-900 overflow-hidden">
+                        <div class="bento-card rounded-2xl overflow-hidden group">
+                <div class="h-64 bg-[#F6EFE6] overflow-hidden">
                     <img src="https://muhsattarbarakati.my.id/images/servis-laptop-teardown.jpg" alt="Proses teardown motherboard dan penggantian modul keyboard internal" class="w-full h-full object-cover group-hover:scale-105 transition duration-300">
                 </div>
-                                <div class="p-3.5 text-xs text-gray-400 font-mono border-t border-gray-800">
+                                <div class="p-3.5 text-xs text-[#8C7B6B] font-mono border-t border-[#8C7B6B]/20 bg-[#E9DCCB]">
                     Proses teardown motherboard dan penggantian modul keyboard internal
-                </div>
-                            </div>
-                        <div class="bento-card rounded-2xl overflow-hidden border border-gray-800 group">
-                <div class="h-64 bg-gray-900 overflow-hidden">
-                    <img src="https://muhsattarbarakati.my.id/images/printer-teardown.jpg" alt="Reparasi mekanisme printer ink-tank dan setup sharing printer" class="w-full h-full object-cover group-hover:scale-105 transition duration-300">
-                </div>
-                                <div class="p-3.5 text-xs text-gray-400 font-mono border-t border-gray-800">
-                    Reparasi mekanisme printer ink-tank dan setup sharing printer
                 </div>
                             </div>
                     </div>
     </div>
     
     <!-- BOTTOM ACTION CTA BOX -->
-    <div class="bento-card rounded-3xl p-8 sm:p-12 text-center border-2 border-cyan-500/30 space-y-4">
-        <h3 class="text-2xl sm:text-3xl font-extrabold text-white">
+    <div class="bento-card rounded-3xl p-8 sm:p-12 text-center border-2 border-[#A8643A]/40 space-y-4">
+        <h3 class="text-2xl sm:text-3xl font-extrabold text-[#2B1D14]">
             Tertarik Mengimplementasikan Solusi Serupa?
         </h3>
-        <p class="text-gray-300 text-sm sm:text-base max-w-xl mx-auto">
+        <p class="text-[#2B1D14]/80 text-sm sm:text-base max-w-xl mx-auto">
             Diskusikan kebutuhan jaringan, perbaikan armada komputer, atau sistem web Anda bersama Muh. Sattar Barakati.
         </p>
         <div class="pt-4 flex flex-wrap justify-center gap-4">
-            <a href="https://wa.me/6285218403629?text=Halo%20Sattar,%20saya%20tertarik%20dengan%20proyek%20Layanan+Servis+Panggilan+MSB+%26+Rekondisi+Massal+Lab+Sekolah..." target="_blank" class="px-6 py-3.5 rounded-xl bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 text-gray-950 font-bold text-sm flex items-center gap-2 transition hover:scale-105">
+            <a href="https://wa.me/6285218403629?text=Halo%20Sattar,%20saya%20tertarik%20dengan%20proyek%20Layanan+Servis+Panggilan+MSB+%26+Rekondisi+Massal+Lab+Sekolah..." target="_blank" class="px-6 py-3.5 rounded-xl bg-[#A8643A] hover:bg-[#8F522D] text-white font-bold text-sm flex items-center gap-2 shadow-lg shadow-[#A8643A]/25 transition hover:scale-105">
                 <i data-lucide="message-square" class="w-4 h-4"></i>
                 <span>Hubungi via WhatsApp (0852-1840-3629)</span>
             </a>
-            <a href="https://muhsattarbarakati.my.id" class="px-6 py-3.5 rounded-xl bg-gray-900 hover:bg-gray-800 text-white font-semibold text-sm border border-gray-700 transition">
+            <a href="https://muhsattarbarakati.my.id" class="px-6 py-3.5 rounded-xl bg-[#F6EFE6] hover:bg-[#ede3d5] text-[#2B1D14] font-semibold text-sm border border-[#8C7B6B]/30 transition">
                 Lihat Proyek Lain
             </a>
         </div>
@@ -389,17 +379,17 @@
     </main>
 
     <!-- Footer -->
-    <footer class="border-t border-gray-800/80 bg-gray-950 py-12 text-xs text-gray-500 font-mono mt-20">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4">
+    <footer class="border-t border-[#8C7B6B]/25 bg-[#E9DCCB] py-12 text-xs text-[#8C7B6B] font-mono mt-20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-6">
             <div>
-                <p class="text-gray-400 font-semibold text-sm">Muh. Sattar Barakati (Owen)</p>
-                <p class="text-gray-500 mt-0.5">Amasing Bukit Sere, 02 Juli 2002 • Kalumata, Kota Ternate</p>
-                <p class="text-gray-600 mt-0.5">Operator MIS Integral Hidayatullah • WhatsApp/Telp: <span class="text-cyan-400 font-bold">0852-1840-3629</span></p>
+                <p class="text-[#2B1D14] font-bold text-sm">Muh. Sattar Barakati (Owen)</p>
+                <p class="text-[#8C7B6B] mt-1">Amasing Bukit Sere, 02 Juli 2002 • Kalumata, Kota Ternate</p>
+                <p class="text-[#8C7B6B] mt-0.5">Operator MIS Integral Hidayatullah • WhatsApp/Telp: <span class="text-[#A8643A] font-bold">0852-1840-3629</span></p>
             </div>
-            <div class="flex items-center gap-6">
-                <a href="https://www.linkedin.com/in/muh-sattar-barakati-16b48a2b6/" target="_blank" class="hover:text-cyan-400 transition">LinkedIn</a>
-                <a href="https://github.com/owensavala" target="_blank" class="hover:text-cyan-400 transition">GitHub</a>
-                <a href="https://www.tiktok.com/@str_wtx" target="_blank" class="hover:text-cyan-400 transition">TikTok</a>
+            <div class="flex items-center gap-6 text-sm">
+                <a href="https://www.linkedin.com/in/muh-sattar-barakati-16b48a2b6/" target="_blank" class="hover:text-[#A8643A] font-semibold transition">LinkedIn</a>
+                <a href="https://github.com/owensavala" target="_blank" class="hover:text-[#A8643A] font-semibold transition">GitHub</a>
+                <a href="https://www.tiktok.com/@str_wtx" target="_blank" class="hover:text-[#A8643A] font-semibold transition">TikTok</a>
             </div>
         </div>
     </footer>

@@ -19,14 +19,20 @@
 
 ## 📑 Fitur & Arsitektur Website
 
-* **Modern & Responsif:** Dibangun menggunakan utilitas modern **Tailwind CSS** dengan tema dark-mode elegan yang dioptimasi untuk perangkat seluler maupun desktop.
-* **Studi Kasus Proyek Mendalam (In-depth Case Studies):**
+* **Modern & Responsif:** Dibangun menggunakan utilitas modern **Tailwind CSS** dengan palet elegan **Cream Mocha** (`#F6EFE6`, `#E9DCCB`, `#2B1D14`, `#A8643A`, `#8C7B6B`) yang hangat, nyaman di mata, dan dioptimasi untuk perangkat seluler maupun desktop.
+* **Etalase Proyek Terverifikasi (GitHub, Vercel & Penugasan Lapangan):**
+  * 🌐 **Portal Layanan Terpadu Sekolah Pro** (`portal-sekolah-pro.vercel.app` & GitHub).
+  * 💻 **Smart CBT Pro** (`smart-cbt-pro.vercel.app` & GitHub).
+  * 🏛️ **Web Desa & Pelayanan Publik Laravel** (`web-desa-laravel.vercel.app` & GitHub).
+  * 💌 **The Wedding of Mira & Yudi** (`undangan-nikah-three-navy.vercel.app` & GitHub).
+  * 🧺 **Clean & Fresh Laundry POS Management** (`laundrysystem-blush.vercel.app` & GitHub).
+  * 🛠️ **MSB Hardware Diagnostic Tool (Titan Edition)** (GitHub open source).
+  * 📦 **Amunisi Teknisi Lapangan** (All-in-One IT Toolkit - GitHub open source).
+  * 🤖 **Radar Loker AI Bot** (Gemini AI & Telegram Bot - GitHub open source).
   * 🏛️ **Web & CMS Dinas Kebudayaan Kota Ternate** (Proyek kontrak instansi Rp 25 Juta).
   * 🛰️ **Instalasi Satelit Starlink & Billing WiFi Voucher** di kepulauan Bacan, Kayoa, dan Subaim.
   * ⚙️ **Implementasi MikroTik PCC Load Balancing** untuk stabilitas ujian 50 laptop di MIS Integral Hidayatullah Ternate.
-  * 🛠️ **Jasa Servis Mandiri MSB Computer & Rekondisi Lab ANBK**.
-  * 🤖 **Riset & Pengembangan Agen Otomasi AI Modern**.
-  * 📦 **Katalog Web Mandiri** (Undangan Nikah Digital, SIM Sekolah, Web Desa, dan Laundry).
+  * 🛠️ **Jasa Servis Mandiri MSB Computer & Rekondisi Lab ANBK SMK Modayama**.
 * **SEO & Rich Knowledge Graph:**
   * Terintegrasi metadata lengkap Open Graph, Twitter Cards, dan **Schema.org JSON-LD** (`Person` dan `ProfessionalService`) untuk pengindeksan optimal di mesin pencari Google.
 * **Navigasi Cepat & Interaktif:** Efek *smooth scroll*, visual kartu responsif, galeri lightbox, dan tautan langsung ke WhatsApp & GitHub.
