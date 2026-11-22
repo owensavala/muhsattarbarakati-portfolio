@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="id" class="scroll-smooth">
+<html lang="id" class="scroll-smooth" data-theme="cream-mocha">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -32,6 +32,14 @@
     <meta name="twitter:title" content="MSB Hardware Diagnostic Tool (Titan Edition) - Muh. Sattar Barakati | Studi Kasus IT Ternate">
     <meta name="twitter:description" content="Aplikasi diagnostik hardware portable untuk teknisi komputer: inspeksi mendalam kesehatan baterai laptop (BMS cycle count &amp; wear level), benchmark NVMe/CPU...">
     <meta name="twitter:image" content="https://muhsattarbarakati.my.id/images/mockup-hardware-diag.png">
+
+    <!-- Pre-hydration Theme Script (Anti-FOUC) -->
+    <script>
+        (function() {
+            const savedTheme = localStorage.getItem('msb_theme') || 'cream-mocha';
+            document.documentElement.setAttribute('data-theme', savedTheme);
+        })();
+    </script>
 
     <!-- Schema.org JSON-LD (Google Rich Knowledge Graph) -->
         <script type="application/ld+json">
@@ -141,13 +149,15 @@
             theme: {
                 extend: {
                     colors: {
-                        cream: {
-                            bg: '#F6EFE6',
-                            surface: '#E9DCCB',
-                            text: '#2B1D14',
-                            accent: '#A8643A',
-                            'accent-hover': '#8F522D',
-                            muted: '#8C7B6B',
+                        theme: {
+                            bg: 'var(--bg-page)',
+                            card: 'var(--surface-card)',
+                            inner: 'var(--surface-inner)',
+                            text: 'var(--text-primary)',
+                            muted: 'var(--text-secondary)',
+                            accent: 'var(--color-accent)',
+                            'accent-hover': 'var(--color-accent-hover)',
+                            border: 'var(--color-border)',
                         }
                     },
                     fontFamily: {
@@ -169,55 +179,146 @@
     <script src="https://unpkg.com/lucide@latest"></script>
 
     <style>
+        /* CSS DUAL-THEME VARIABLES */
+        :root, [data-theme="cream-mocha"] {
+            --bg-page: #F6EFE6;
+            --surface-card: #E9DCCB;
+            --surface-inner: #F6EFE6;
+            --text-primary: #2B1D14;
+            --text-secondary: #8C7B6B;
+            --color-accent: #A8643A;
+            --color-accent-hover: #8F522D;
+            --color-border: rgba(140, 123, 107, 0.28);
+            --nav-bg: rgba(246, 239, 230, 0.92);
+            --card-shadow: 0 4px 20px -2px rgba(43, 29, 20, 0.06);
+            --card-shadow-hover: 0 12px 28px -4px rgba(43, 29, 20, 0.12);
+            --btn-accent-text: #FFFFFF;
+            --accent-glow: rgba(168, 100, 58, 0.15);
+        }
+
+        [data-theme="noir-gold"] {
+            --bg-page: #0E0E10;
+            --surface-card: #1A1A1D;
+            --surface-inner: #121215;
+            --text-primary: #F4EFE6;
+            --text-secondary: #8A8478;
+            --color-accent: #C9A24B;
+            --color-accent-hover: #B58E38;
+            --color-border: rgba(138, 132, 120, 0.28);
+            --nav-bg: rgba(14, 14, 16, 0.92);
+            --card-shadow: 0 4px 25px -2px rgba(0, 0, 0, 0.5);
+            --card-shadow-hover: 0 14px 32px -4px rgba(201, 162, 75, 0.2);
+            --btn-accent-text: #0E0E10;
+            --accent-glow: rgba(201, 162, 75, 0.2);
+        }
+
         body { 
             font-family: 'Plus Jakarta Sans', sans-serif; 
-            background-color: #F6EFE6; 
-            color: #2B1D14;
+            background-color: var(--bg-page); 
+            color: var(--text-primary);
+            transition: background-color 0.3s ease, color 0.3s ease;
         }
+
         .font-mono { font-family: 'JetBrains Mono', monospace; }
+
         .bento-card {
-            background-color: #E9DCCB;
-            border: 1px solid rgba(140, 123, 107, 0.28);
-            box-shadow: 0 4px 20px -2px rgba(43, 29, 20, 0.05);
-            transition: all 0.3s ease;
+            background-color: var(--surface-card);
+            border: 1px solid var(--color-border);
+            box-shadow: var(--card-shadow);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         }
         .bento-card:hover {
-            border-color: rgba(168, 100, 58, 0.6);
-            box-shadow: 0 12px 28px -4px rgba(43, 29, 20, 0.12);
+            border-color: var(--color-accent);
+            box-shadow: var(--card-shadow-hover);
+        }
+
+        .text-gradient-accent {
+            background: linear-gradient(135deg, var(--color-accent) 0%, var(--color-accent-hover) 50%, var(--text-primary) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .bg-theme-accent {
+            background-color: var(--color-accent) !important;
+            color: var(--btn-accent-text) !important;
+        }
+        .bg-theme-accent:hover {
+            background-color: var(--color-accent-hover) !important;
+        }
+
+        .border-theme-border {
+            border-color: var(--color-border);
         }
     </style>
 </head>
-<body class="bg-[#F6EFE6] text-[#2B1D14] antialiased selection:bg-[#A8643A] selection:text-white min-h-screen flex flex-col justify-between">
+<body 
+    x-data="{
+        currentTheme: localStorage.getItem('msb_theme') || 'cream-mocha',
+        toggleTheme() {
+            this.currentTheme = this.currentTheme === 'cream-mocha' ? 'noir-gold' : 'cream-mocha';
+            document.documentElement.setAttribute('data-theme', this.currentTheme);
+            localStorage.setItem('msb_theme', this.currentTheme);
+            this.$nextTick(() => { lucide.createIcons(); });
+        }
+    }" 
+    class="antialiased selection:bg-theme-accent selection:text-white min-h-screen flex flex-col justify-between"
+    style="background-color: var(--bg-page); color: var(--text-primary);">
 
     <!-- Top Navbar -->
-    <header class="sticky top-0 z-50 bg-[#F6EFE6]/90 backdrop-blur-md border-b border-[#8C7B6B]/25">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+    <header class="sticky top-0 z-50 backdrop-blur-md border-b border-theme-border" style="background-color: var(--nav-bg);">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between gap-4">
             <!-- Brand -->
-            <a href="https://muhsattarbarakati.my.id" class="flex items-center gap-3 group">
-                <div class="w-10 h-10 rounded-xl bg-[#A8643A] flex items-center justify-center text-white font-black text-lg shadow-md shadow-[#A8643A]/25 group-hover:scale-105 group-hover:bg-[#8F522D] transition duration-300">
+            <a href="https://muhsattarbarakati.my.id" class="flex items-center gap-3 group shrink-0">
+                <div class="w-10 h-10 rounded-xl bg-theme-accent flex items-center justify-center font-black text-lg shadow-md group-hover:scale-105 transition duration-300">
                     MSB
                 </div>
                 <div>
-                    <span class="font-extrabold text-[#2B1D14] text-base block tracking-tight group-hover:text-[#A8643A] transition">MSB Masterpiece</span>
-                    <span class="text-xs text-[#8C7B6B] font-mono">Muh. Sattar Barakati</span>
+                    <span class="font-extrabold text-theme-text text-base block tracking-tight group-hover:text-theme-accent transition">MSB Masterpiece</span>
+                    <span class="text-xs text-theme-muted font-mono">Muh. Sattar Barakati</span>
                 </div>
             </a>
 
             <!-- Navigation Links -->
             <nav class="hidden md:flex items-center gap-8 text-sm font-semibold">
-                <a href="https://muhsattarbarakati.my.id" class="text-[#8C7B6B] hover:text-[#2B1D14] transition">
+                <a href="https://muhsattarbarakati.my.id" class="text-theme-muted hover:text-theme-text transition">
                     Katalog Proyek
                 </a>
-                <a href="https://muhsattarbarakati.my.id/about" class="text-[#8C7B6B] hover:text-[#2B1D14] transition">
+                <a href="https://muhsattarbarakati.my.id/about" class="text-theme-muted hover:text-theme-text transition">
                     Tentang (Bento Profile)
                 </a>
             </nav>
 
-            <!-- Quick WhatsApp CTA -->
-            <div class="flex items-center gap-3">
-                <a href="https://wa.me/6285218403629?text=Halo%20Sattar%20(Owen),%20saya%20tertarik%20untuk%20diskusi%20proyek%20atau%20servis..." target="_blank" class="px-4 py-2 rounded-xl bg-[#A8643A] hover:bg-[#8F522D] text-white font-bold text-xs sm:text-sm flex items-center gap-2 shadow-md shadow-[#A8643A]/25 transition hover:scale-105">
+            <!-- Right Controls: Theme Switcher & Quick WhatsApp CTA -->
+            <div class="flex items-center gap-2 sm:gap-3">
+                
+                <!-- TOMBOL PERUBAH TEMA (THEME SWITCHER TOGGLE) -->
+                <button 
+                    @click="toggleTheme()" 
+                    class="flex items-center gap-2 px-3 py-2 rounded-xl border border-theme-border bg-theme-inner hover:bg-theme-card text-xs font-mono font-bold transition duration-300 shadow-sm group cursor-pointer"
+                    title="Ganti Tema Visual (Cream Mocha ↔ Noir Gold)">
+                    
+                    <!-- Icon & Label Cream Mocha -->
+                    <span x-show="currentTheme === 'cream-mocha'" class="flex items-center gap-1.5 text-theme-accent">
+                        <i data-lucide="coffee" class="w-4 h-4"></i>
+                        <span class="hidden sm:inline">Cream Mocha</span>
+                        <span class="text-[10px] px-1.5 py-0.5 rounded bg-theme-card text-theme-text border border-theme-border font-medium">Hangat</span>
+                    </span>
+
+                    <!-- Icon & Label Noir Gold -->
+                    <span x-show="currentTheme === 'noir-gold'" class="flex items-center gap-1.5 text-theme-accent" style="display: none;">
+                        <i data-lucide="crown" class="w-4 h-4"></i>
+                        <span class="hidden sm:inline">Noir Gold</span>
+                        <span class="text-[10px] px-1.5 py-0.5 rounded bg-theme-card text-theme-accent border border-theme-border font-extrabold">Eksklusif</span>
+                    </span>
+
+                    <i data-lucide="arrow-left-right" class="w-3.5 h-3.5 text-theme-muted group-hover:rotate-180 transition duration-300"></i>
+                </button>
+
+                <!-- Quick WhatsApp CTA -->
+                <a href="https://wa.me/6285218403629?text=Halo%20Sattar%20(Owen),%20saya%20tertarik%20untuk%20diskusi%20proyek%20atau%20servis..." target="_blank" class="px-3 sm:px-4 py-2 rounded-xl bg-theme-accent font-bold text-xs sm:text-sm flex items-center gap-2 shadow-md transition hover:scale-105 shrink-0">
                     <i data-lucide="message-square" class="w-4 h-4"></i>
-                    <span>Mari Diskusi (0852-1840-3629)</span>
+                    <span class="hidden sm:inline">Mari Diskusi</span>
+                    <span class="sm:hidden">Kontak</span>
                 </a>
             </div>
         </div>
@@ -229,60 +330,60 @@
 
     <!-- Top Navigation & Breadcrumbs -->
     <div>
-        <a href="https://muhsattarbarakati.my.id" class="inline-flex items-center gap-2 text-xs font-mono text-[#8C7B6B] hover:text-[#A8643A] transition mb-6">
+        <a href="https://muhsattarbarakati.my.id" class="inline-flex items-center gap-2 text-xs font-mono text-theme-muted hover:text-theme-accent transition mb-6">
             <i data-lucide="arrow-left" class="w-4 h-4"></i>
             <span>Kembali ke Katalog Proyek</span>
         </a>
 
         <div class="flex flex-wrap items-center gap-3 mb-4">
-            <span class="px-3 py-1 rounded-md text-xs font-mono uppercase bg-[#E9DCCB] text-[#A8643A] border border-[#8C7B6B]/30 font-bold">
+            <span class="px-3 py-1 rounded-md text-xs font-mono uppercase bg-theme-card text-theme-accent border border-theme-border font-bold">
                 Hardware, Lab &amp; Servis Panggilan
             </span>
-                        <span class="text-xs font-mono text-[#8C7B6B]">
-                Klien: <span class="text-[#2B1D14] font-semibold">Karya Open Source untuk Teknisi Lapangan</span>
+                        <span class="text-xs font-mono text-theme-muted">
+                Klien: <span class="text-theme-text font-semibold">Karya Open Source untuk Teknisi Lapangan</span>
             </span>
-                        <span class="px-2.5 py-1 rounded-md text-[11px] font-mono bg-[#E9DCCB] text-[#A8643A] border border-[#8C7B6B]/30 flex items-center gap-1.5 font-medium">
-                <span class="w-1.5 h-1.5 rounded-full bg-[#A8643A]"></span>
+                        <span class="px-2.5 py-1 rounded-md text-[11px] font-mono bg-theme-card text-theme-accent border border-theme-border flex items-center gap-1.5 font-medium">
+                <span class="w-1.5 h-1.5 rounded-full bg-theme-accent"></span>
                 Status: Terverifikasi & Selesai
             </span>
         </div>
 
-        <h1 class="text-3xl sm:text-5xl font-black text-[#2B1D14] tracking-tight leading-tight">
+        <h1 class="text-3xl sm:text-5xl font-black text-theme-text tracking-tight leading-tight">
             MSB Hardware Diagnostic Tool (Titan Edition)
         </h1>
         
-        <p class="text-base sm:text-xl text-[#2B1D14]/80 mt-4 leading-relaxed max-w-3xl">
+        <p class="text-base sm:text-xl text-theme-text/80 mt-4 leading-relaxed max-w-3xl">
             Aplikasi diagnostik hardware portable untuk teknisi komputer: inspeksi mendalam kesehatan baterai laptop (BMS cycle count &amp; wear level), benchmark NVMe/CPU, dan generator laporan servis.
         </p>
     </div>
 
     <!-- Featured Banner Image -->
-    <div class="rounded-3xl overflow-hidden border border-[#8C7B6B]/30 bg-[#E9DCCB] shadow-lg">
+    <div class="rounded-3xl overflow-hidden border border-theme-border bg-theme-card shadow-lg">
         <img src="https://muhsattarbarakati.my.id/images/mockup-hardware-diag.png" alt="MSB Hardware Diagnostic Tool (Titan Edition)" class="w-full max-h-[32rem] object-cover object-center">
     </div>
 
     <!-- Tech Stack Pill Row & Action Buttons -->
-    <div class="bento-card rounded-2xl p-6 border border-[#8C7B6B]/30">
+    <div class="bento-card rounded-2xl p-6 border border-theme-border">
         <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
             <div>
-                <span class="text-xs font-mono text-[#8C7B6B] uppercase tracking-wider block mb-2 font-bold">Teknologi & Instrumen yang Digunakan:</span>
+                <span class="text-xs font-mono text-theme-muted uppercase tracking-wider block mb-2 font-bold">Teknologi & Instrumen yang Digunakan:</span>
                 <div class="flex flex-wrap gap-2">
-                                        <span class="px-3 py-1.5 rounded-lg bg-[#F6EFE6] border border-[#8C7B6B]/25 text-xs font-mono text-[#2B1D14] font-medium">
+                                        <span class="px-3 py-1.5 rounded-lg bg-theme-inner border border-theme-border text-xs font-mono text-theme-text font-medium">
                         Python 3
                     </span>
-                                        <span class="px-3 py-1.5 rounded-lg bg-[#F6EFE6] border border-[#8C7B6B]/25 text-xs font-mono text-[#2B1D14] font-medium">
+                                        <span class="px-3 py-1.5 rounded-lg bg-theme-inner border border-theme-border text-xs font-mono text-theme-text font-medium">
                         WMI &amp; OS Telemetry
                     </span>
-                                        <span class="px-3 py-1.5 rounded-lg bg-[#F6EFE6] border border-[#8C7B6B]/25 text-xs font-mono text-[#2B1D14] font-medium">
+                                        <span class="px-3 py-1.5 rounded-lg bg-theme-inner border border-theme-border text-xs font-mono text-theme-text font-medium">
                         Battery BMS Inspector
                     </span>
-                                        <span class="px-3 py-1.5 rounded-lg bg-[#F6EFE6] border border-[#8C7B6B]/25 text-xs font-mono text-[#2B1D14] font-medium">
+                                        <span class="px-3 py-1.5 rounded-lg bg-theme-inner border border-theme-border text-xs font-mono text-theme-text font-medium">
                         NVMe SMART Telemetry
                     </span>
-                                        <span class="px-3 py-1.5 rounded-lg bg-[#F6EFE6] border border-[#8C7B6B]/25 text-xs font-mono text-[#2B1D14] font-medium">
+                                        <span class="px-3 py-1.5 rounded-lg bg-theme-inner border border-theme-border text-xs font-mono text-theme-text font-medium">
                         CPU Benchmark
                     </span>
-                                        <span class="px-3 py-1.5 rounded-lg bg-[#F6EFE6] border border-[#8C7B6B]/25 text-xs font-mono text-[#2B1D14] font-medium">
+                                        <span class="px-3 py-1.5 rounded-lg bg-theme-inner border border-theme-border text-xs font-mono text-theme-text font-medium">
                         GitHub Repository
                     </span>
                                     </div>
@@ -290,7 +391,7 @@
 
             <div class="flex items-center gap-3 shrink-0">
                 
-                                <a href="https://github.com/owensavala/hardware-diagnostic-tool" target="_blank" class="px-4 py-2 rounded-xl bg-[#F6EFE6] hover:bg-[#ede3d5] text-[#2B1D14] border border-[#8C7B6B]/30 text-xs font-mono font-bold transition flex items-center gap-1.5">
+                                <a href="https://github.com/owensavala/hardware-diagnostic-tool" target="_blank" class="px-4 py-2 rounded-xl bg-theme-inner hover:bg-theme-card text-theme-text border border-theme-border text-xs font-mono font-bold transition flex items-center gap-1.5">
                     <i data-lucide="github" class="w-4 h-4"></i>
                     <span>GitHub Repo</span>
                 </a>
@@ -298,27 +399,27 @@
         </div>
     </div>
 
-    <!-- CASE STUDY NARRATIVE: Warm Cream Mocha Typography -->
+    <!-- CASE STUDY NARRATIVE: Dynamic Dual-Theme Typography -->
     <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
         
         <!-- Section: Problem Statement -->
-        <div class="bento-card rounded-3xl p-8 border-l-4 border-l-[#A8643A] space-y-4">
-            <div class="flex items-center gap-2.5 text-[#A8643A]">
+        <div class="bento-card rounded-3xl p-8 border-l-4 space-y-4" style="border-left-color: var(--color-accent);">
+            <div class="flex items-center gap-2.5 text-theme-accent">
                 <i data-lucide="alert-triangle" class="w-5 h-5"></i>
                 <h2 class="text-lg font-bold uppercase tracking-wider font-mono">Tantangan & Masalah Klien</h2>
             </div>
-            <p class="text-[#2B1D14]/85 text-base sm:text-lg leading-relaxed font-sans">
+            <p class="text-theme-text/85 text-base sm:text-lg leading-relaxed font-sans">
                 Teknisi servis sering kesulitan membuktikan kondisi riil kesehatan baterai atau performa storage klien secara objektif di lapangan tanpa software berbayar atau tools bajakan yang lambat.
             </p>
         </div>
 
         <!-- Section: Solution Statement -->
-        <div class="bento-card rounded-3xl p-8 border-l-4 border-l-[#2B1D14] space-y-4">
-            <div class="flex items-center gap-2.5 text-[#2B1D14]">
-                <i data-lucide="check-circle-2" class="w-5 h-5"></i>
+        <div class="bento-card rounded-3xl p-8 border-l-4 space-y-4" style="border-left-color: var(--text-primary);">
+            <div class="flex items-center gap-2.5 text-theme-text">
+                <i data-lucide="check-circle-2" class="w-5 h-5 text-theme-accent"></i>
                 <h2 class="text-lg font-bold uppercase tracking-wider font-mono">Solusi Lapangan</h2>
             </div>
-            <p class="text-[#2B1D14]/85 text-base sm:text-lg leading-relaxed font-sans">
+            <p class="text-theme-text/85 text-base sm:text-lg leading-relaxed font-sans">
                 Mengembangkan tool Python portable mandiri yang berinteraksi langsung dengan API sistem operasi (WMI, SMART telemetry). Menampilkan kalkulasi akurat degradasi sel baterai, uji kestabilan CPU throttling, deteksi read/write NVMe SSD, dan mengekspor laporan servis profesional untuk klien.
             </p>
         </div>
@@ -328,16 +429,16 @@
     <!-- PROJECT GALLERY (Full Scale Images Grid) -->
         <div class="space-y-6 pt-6">
         <div>
-            <span class="text-xs font-mono text-[#A8643A] uppercase tracking-wider block font-bold">DOKUMENTASI FOTO</span>
-            <h2 class="text-2xl font-bold text-[#2B1D14] mt-1">Galeri Dokumentasi Lapangan</h2>
+            <span class="text-xs font-mono text-theme-accent uppercase tracking-wider block font-bold">DOKUMENTASI FOTO</span>
+            <h2 class="text-2xl font-bold text-theme-text mt-1">Galeri Dokumentasi Lapangan</h2>
         </div>
 
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
                         <div class="bento-card rounded-2xl overflow-hidden group">
-                <div class="h-64 bg-[#F6EFE6] overflow-hidden">
+                <div class="h-64 bg-theme-inner overflow-hidden">
                     <img src="https://muhsattarbarakati.my.id/images/mockup-hardware-diag.png" alt="Telemetri pembacaan kesehatan baterai dan benchmark hardware" class="w-full h-full object-cover group-hover:scale-105 transition duration-300">
                 </div>
-                                <div class="p-3.5 text-xs text-[#8C7B6B] font-mono border-t border-[#8C7B6B]/20 bg-[#E9DCCB]">
+                                <div class="p-3.5 text-xs text-theme-muted font-mono border-t border-theme-border bg-theme-card">
                     Telemetri pembacaan kesehatan baterai dan benchmark hardware
                 </div>
                             </div>
@@ -345,19 +446,19 @@
     </div>
     
     <!-- BOTTOM ACTION CTA BOX -->
-    <div class="bento-card rounded-3xl p-8 sm:p-12 text-center border-2 border-[#A8643A]/40 space-y-4">
-        <h3 class="text-2xl sm:text-3xl font-extrabold text-[#2B1D14]">
+    <div class="bento-card rounded-3xl p-8 sm:p-12 text-center border-2 border-theme-border space-y-4">
+        <h3 class="text-2xl sm:text-3xl font-extrabold text-theme-text">
             Tertarik Mengimplementasikan Solusi Serupa?
         </h3>
-        <p class="text-[#2B1D14]/80 text-sm sm:text-base max-w-xl mx-auto">
+        <p class="text-theme-muted text-sm sm:text-base max-w-xl mx-auto">
             Diskusikan kebutuhan jaringan, perbaikan armada komputer, atau sistem web Anda bersama Muh. Sattar Barakati.
         </p>
         <div class="pt-4 flex flex-wrap justify-center gap-4">
-            <a href="https://wa.me/6285218403629?text=Halo%20Sattar,%20saya%20tertarik%20dengan%20proyek%20MSB+Hardware+Diagnostic+Tool+%28Titan+Edition%29..." target="_blank" class="px-6 py-3.5 rounded-xl bg-[#A8643A] hover:bg-[#8F522D] text-white font-bold text-sm flex items-center gap-2 shadow-lg shadow-[#A8643A]/25 transition hover:scale-105">
+            <a href="https://wa.me/6285218403629?text=Halo%20Sattar,%20saya%20tertarik%20dengan%20proyek%20MSB+Hardware+Diagnostic+Tool+%28Titan+Edition%29..." target="_blank" class="px-6 py-3.5 rounded-xl bg-theme-accent font-bold text-sm flex items-center gap-2 shadow-lg transition hover:scale-105">
                 <i data-lucide="message-square" class="w-4 h-4"></i>
                 <span>Hubungi via WhatsApp (0852-1840-3629)</span>
             </a>
-            <a href="https://muhsattarbarakati.my.id" class="px-6 py-3.5 rounded-xl bg-[#F6EFE6] hover:bg-[#ede3d5] text-[#2B1D14] font-semibold text-sm border border-[#8C7B6B]/30 transition">
+            <a href="https://muhsattarbarakati.my.id" class="px-6 py-3.5 rounded-xl bg-theme-inner hover:bg-theme-card text-theme-text font-semibold text-sm border border-theme-border transition">
                 Lihat Proyek Lain
             </a>
         </div>
@@ -367,17 +468,17 @@
     </main>
 
     <!-- Footer -->
-    <footer class="border-t border-[#8C7B6B]/25 bg-[#E9DCCB] py-12 text-xs text-[#8C7B6B] font-mono mt-20">
+    <footer class="border-t border-theme-border bg-theme-card py-12 text-xs text-theme-muted font-mono mt-20">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-6">
             <div>
-                <p class="text-[#2B1D14] font-bold text-sm">Muh. Sattar Barakati (Owen)</p>
-                <p class="text-[#8C7B6B] mt-1">Amasing Bukit Sere, 02 Juli 2002 • Kalumata, Kota Ternate</p>
-                <p class="text-[#8C7B6B] mt-0.5">Operator MIS Integral Hidayatullah • WhatsApp/Telp: <span class="text-[#A8643A] font-bold">0852-1840-3629</span></p>
+                <p class="text-theme-text font-bold text-sm">Muh. Sattar Barakati (Owen)</p>
+                <p class="text-theme-muted mt-1">Amasing Bukit Sere, 02 Juli 2002 • Kalumata, Kota Ternate</p>
+                <p class="text-theme-muted mt-0.5">Operator MIS Integral Hidayatullah • WhatsApp/Telp: <span class="text-theme-accent font-bold">0852-1840-3629</span></p>
             </div>
             <div class="flex items-center gap-6 text-sm">
-                <a href="https://www.linkedin.com/in/muh-sattar-barakati-16b48a2b6/" target="_blank" class="hover:text-[#A8643A] font-semibold transition">LinkedIn</a>
-                <a href="https://github.com/owensavala" target="_blank" class="hover:text-[#A8643A] font-semibold transition">GitHub</a>
-                <a href="https://www.tiktok.com/@str_wtx" target="_blank" class="hover:text-[#A8643A] font-semibold transition">TikTok</a>
+                <a href="https://www.linkedin.com/in/muh-sattar-barakati-16b48a2b6/" target="_blank" class="hover:text-theme-accent font-semibold transition">LinkedIn</a>
+                <a href="https://github.com/owensavala" target="_blank" class="hover:text-theme-accent font-semibold transition">GitHub</a>
+                <a href="https://www.tiktok.com/@str_wtx" target="_blank" class="hover:text-theme-accent font-semibold transition">TikTok</a>
             </div>
         </div>
     </footer>
