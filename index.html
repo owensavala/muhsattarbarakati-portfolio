@@ -333,14 +333,14 @@
                     @click="activeCategory = 'all'"
                     :class="activeCategory === 'all' ? 'bg-theme-accent font-bold shadow-md' : 'text-theme-muted hover:text-theme-text'"
                     class="px-4 py-2 rounded-xl text-xs font-semibold transition duration-200 cursor-pointer">
-                    Semua (12)
+                    Semua (16)
                 </button>
                                 <button
                     type="button"
                     @click="activeCategory = 'web-dev'"
                     :class="activeCategory === 'web-dev' ? 'bg-theme-accent font-bold shadow-md' : 'text-theme-muted hover:text-theme-text'"
                     class="px-4 py-2 rounded-xl text-xs font-semibold transition duration-200 cursor-pointer">
-                    Web Development &amp; SaaS (6)
+                    Web Development &amp; SaaS (9)
                 </button>
                                 <button
                     type="button"
@@ -361,7 +361,7 @@
                     @click="activeCategory = 'automation-ai'"
                     :class="activeCategory === 'automation-ai' ? 'bg-theme-accent font-bold shadow-md' : 'text-theme-muted hover:text-theme-text'"
                     class="px-4 py-2 rounded-xl text-xs font-semibold transition duration-200 cursor-pointer">
-                    Otomatisasi &amp; AI Agent (1)
+                    Otomatisasi &amp; AI Agent (2)
                 </button>
                             </div>
         </div>
@@ -439,6 +439,10 @@
 
                         <div class="flex items-center gap-2">
                             
+                                                        <a href="https://github.com/owensavala/web_dinas" target="_blank" rel="noopener noreferrer" class="px-2.5 py-1 rounded-lg bg-theme-inner hover:bg-theme-card text-theme-text border border-theme-border text-[11px] font-mono flex items-center gap-1 transition" title="Lihat Source Code di GitHub">
+                                <svg class="w-3 h-3 text-theme-text fill-current" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
+                                <span>Code</span>
+                            </a>
                                                     </div>
                     </div>
                 </div>
@@ -1313,6 +1317,334 @@
                         <div class="flex items-center gap-2">
                             
                                                         <a href="https://github.com/owensavala/radar-loker-bot" target="_blank" rel="noopener noreferrer" class="px-2.5 py-1 rounded-lg bg-theme-inner hover:bg-theme-card text-theme-text border border-theme-border text-[11px] font-mono flex items-center gap-1 transition" title="Lihat Source Code di GitHub">
+                                <svg class="w-3 h-3 text-theme-text fill-current" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
+                                <span>Code</span>
+                            </a>
+                                                    </div>
+                    </div>
+                </div>
+            </div>
+                        <div
+                x-show="filterProject('web-dev')"
+                x-transition:enter="transition ease-out duration-300"
+                x-transition:enter-start="opacity-0 transform scale-95"
+                x-transition:enter-end="opacity-100 transform scale-100"
+                class="bento-card rounded-2xl overflow-hidden flex flex-col justify-between group hover:-translate-y-1">
+
+                <div>
+                    <!-- Thumbnail with client pill -->
+                    <div class="relative h-56 bg-theme-inner overflow-hidden border-b border-theme-border">
+                        <img
+                            src="https://www.muhsattarbarakati.my.id/images/mockup-alnara-medica.webp"
+                            alt="Portal Terintegrasi Laboratorium Alnara Medica Surabaya &amp; Mini-LIS"
+                            width="1200"
+                            height="675"
+                            loading="lazy"
+                            decoding="async"
+                                                        class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/75 via-transparent to-transparent"></div>
+
+                        <div class="absolute top-3 left-3 px-3 py-1 rounded-lg bg-theme-card/95 backdrop-blur-md text-[11px] font-mono border border-theme-border font-bold text-theme-accent">
+                            Web Development &amp; SaaS
+                        </div>
+
+                                                <div class="absolute bottom-3 left-3 right-3 text-xs text-white truncate font-mono drop-shadow-md">
+                            <span class="text-white/70">Klien:</span> Laboratorium Klinis Alnara Medica Surabaya (D-III TLM)
+                        </div>
+                                            </div>
+
+                    <!-- Details -->
+                    <div class="p-6 space-y-3">
+                        <h3 class="text-xl font-bold text-theme-text group-hover:text-theme-accent transition leading-snug">
+                            <a href="https://www.muhsattarbarakati.my.id/project/laboratorium-alnara-medica-surabaya">
+                                Portal Terintegrasi Laboratorium Alnara Medica Surabaya &amp; Mini-LIS
+                            </a>
+                        </h3>
+                        <p class="text-theme-muted text-xs sm:text-sm line-clamp-3 leading-relaxed">
+                            Portal laboratorium klinis terintegrasi mencakup 11 layanan pemeriksaan medis, denah 2 lantai seluas 1.600 m², katalog 16 instrumen medis senilai Rp 13,08 M, Mini-LIS online, serta modul evaluasi akademik.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Footer with Tech Stack & CTAs -->
+                <div class="p-6 pt-0 border-t border-theme-border mt-4 space-y-4">
+                    <div class="flex flex-wrap gap-1.5 pt-3">
+                                                <span class="px-2 py-0.5 rounded-md bg-theme-inner text-theme-text text-[11px] font-mono border border-theme-border">
+                            Next.js / React
+                        </span>
+                                                <span class="px-2 py-0.5 rounded-md bg-theme-inner text-theme-text text-[11px] font-mono border border-theme-border">
+                            Tailwind CSS
+                        </span>
+                                                <span class="px-2 py-0.5 rounded-md bg-theme-inner text-theme-text text-[11px] font-mono border border-theme-border">
+                            Mini-LIS System
+                        </span>
+                                                <span class="px-2 py-0.5 rounded-md bg-theme-inner text-theme-text text-[11px] font-mono border border-theme-border">
+                            Clinical Portal
+                        </span>
+                                                                        <span class="px-2 py-0.5 rounded-md bg-theme-inner text-theme-muted text-[11px] font-mono border border-theme-border">
+                            +2
+                        </span>
+                                            </div>
+
+                    <!-- Action Link Row: Live Demo + GitHub + Case Study -->
+                    <div class="flex flex-wrap items-center justify-between gap-2 pt-2 border-t border-theme-border">
+                        <a href="https://www.muhsattarbarakati.my.id/project/laboratorium-alnara-medica-surabaya" class="inline-flex items-center gap-1.5 text-xs font-bold text-theme-accent hover:underline group-hover:translate-x-1 transition duration-200">
+                            <span>Studi Kasus</span>
+                            <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
+                        </a>
+
+                        <div class="flex items-center gap-2">
+                                                        <a href="https://alnara-medica-web.vercel.app" target="_blank" rel="noopener noreferrer" class="px-2.5 py-1 rounded-lg bg-theme-inner hover:bg-theme-card text-theme-text border border-theme-border text-[11px] font-mono flex items-center gap-1 transition" title="Buka Live Deployment di Vercel">
+                                <i data-lucide="globe" class="w-3 h-3 text-theme-accent"></i>
+                                <span>Demo</span>
+                            </a>
+                            
+                                                        <a href="https://github.com/owensavala/alnara-medica-web" target="_blank" rel="noopener noreferrer" class="px-2.5 py-1 rounded-lg bg-theme-inner hover:bg-theme-card text-theme-text border border-theme-border text-[11px] font-mono flex items-center gap-1 transition" title="Lihat Source Code di GitHub">
+                                <svg class="w-3 h-3 text-theme-text fill-current" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
+                                <span>Code</span>
+                            </a>
+                                                    </div>
+                    </div>
+                </div>
+            </div>
+                        <div
+                x-show="filterProject('web-dev')"
+                x-transition:enter="transition ease-out duration-300"
+                x-transition:enter-start="opacity-0 transform scale-95"
+                x-transition:enter-end="opacity-100 transform scale-100"
+                class="bento-card rounded-2xl overflow-hidden flex flex-col justify-between group hover:-translate-y-1">
+
+                <div>
+                    <!-- Thumbnail with client pill -->
+                    <div class="relative h-56 bg-theme-inner overflow-hidden border-b border-theme-border">
+                        <img
+                            src="https://www.muhsattarbarakati.my.id/images/mockup-ponpes-darussalam.webp"
+                            alt="Portal Resmi Multi-Unit &amp; PSB Online Pondok Pesantren Darussalam Bacan"
+                            width="1200"
+                            height="675"
+                            loading="lazy"
+                            decoding="async"
+                                                        class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/75 via-transparent to-transparent"></div>
+
+                        <div class="absolute top-3 left-3 px-3 py-1 rounded-lg bg-theme-card/95 backdrop-blur-md text-[11px] font-mono border border-theme-border font-bold text-theme-accent">
+                            Web Development &amp; SaaS
+                        </div>
+
+                                                <div class="absolute bottom-3 left-3 right-3 text-xs text-white truncate font-mono drop-shadow-md">
+                            <span class="text-white/70">Klien:</span> Pondok Pesantren Darussalam Bacan (Halmahera Selatan)
+                        </div>
+                                            </div>
+
+                    <!-- Details -->
+                    <div class="p-6 space-y-3">
+                        <h3 class="text-xl font-bold text-theme-text group-hover:text-theme-accent transition leading-snug">
+                            <a href="https://www.muhsattarbarakati.my.id/project/portal-ponpes-darussalam-bacan">
+                                Portal Resmi Multi-Unit &amp; PSB Online Pondok Pesantren Darussalam Bacan
+                            </a>
+                        </h3>
+                        <p class="text-theme-muted text-xs sm:text-sm line-clamp-3 leading-relaxed">
+                            Portal informasi resmi multi-unit pendidikan dan sistem Pendaftaran Santri Baru (PSB) Online untuk Pondok Pesantren Darussalam Bacan yang cepat, informatif, dan responsif di smartphone wali santri.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Footer with Tech Stack & CTAs -->
+                <div class="p-6 pt-0 border-t border-theme-border mt-4 space-y-4">
+                    <div class="flex flex-wrap gap-1.5 pt-3">
+                                                <span class="px-2 py-0.5 rounded-md bg-theme-inner text-theme-text text-[11px] font-mono border border-theme-border">
+                            Next.js / React
+                        </span>
+                                                <span class="px-2 py-0.5 rounded-md bg-theme-inner text-theme-text text-[11px] font-mono border border-theme-border">
+                            Tailwind CSS
+                        </span>
+                                                <span class="px-2 py-0.5 rounded-md bg-theme-inner text-theme-text text-[11px] font-mono border border-theme-border">
+                            PSB Online
+                        </span>
+                                                <span class="px-2 py-0.5 rounded-md bg-theme-inner text-theme-text text-[11px] font-mono border border-theme-border">
+                            CMS Berita Dinamis
+                        </span>
+                                                                        <span class="px-2 py-0.5 rounded-md bg-theme-inner text-theme-muted text-[11px] font-mono border border-theme-border">
+                            +2
+                        </span>
+                                            </div>
+
+                    <!-- Action Link Row: Live Demo + GitHub + Case Study -->
+                    <div class="flex flex-wrap items-center justify-between gap-2 pt-2 border-t border-theme-border">
+                        <a href="https://www.muhsattarbarakati.my.id/project/portal-ponpes-darussalam-bacan" class="inline-flex items-center gap-1.5 text-xs font-bold text-theme-accent hover:underline group-hover:translate-x-1 transition duration-200">
+                            <span>Studi Kasus</span>
+                            <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
+                        </a>
+
+                        <div class="flex items-center gap-2">
+                                                        <a href="https://web-ponpes-darusalam.vercel.app" target="_blank" rel="noopener noreferrer" class="px-2.5 py-1 rounded-lg bg-theme-inner hover:bg-theme-card text-theme-text border border-theme-border text-[11px] font-mono flex items-center gap-1 transition" title="Buka Live Deployment di Vercel">
+                                <i data-lucide="globe" class="w-3 h-3 text-theme-accent"></i>
+                                <span>Demo</span>
+                            </a>
+                            
+                                                        <a href="https://github.com/owensavala/web-ponpes-darusalam" target="_blank" rel="noopener noreferrer" class="px-2.5 py-1 rounded-lg bg-theme-inner hover:bg-theme-card text-theme-text border border-theme-border text-[11px] font-mono flex items-center gap-1 transition" title="Lihat Source Code di GitHub">
+                                <svg class="w-3 h-3 text-theme-text fill-current" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
+                                <span>Code</span>
+                            </a>
+                                                    </div>
+                    </div>
+                </div>
+            </div>
+                        <div
+                x-show="filterProject('web-dev')"
+                x-transition:enter="transition ease-out duration-300"
+                x-transition:enter-start="opacity-0 transform scale-95"
+                x-transition:enter-end="opacity-100 transform scale-100"
+                class="bento-card rounded-2xl overflow-hidden flex flex-col justify-between group hover:-translate-y-1">
+
+                <div>
+                    <!-- Thumbnail with client pill -->
+                    <div class="relative h-56 bg-theme-inner overflow-hidden border-b border-theme-border">
+                        <img
+                            src="https://www.muhsattarbarakati.my.id/images/mockup-kampus-unsan.webp"
+                            alt="Portal Resmi Kampus Universitas Nurul Hasan Bacan (UNSAN)"
+                            width="1200"
+                            height="675"
+                            loading="lazy"
+                            decoding="async"
+                                                        class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/75 via-transparent to-transparent"></div>
+
+                        <div class="absolute top-3 left-3 px-3 py-1 rounded-lg bg-theme-card/95 backdrop-blur-md text-[11px] font-mono border border-theme-border font-bold text-theme-accent">
+                            Web Development &amp; SaaS
+                        </div>
+
+                                                <div class="absolute bottom-3 left-3 right-3 text-xs text-white truncate font-mono drop-shadow-md">
+                            <span class="text-white/70">Klien:</span> Universitas Nurul Hasan (UNSAN) Bacan, Maluku Utara
+                        </div>
+                                            </div>
+
+                    <!-- Details -->
+                    <div class="p-6 space-y-3">
+                        <h3 class="text-xl font-bold text-theme-text group-hover:text-theme-accent transition leading-snug">
+                            <a href="https://www.muhsattarbarakati.my.id/project/portal-kampus-unsan-bacan">
+                                Portal Resmi Kampus Universitas Nurul Hasan Bacan (UNSAN)
+                            </a>
+                        </h3>
+                        <p class="text-theme-muted text-xs sm:text-sm line-clamp-3 leading-relaxed">
+                            Website portal akademik resmi Universitas Nurul Hasan Bacan yang menyajikan informasi fakultas, program studi, penerimaan mahasiswa baru, dan layanan informasi kampus secara modern.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Footer with Tech Stack & CTAs -->
+                <div class="p-6 pt-0 border-t border-theme-border mt-4 space-y-4">
+                    <div class="flex flex-wrap gap-1.5 pt-3">
+                                                <span class="px-2 py-0.5 rounded-md bg-theme-inner text-theme-text text-[11px] font-mono border border-theme-border">
+                            Modern Web App
+                        </span>
+                                                <span class="px-2 py-0.5 rounded-md bg-theme-inner text-theme-text text-[11px] font-mono border border-theme-border">
+                            Tailwind CSS
+                        </span>
+                                                <span class="px-2 py-0.5 rounded-md bg-theme-inner text-theme-text text-[11px] font-mono border border-theme-border">
+                            Academic Portal
+                        </span>
+                                                <span class="px-2 py-0.5 rounded-md bg-theme-inner text-theme-text text-[11px] font-mono border border-theme-border">
+                            Responsive UI
+                        </span>
+                                                                        <span class="px-2 py-0.5 rounded-md bg-theme-inner text-theme-muted text-[11px] font-mono border border-theme-border">
+                            +1
+                        </span>
+                                            </div>
+
+                    <!-- Action Link Row: Live Demo + GitHub + Case Study -->
+                    <div class="flex flex-wrap items-center justify-between gap-2 pt-2 border-t border-theme-border">
+                        <a href="https://www.muhsattarbarakati.my.id/project/portal-kampus-unsan-bacan" class="inline-flex items-center gap-1.5 text-xs font-bold text-theme-accent hover:underline group-hover:translate-x-1 transition duration-200">
+                            <span>Studi Kasus</span>
+                            <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
+                        </a>
+
+                        <div class="flex items-center gap-2">
+                                                        <a href="https://campus-portal-eosin.vercel.app" target="_blank" rel="noopener noreferrer" class="px-2.5 py-1 rounded-lg bg-theme-inner hover:bg-theme-card text-theme-text border border-theme-border text-[11px] font-mono flex items-center gap-1 transition" title="Buka Live Deployment di Vercel">
+                                <i data-lucide="globe" class="w-3 h-3 text-theme-accent"></i>
+                                <span>Demo</span>
+                            </a>
+                            
+                                                    </div>
+                    </div>
+                </div>
+            </div>
+                        <div
+                x-show="filterProject('automation-ai')"
+                x-transition:enter="transition ease-out duration-300"
+                x-transition:enter-start="opacity-0 transform scale-95"
+                x-transition:enter-end="opacity-100 transform scale-100"
+                class="bento-card rounded-2xl overflow-hidden flex flex-col justify-between group hover:-translate-y-1">
+
+                <div>
+                    <!-- Thumbnail with client pill -->
+                    <div class="relative h-56 bg-theme-inner overflow-hidden border-b border-theme-border">
+                        <img
+                            src="https://www.muhsattarbarakati.my.id/images/mockup-omnipdf-suite.webp"
+                            alt="OmniPDF Offline: 28 Alat Pengolahan PDF Lengkap (100% Client-Side)"
+                            width="1200"
+                            height="675"
+                            loading="lazy"
+                            decoding="async"
+                                                        class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/75 via-transparent to-transparent"></div>
+
+                        <div class="absolute top-3 left-3 px-3 py-1 rounded-lg bg-theme-card/95 backdrop-blur-md text-[11px] font-mono border border-theme-border font-bold text-theme-accent">
+                            Otomatisasi &amp; AI Agent
+                        </div>
+
+                                                <div class="absolute bottom-3 left-3 right-3 text-xs text-white truncate font-mono drop-shadow-md">
+                            <span class="text-white/70">Klien:</span> Produk Utilitas Publik Open Source (Railway Cloud)
+                        </div>
+                                            </div>
+
+                    <!-- Details -->
+                    <div class="p-6 space-y-3">
+                        <h3 class="text-xl font-bold text-theme-text group-hover:text-theme-accent transition leading-snug">
+                            <a href="https://www.muhsattarbarakati.my.id/project/omnipdf-offline-suite-railway">
+                                OmniPDF Offline: 28 Alat Pengolahan PDF Lengkap (100% Client-Side)
+                            </a>
+                        </h3>
+                        <p class="text-theme-muted text-xs sm:text-sm line-clamp-3 leading-relaxed">
+                            Suite pengolahan dokumen PDF lengkap berisi 28 alat (merge, split, compress, convert, proteksi, watermark, dll.) yang memproses file 100% offline/lokal di browser demi privasi dokumen maksimal.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Footer with Tech Stack & CTAs -->
+                <div class="p-6 pt-0 border-t border-theme-border mt-4 space-y-4">
+                    <div class="flex flex-wrap gap-1.5 pt-3">
+                                                <span class="px-2 py-0.5 rounded-md bg-theme-inner text-theme-text text-[11px] font-mono border border-theme-border">
+                            Web PDF Engine
+                        </span>
+                                                <span class="px-2 py-0.5 rounded-md bg-theme-inner text-theme-text text-[11px] font-mono border border-theme-border">
+                            28 PDF Tools
+                        </span>
+                                                <span class="px-2 py-0.5 rounded-md bg-theme-inner text-theme-text text-[11px] font-mono border border-theme-border">
+                            100% Privacy Offline
+                        </span>
+                                                <span class="px-2 py-0.5 rounded-md bg-theme-inner text-theme-text text-[11px] font-mono border border-theme-border">
+                            Railway Cloud
+                        </span>
+                                                                        <span class="px-2 py-0.5 rounded-md bg-theme-inner text-theme-muted text-[11px] font-mono border border-theme-border">
+                            +2
+                        </span>
+                                            </div>
+
+                    <!-- Action Link Row: Live Demo + GitHub + Case Study -->
+                    <div class="flex flex-wrap items-center justify-between gap-2 pt-2 border-t border-theme-border">
+                        <a href="https://www.muhsattarbarakati.my.id/project/omnipdf-offline-suite-railway" class="inline-flex items-center gap-1.5 text-xs font-bold text-theme-accent hover:underline group-hover:translate-x-1 transition duration-200">
+                            <span>Studi Kasus</span>
+                            <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
+                        </a>
+
+                        <div class="flex items-center gap-2">
+                                                        <a href="https://omnidpf-suite-production.up.railway.app" target="_blank" rel="noopener noreferrer" class="px-2.5 py-1 rounded-lg bg-theme-inner hover:bg-theme-card text-theme-text border border-theme-border text-[11px] font-mono flex items-center gap-1 transition" title="Buka Live Deployment di Vercel">
+                                <i data-lucide="globe" class="w-3 h-3 text-theme-accent"></i>
+                                <span>Demo</span>
+                            </a>
+                            
+                                                        <a href="https://github.com/owensavala/omnidpf-suite" target="_blank" rel="noopener noreferrer" class="px-2.5 py-1 rounded-lg bg-theme-inner hover:bg-theme-card text-theme-text border border-theme-border text-[11px] font-mono flex items-center gap-1 transition" title="Lihat Source Code di GitHub">
                                 <svg class="w-3 h-3 text-theme-text fill-current" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
                                 <span>Code</span>
                             </a>

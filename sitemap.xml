@@ -1,85 +1,109 @@
 <?xml version="1.0" encoding="UTF-8"?><urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
         <loc>https://www.muhsattarbarakati.my.id</loc>
-        <lastmod>2026-11-25T20:53:40+00:00</lastmod>
+        <lastmod>2026-11-25T21:16:37+00:00</lastmod>
         <changefreq>weekly</changefreq>
         <priority>1.0</priority>
     </url>
     <url>
         <loc>https://www.muhsattarbarakati.my.id/about</loc>
-        <lastmod>2026-11-25T20:53:40+00:00</lastmod>
+        <lastmod>2026-11-25T21:16:37+00:00</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.9</priority>
     </url>
         <url>
         <loc>https://www.muhsattarbarakati.my.id/project/web-dinas-kebudayaan-kota-ternate</loc>
-        <lastmod>2026-11-25T20:53:25+00:00</lastmod>
+        <lastmod>2026-11-25T21:16:36+00:00</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
     </url>
         <url>
         <loc>https://www.muhsattarbarakati.my.id/project/implementasi-pcc-mikrotik-mis-integral-hidayatullah</loc>
-        <lastmod>2026-11-25T20:53:25+00:00</lastmod>
+        <lastmod>2026-11-25T21:16:36+00:00</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
     </url>
         <url>
         <loc>https://www.muhsattarbarakati.my.id/project/starlink-voucher-wifi-bacan-kayoa-subaim</loc>
-        <lastmod>2026-11-25T20:53:25+00:00</lastmod>
+        <lastmod>2026-11-25T21:16:36+00:00</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
     </url>
         <url>
         <loc>https://www.muhsattarbarakati.my.id/project/servis-panggilan-msb-rekondisi-lab</loc>
-        <lastmod>2026-11-25T20:53:25+00:00</lastmod>
+        <lastmod>2026-11-25T21:16:36+00:00</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
     </url>
         <url>
         <loc>https://www.muhsattarbarakati.my.id/project/portal-sekolah-pro</loc>
-        <lastmod>2026-11-25T20:53:25+00:00</lastmod>
+        <lastmod>2026-11-25T21:16:36+00:00</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
     </url>
         <url>
         <loc>https://www.muhsattarbarakati.my.id/project/smart-cbt-pro</loc>
-        <lastmod>2026-11-25T20:53:25+00:00</lastmod>
+        <lastmod>2026-11-25T21:16:36+00:00</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
     </url>
         <url>
         <loc>https://www.muhsattarbarakati.my.id/project/web-desa-laravel</loc>
-        <lastmod>2026-11-25T20:53:25+00:00</lastmod>
+        <lastmod>2026-11-25T21:16:36+00:00</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
     </url>
         <url>
         <loc>https://www.muhsattarbarakati.my.id/project/undangan-nikah-digital-interaktif</loc>
-        <lastmod>2026-11-25T20:53:25+00:00</lastmod>
+        <lastmod>2026-11-25T21:16:36+00:00</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
     </url>
         <url>
         <loc>https://www.muhsattarbarakati.my.id/project/laundry-management-system-pos</loc>
-        <lastmod>2026-11-25T20:53:25+00:00</lastmod>
+        <lastmod>2026-11-25T21:16:36+00:00</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
     </url>
         <url>
         <loc>https://www.muhsattarbarakati.my.id/project/msb-hardware-diagnostic-tool</loc>
-        <lastmod>2026-11-25T20:53:25+00:00</lastmod>
+        <lastmod>2026-11-25T21:16:36+00:00</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
     </url>
         <url>
         <loc>https://www.muhsattarbarakati.my.id/project/amunisi-teknisi-lapangan</loc>
-        <lastmod>2026-11-25T20:53:25+00:00</lastmod>
+        <lastmod>2026-11-25T21:16:36+00:00</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
     </url>
         <url>
         <loc>https://www.muhsattarbarakati.my.id/project/radar-loker-bot-gemini-ai</loc>
-        <lastmod>2026-11-25T20:53:25+00:00</lastmod>
+        <lastmod>2026-11-25T21:16:36+00:00</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+        <url>
+        <loc>https://www.muhsattarbarakati.my.id/project/laboratorium-alnara-medica-surabaya</loc>
+        <lastmod>2026-11-25T21:16:36+00:00</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+        <url>
+        <loc>https://www.muhsattarbarakati.my.id/project/portal-ponpes-darussalam-bacan</loc>
+        <lastmod>2026-11-25T21:16:36+00:00</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+        <url>
+        <loc>https://www.muhsattarbarakati.my.id/project/portal-kampus-unsan-bacan</loc>
+        <lastmod>2026-11-25T21:16:36+00:00</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+        <url>
+        <loc>https://www.muhsattarbarakati.my.id/project/omnipdf-offline-suite-railway</loc>
+        <lastmod>2026-11-25T21:16:36+00:00</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
     </url>
