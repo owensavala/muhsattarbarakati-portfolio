@@ -149,7 +149,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,700;0,9..144,800;1,9..144,500;1,9..144,700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
 
     <!-- Compiled Tailwind v4 + Bundled Alpine.js & Tree-shaken Lucide Icons via Vite -->
-    <link rel="preload" as="style" href="https://www.muhsattarbarakati.my.id/build/assets/app-DeY_yuM5.css" /><link rel="modulepreload" as="script" href="https://www.muhsattarbarakati.my.id/build/assets/app-sMoA2qVv.js" /><link rel="stylesheet" href="https://www.muhsattarbarakati.my.id/build/assets/app-DeY_yuM5.css" /><script type="module" src="https://www.muhsattarbarakati.my.id/build/assets/app-sMoA2qVv.js"></script></head>
+    <link rel="preload" as="style" href="https://www.muhsattarbarakati.my.id/build/assets/app-BH1e0zsT.css" /><link rel="modulepreload" as="script" href="https://www.muhsattarbarakati.my.id/build/assets/app-CtVmBmhV.js" /><link rel="stylesheet" href="https://www.muhsattarbarakati.my.id/build/assets/app-BH1e0zsT.css" /><script type="module" src="https://www.muhsattarbarakati.my.id/build/assets/app-CtVmBmhV.js"></script></head>
 <body
     x-data="{
         currentTheme: localStorage.getItem('msb_theme') || 'cream-mocha',
@@ -158,11 +158,18 @@
         scrollProgress: 0,
         toastMessage: '',
         toastVisible: false,
-        toggleTheme() {
-            this.currentTheme = this.currentTheme === 'cream-mocha' ? 'noir-gold' : 'cream-mocha';
-            document.documentElement.setAttribute('data-theme', this.currentTheme);
-            localStorage.setItem('msb_theme', this.currentTheme);
-            this.$nextTick(() => { if (window.renderIcons) window.renderIcons(); });
+        toggleTheme(event) {
+            const apply = () => {
+                this.currentTheme = this.currentTheme === 'cream-mocha' ? 'noir-gold' : 'cream-mocha';
+                document.documentElement.setAttribute('data-theme', this.currentTheme);
+                localStorage.setItem('msb_theme', this.currentTheme);
+                this.$nextTick(() => { if (window.renderIcons) window.renderIcons(); });
+            };
+            if (window.switchThemeWithRipple) {
+                window.switchThemeWithRipple(event, apply);
+            } else {
+                apply();
+            }
         },
         copyEmail() {
             if (navigator.clipboard) {
@@ -220,7 +227,7 @@
                 <!-- Theme Switcher Button -->
                 <button
                     type="button"
-                    @click="toggleTheme()"
+                    @click="toggleTheme($event)"
                     aria-label="Ganti Tema Visual antara Cream Mocha dan Noir Gold"
                     class="flex items-center gap-2 px-2.5 sm:px-3 py-2 rounded-xl border border-theme-border bg-theme-inner hover:bg-theme-card text-xs font-mono font-bold transition duration-300 shadow-sm group cursor-pointer"
                     title="Ganti Tema Visual (Cream Mocha ↔ Noir Gold)">

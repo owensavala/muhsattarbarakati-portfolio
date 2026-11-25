@@ -149,7 +149,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,700;0,9..144,800;1,9..144,500;1,9..144,700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
 
     <!-- Compiled Tailwind v4 + Bundled Alpine.js & Tree-shaken Lucide Icons via Vite -->
-    <link rel="preload" as="style" href="https://www.muhsattarbarakati.my.id/build/assets/app-DeY_yuM5.css" /><link rel="modulepreload" as="script" href="https://www.muhsattarbarakati.my.id/build/assets/app-sMoA2qVv.js" /><link rel="stylesheet" href="https://www.muhsattarbarakati.my.id/build/assets/app-DeY_yuM5.css" /><script type="module" src="https://www.muhsattarbarakati.my.id/build/assets/app-sMoA2qVv.js"></script></head>
+    <link rel="preload" as="style" href="https://www.muhsattarbarakati.my.id/build/assets/app-BH1e0zsT.css" /><link rel="modulepreload" as="script" href="https://www.muhsattarbarakati.my.id/build/assets/app-CtVmBmhV.js" /><link rel="stylesheet" href="https://www.muhsattarbarakati.my.id/build/assets/app-BH1e0zsT.css" /><script type="module" src="https://www.muhsattarbarakati.my.id/build/assets/app-CtVmBmhV.js"></script></head>
 <body
     x-data="{
         currentTheme: localStorage.getItem('msb_theme') || 'cream-mocha',
@@ -158,11 +158,18 @@
         scrollProgress: 0,
         toastMessage: '',
         toastVisible: false,
-        toggleTheme() {
-            this.currentTheme = this.currentTheme === 'cream-mocha' ? 'noir-gold' : 'cream-mocha';
-            document.documentElement.setAttribute('data-theme', this.currentTheme);
-            localStorage.setItem('msb_theme', this.currentTheme);
-            this.$nextTick(() => { if (window.renderIcons) window.renderIcons(); });
+        toggleTheme(event) {
+            const apply = () => {
+                this.currentTheme = this.currentTheme === 'cream-mocha' ? 'noir-gold' : 'cream-mocha';
+                document.documentElement.setAttribute('data-theme', this.currentTheme);
+                localStorage.setItem('msb_theme', this.currentTheme);
+                this.$nextTick(() => { if (window.renderIcons) window.renderIcons(); });
+            };
+            if (window.switchThemeWithRipple) {
+                window.switchThemeWithRipple(event, apply);
+            } else {
+                apply();
+            }
         },
         copyEmail() {
             if (navigator.clipboard) {
@@ -220,7 +227,7 @@
                 <!-- Theme Switcher Button -->
                 <button
                     type="button"
-                    @click="toggleTheme()"
+                    @click="toggleTheme($event)"
                     aria-label="Ganti Tema Visual antara Cream Mocha dan Noir Gold"
                     class="flex items-center gap-2 px-2.5 sm:px-3 py-2 rounded-xl border border-theme-border bg-theme-inner hover:bg-theme-card text-xs font-mono font-bold transition duration-300 shadow-sm group cursor-pointer"
                     title="Ganti Tema Visual (Cream Mocha ↔ Noir Gold)">
@@ -352,39 +359,39 @@
                     </button>
                 </div>
 
-                <!-- Key Milestones Strip -->
-                <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 pt-6 border-t border-theme-border">
+                <!-- Key Milestones Strip with Animated Counters -->
+                <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 pt-6 border-t border-theme-border hero-animate hero-delay-3">
                     <div class="p-3.5 rounded-2xl bg-theme-card border border-theme-border">
-                        <div class="text-xl sm:text-2xl font-black text-theme-accent font-mono">Rp 25 Jt</div>
+                        <div class="text-xl sm:text-2xl font-black text-theme-accent font-mono" data-count="25" data-prefix="Rp " data-suffix=" Jt">Rp 25 Jt</div>
                         <div class="text-[11px] text-theme-muted mt-0.5 font-medium">Kontrak Web Dinas</div>
                     </div>
                     <div class="p-3.5 rounded-2xl bg-theme-card border border-theme-border">
-                        <div class="text-xl sm:text-2xl font-black text-theme-text font-mono">16 Proyek</div>
+                        <div class="text-xl sm:text-2xl font-black text-theme-text font-mono" data-count="16" data-suffix=" Proyek">16 Proyek</div>
                         <div class="text-[11px] text-theme-muted mt-0.5 font-medium">Live &amp; Terverifikasi</div>
                     </div>
                     <div class="p-3.5 rounded-2xl bg-theme-card border border-theme-border">
-                        <div class="text-xl sm:text-2xl font-black text-theme-accent font-mono">50 Client</div>
+                        <div class="text-xl sm:text-2xl font-black text-theme-accent font-mono" data-count="50" data-suffix=" Client">50 Client</div>
                         <div class="text-[11px] text-theme-muted mt-0.5 font-medium">MikroTik PCC Ujian</div>
                     </div>
                     <div class="p-3.5 rounded-2xl bg-theme-card border border-theme-border">
-                        <div class="text-xl sm:text-2xl font-black text-theme-text font-mono">4+ Pulau</div>
+                        <div class="text-xl sm:text-2xl font-black text-theme-text font-mono" data-count="4" data-suffix="+ Pulau">4+ Pulau</div>
                         <div class="text-[11px] text-theme-muted mt-0.5 font-medium">Ternate, Bacan, Kayoa</div>
                     </div>
                 </div>
             </div>
 
-            <!-- Right Column: Framed Editorial Portrait & Trust Card -->
-            <div class="lg:col-span-5 reveal reveal-delay-1 is-visible">
-                <div class="bento-card rounded-3xl p-4 sm:p-5 relative overflow-hidden">
+            <!-- Right Column: Framed Editorial Portrait (Foto #1) with 3D Interactive Tilt -->
+            <div class="lg:col-span-5 hero-animate hero-delay-2">
+                <div class="bento-card portrait-tilt rounded-3xl p-4 sm:p-5 relative overflow-hidden">
                     <div class="relative rounded-2xl overflow-hidden aspect-[4/4.3] bg-theme-inner border border-theme-border">
                         <img
-                            src="https://www.muhsattarbarakati.my.id/images/sattar-portrait-operator.webp"
+                            src="https://www.muhsattarbarakati.my.id/images/sattar-hero-editorial.webp"
                             alt="Muh. Sattar Barakati (Owen) - Web Developer & Network Engineer Ternate"
-                            width="600"
-                            height="645"
+                            width="800"
+                            height="860"
                             fetchpriority="high"
                             decoding="async"
-                            class="w-full h-full object-cover object-top">
+                            class="w-full h-full object-cover object-center">
                         <div class="absolute inset-0 bg-gradient-to-t from-black/75 via-black/15 to-transparent"></div>
 
                         <!-- Top Floating Tag -->
@@ -509,7 +516,7 @@
                     <input
                         type="search"
                         x-model="searchQuery"
-                        placeholder="Cari proyek atau tech (Laravel, MikroTik, AI)..."
+                        placeholder="Cari proyek / Laravel / MikroTik..."
                         aria-label="Cari proyek atau teknologi"
                         class="w-full pl-10 pr-4 py-2.5 rounded-xl bg-theme-card border border-theme-border text-xs sm:text-sm text-theme-text placeholder:text-theme-muted focus:outline-none focus:border-theme-accent transition">
                 </div>
