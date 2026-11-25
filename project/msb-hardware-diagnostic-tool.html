@@ -70,6 +70,7 @@
                 "sameAs": "https://unkhair.ac.id"
             },
             "jobTitle": "Network Engineer & Web Developer",
+            "email": "mailto:sattarbarakati@gmail.com",
             "telephone": "+6285218403629",
             "url": "https://www.muhsattarbarakati.my.id",
             "image": "https://www.muhsattarbarakati.my.id/images/sattar-portrait-operator.jpg",
@@ -142,38 +143,65 @@
 }
     </script>
 
-    <!-- Google Fonts -->
+    <!-- Editorial Serif (Fraunces) + Clean Sans (Plus Jakarta Sans) + Mono (JetBrains Mono) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,700;0,9..144,800;1,9..144,500;1,9..144,700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
 
     <!-- Compiled Tailwind v4 + Bundled Alpine.js & Tree-shaken Lucide Icons via Vite -->
-    <link rel="preload" as="style" href="https://www.muhsattarbarakati.my.id/build/assets/app-BxRQIm_3.css" /><link rel="modulepreload" as="script" href="https://www.muhsattarbarakati.my.id/build/assets/app-D4GEzn-3.js" /><link rel="stylesheet" href="https://www.muhsattarbarakati.my.id/build/assets/app-BxRQIm_3.css" /><script type="module" src="https://www.muhsattarbarakati.my.id/build/assets/app-D4GEzn-3.js"></script></head>
+    <link rel="preload" as="style" href="https://www.muhsattarbarakati.my.id/build/assets/app-DeY_yuM5.css" /><link rel="modulepreload" as="script" href="https://www.muhsattarbarakati.my.id/build/assets/app-sMoA2qVv.js" /><link rel="stylesheet" href="https://www.muhsattarbarakati.my.id/build/assets/app-DeY_yuM5.css" /><script type="module" src="https://www.muhsattarbarakati.my.id/build/assets/app-sMoA2qVv.js"></script></head>
 <body
     x-data="{
         currentTheme: localStorage.getItem('msb_theme') || 'cream-mocha',
         mobileMenuOpen: false,
+        showScrollTop: false,
+        scrollProgress: 0,
+        toastMessage: '',
+        toastVisible: false,
         toggleTheme() {
             this.currentTheme = this.currentTheme === 'cream-mocha' ? 'noir-gold' : 'cream-mocha';
             document.documentElement.setAttribute('data-theme', this.currentTheme);
             localStorage.setItem('msb_theme', this.currentTheme);
             this.$nextTick(() => { if (window.renderIcons) window.renderIcons(); });
+        },
+        copyEmail() {
+            if (navigator.clipboard) {
+                navigator.clipboard.writeText('sattarbarakati@gmail.com');
+            }
+            this.toastMessage = 'Email sattarbarakati@gmail.com berhasil disalin!';
+            this.toastVisible = true;
+            setTimeout(() => { this.toastVisible = false; }, 2800);
+        },
+        onScroll() {
+            const scrollTop = window.scrollY || document.documentElement.scrollTop;
+            const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+            this.showScrollTop = scrollTop > 480;
+            this.scrollProgress = docHeight > 0 ? Math.min(100, Math.round((scrollTop / docHeight) * 100)) : 0;
         }
     }"
+    @scroll.window.passive="onScroll()"
     class="antialiased selection:bg-theme-accent selection:text-white min-h-screen flex flex-col justify-between"
     style="background-color: var(--bg-page); color: var(--text-primary);">
+
+    <!-- Subtle Editorial Paper / Metal Grain Overlay -->
+    <div class="editorial-grain" aria-hidden="true"></div>
+
+    <!-- Top Reading Progress Bar -->
+    <div class="fixed top-0 left-0 right-0 h-[3px] z-[70] pointer-events-none no-print">
+        <div class="h-full bg-theme-accent transition-all duration-150" :style="'width: ' + scrollProgress + '%'"></div>
+    </div>
 
     <!-- Top Navbar -->
     <header class="sticky top-0 z-50 backdrop-blur-md border-b border-theme-border" style="background-color: var(--nav-bg);">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between gap-3">
             <!-- Brand -->
             <a href="https://www.muhsattarbarakati.my.id" class="flex items-center gap-3 group shrink-0">
-                <div class="w-10 h-10 rounded-xl bg-theme-accent flex items-center justify-center font-black text-lg shadow-md group-hover:scale-105 transition duration-300">
+                <div class="w-10 h-10 rounded-xl bg-theme-accent flex items-center justify-center font-black text-xs tracking-wider shadow-md group-hover:scale-105 transition duration-300">
                     MSB
                 </div>
                 <div>
-                    <span class="font-extrabold text-theme-text text-base block tracking-tight group-hover:text-theme-accent transition">MSB Masterpiece</span>
-                    <span class="text-xs text-theme-muted font-mono">Muh. Sattar Barakati</span>
+                    <span class="font-display font-bold text-theme-text text-lg leading-none block tracking-tight group-hover:text-theme-accent transition">MSB Masterpiece</span>
+                    <span class="text-[11px] text-theme-muted font-mono mt-0.5 block">Muh. Sattar Barakati</span>
                 </div>
             </a>
 
@@ -183,7 +211,7 @@
                     Katalog Proyek
                 </a>
                 <a href="https://www.muhsattarbarakati.my.id/about" class="text-theme-muted hover:text-theme-text transition">
-                    Tentang (Bento Profile)
+                    Tentang & CV (Bento)
                 </a>
             </nav>
 
@@ -247,8 +275,12 @@
                 Katalog Proyek
             </a>
             <a href="https://www.muhsattarbarakati.my.id/about" @click="mobileMenuOpen = false" class="block px-4 py-2.5 rounded-xl text-sm font-bold text-theme-text hover:bg-theme-inner transition">
-                Tentang (Bento Profile)
+                Tentang & CV (Bento Profile)
             </a>
+            <button type="button" @click="copyEmail(); mobileMenuOpen = false" class="w-full text-left flex items-center gap-2 px-4 py-2.5 rounded-xl text-sm font-semibold text-theme-text hover:bg-theme-inner border border-theme-border transition">
+                <i data-lucide="mail" class="w-4 h-4 text-theme-accent"></i>
+                <span>Salin Email (sattarbarakati@gmail.com)</span>
+            </button>
             <a href="https://wa.me/6285218403629?text=Halo%20Sattar%20(Owen),%20saya%20tertarik%20untuk%20diskusi%20proyek%20atau%20servis..." target="_blank" rel="noopener noreferrer" class="flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl bg-theme-accent font-bold text-sm shadow-md">
                 <i data-lucide="message-square" class="w-4 h-4"></i>
                 <span>Hubungi WhatsApp (0852-1840-3629)</span>
@@ -280,7 +312,7 @@
             </span>
         </div>
 
-        <h1 class="text-3xl sm:text-5xl font-black text-theme-text tracking-tight leading-tight">
+        <h1 class="font-display text-3xl sm:text-5xl font-bold text-theme-text tracking-tight leading-tight">
             MSB Hardware Diagnostic Tool (Titan Edition)
         </h1>
 
@@ -444,9 +476,12 @@
     <footer class="border-t border-theme-border bg-theme-card py-12 text-xs text-theme-muted font-mono mt-20">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-6">
             <div>
-                <p class="text-theme-text font-bold text-sm">Muh. Sattar Barakati (Owen)</p>
+                <p class="font-display text-theme-text font-bold text-base">Muh. Sattar Barakati (Owen)</p>
                 <p class="text-theme-muted mt-1">Amasing Bukit Sere, 02 Juli 2002 • Kalumata, Kota Ternate</p>
-                <p class="text-theme-muted mt-0.5">Operator MIS Integral Hidayatullah • WhatsApp/Telp: <span class="text-theme-accent font-bold">0852-1840-3629</span></p>
+                <p class="text-theme-muted mt-0.5">
+                    Email: <button type="button" @click="copyEmail()" class="text-theme-accent hover:underline font-bold cursor-pointer">sattarbarakati@gmail.com</button>
+                    • WA: <span class="text-theme-accent font-bold">0852-1840-3629</span>
+                </p>
             </div>
             <div class="flex items-center gap-6 text-sm">
                 <a href="https://www.linkedin.com/in/muh-sattar-barakati-16b48a2b6/" target="_blank" rel="noopener noreferrer" class="hover:text-theme-accent font-semibold transition">LinkedIn</a>
@@ -455,5 +490,38 @@
             </div>
         </div>
     </footer>
+
+    <!-- Floating Scroll-to-Top Button -->
+    <button
+        type="button"
+        x-show="showScrollTop"
+        x-cloak
+        x-transition:enter="transition ease-out duration-200"
+        x-transition:enter-start="opacity-0 translate-y-4"
+        x-transition:enter-end="opacity-100 translate-y-0"
+        x-transition:leave="transition ease-in duration-150"
+        x-transition:leave-start="opacity-100 translate-y-0"
+        x-transition:leave-end="opacity-0 translate-y-4"
+        @click="window.scrollTo({ top: 0, behavior: 'smooth' })"
+        aria-label="Kembali ke atas"
+        class="fixed bottom-6 right-6 z-40 w-11 h-11 rounded-full bg-theme-accent shadow-xl flex items-center justify-center hover:scale-110 transition cursor-pointer no-print">
+        <i data-lucide="arrow-up" class="w-5 h-5"></i>
+    </button>
+
+    <!-- Copy Email Toast -->
+    <div
+        x-show="toastVisible"
+        x-cloak
+        x-transition:enter="transition ease-out duration-200"
+        x-transition:enter-start="opacity-0 translate-y-4"
+        x-transition:enter-end="opacity-100 translate-y-0"
+        x-transition:leave="transition ease-in duration-150"
+        x-transition:leave-start="opacity-100 translate-y-0"
+        x-transition:leave-end="opacity-0 translate-y-4"
+        role="status"
+        class="fixed bottom-6 left-1/2 -translate-x-1/2 z-50 px-5 py-3 rounded-2xl bg-theme-card border border-theme-accent text-theme-text text-xs font-mono font-bold shadow-2xl flex items-center gap-2 no-print">
+        <i data-lucide="check-circle-2" class="w-4 h-4 text-theme-accent"></i>
+        <span x-text="toastMessage"></span>
+    </div>
 </body>
 </html>

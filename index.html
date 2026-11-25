@@ -70,6 +70,7 @@
                 "sameAs": "https://unkhair.ac.id"
             },
             "jobTitle": "Network Engineer & Web Developer",
+            "email": "mailto:sattarbarakati@gmail.com",
             "telephone": "+6285218403629",
             "url": "https://www.muhsattarbarakati.my.id",
             "image": "https://www.muhsattarbarakati.my.id/images/sattar-portrait-operator.jpg",
@@ -142,38 +143,65 @@
 }
     </script>
 
-    <!-- Google Fonts -->
+    <!-- Editorial Serif (Fraunces) + Clean Sans (Plus Jakarta Sans) + Mono (JetBrains Mono) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,700;0,9..144,800;1,9..144,500;1,9..144,700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
 
     <!-- Compiled Tailwind v4 + Bundled Alpine.js & Tree-shaken Lucide Icons via Vite -->
-    <link rel="preload" as="style" href="https://www.muhsattarbarakati.my.id/build/assets/app-BxRQIm_3.css" /><link rel="modulepreload" as="script" href="https://www.muhsattarbarakati.my.id/build/assets/app-D4GEzn-3.js" /><link rel="stylesheet" href="https://www.muhsattarbarakati.my.id/build/assets/app-BxRQIm_3.css" /><script type="module" src="https://www.muhsattarbarakati.my.id/build/assets/app-D4GEzn-3.js"></script></head>
+    <link rel="preload" as="style" href="https://www.muhsattarbarakati.my.id/build/assets/app-DeY_yuM5.css" /><link rel="modulepreload" as="script" href="https://www.muhsattarbarakati.my.id/build/assets/app-sMoA2qVv.js" /><link rel="stylesheet" href="https://www.muhsattarbarakati.my.id/build/assets/app-DeY_yuM5.css" /><script type="module" src="https://www.muhsattarbarakati.my.id/build/assets/app-sMoA2qVv.js"></script></head>
 <body
     x-data="{
         currentTheme: localStorage.getItem('msb_theme') || 'cream-mocha',
         mobileMenuOpen: false,
+        showScrollTop: false,
+        scrollProgress: 0,
+        toastMessage: '',
+        toastVisible: false,
         toggleTheme() {
             this.currentTheme = this.currentTheme === 'cream-mocha' ? 'noir-gold' : 'cream-mocha';
             document.documentElement.setAttribute('data-theme', this.currentTheme);
             localStorage.setItem('msb_theme', this.currentTheme);
             this.$nextTick(() => { if (window.renderIcons) window.renderIcons(); });
+        },
+        copyEmail() {
+            if (navigator.clipboard) {
+                navigator.clipboard.writeText('sattarbarakati@gmail.com');
+            }
+            this.toastMessage = 'Email sattarbarakati@gmail.com berhasil disalin!';
+            this.toastVisible = true;
+            setTimeout(() => { this.toastVisible = false; }, 2800);
+        },
+        onScroll() {
+            const scrollTop = window.scrollY || document.documentElement.scrollTop;
+            const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+            this.showScrollTop = scrollTop > 480;
+            this.scrollProgress = docHeight > 0 ? Math.min(100, Math.round((scrollTop / docHeight) * 100)) : 0;
         }
     }"
+    @scroll.window.passive="onScroll()"
     class="antialiased selection:bg-theme-accent selection:text-white min-h-screen flex flex-col justify-between"
     style="background-color: var(--bg-page); color: var(--text-primary);">
+
+    <!-- Subtle Editorial Paper / Metal Grain Overlay -->
+    <div class="editorial-grain" aria-hidden="true"></div>
+
+    <!-- Top Reading Progress Bar -->
+    <div class="fixed top-0 left-0 right-0 h-[3px] z-[70] pointer-events-none no-print">
+        <div class="h-full bg-theme-accent transition-all duration-150" :style="'width: ' + scrollProgress + '%'"></div>
+    </div>
 
     <!-- Top Navbar -->
     <header class="sticky top-0 z-50 backdrop-blur-md border-b border-theme-border" style="background-color: var(--nav-bg);">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between gap-3">
             <!-- Brand -->
             <a href="https://www.muhsattarbarakati.my.id" class="flex items-center gap-3 group shrink-0">
-                <div class="w-10 h-10 rounded-xl bg-theme-accent flex items-center justify-center font-black text-lg shadow-md group-hover:scale-105 transition duration-300">
+                <div class="w-10 h-10 rounded-xl bg-theme-accent flex items-center justify-center font-black text-xs tracking-wider shadow-md group-hover:scale-105 transition duration-300">
                     MSB
                 </div>
                 <div>
-                    <span class="font-extrabold text-theme-text text-base block tracking-tight group-hover:text-theme-accent transition">MSB Masterpiece</span>
-                    <span class="text-xs text-theme-muted font-mono">Muh. Sattar Barakati</span>
+                    <span class="font-display font-bold text-theme-text text-lg leading-none block tracking-tight group-hover:text-theme-accent transition">MSB Masterpiece</span>
+                    <span class="text-[11px] text-theme-muted font-mono mt-0.5 block">Muh. Sattar Barakati</span>
                 </div>
             </a>
 
@@ -183,7 +211,7 @@
                     Katalog Proyek
                 </a>
                 <a href="https://www.muhsattarbarakati.my.id/about" class="text-theme-muted hover:text-theme-text transition">
-                    Tentang (Bento Profile)
+                    Tentang & CV (Bento)
                 </a>
             </nav>
 
@@ -247,8 +275,12 @@
                 Katalog Proyek
             </a>
             <a href="https://www.muhsattarbarakati.my.id/about" @click="mobileMenuOpen = false" class="block px-4 py-2.5 rounded-xl text-sm font-bold text-theme-text hover:bg-theme-inner transition">
-                Tentang (Bento Profile)
+                Tentang & CV (Bento Profile)
             </a>
+            <button type="button" @click="copyEmail(); mobileMenuOpen = false" class="w-full text-left flex items-center gap-2 px-4 py-2.5 rounded-xl text-sm font-semibold text-theme-text hover:bg-theme-inner border border-theme-border transition">
+                <i data-lucide="mail" class="w-4 h-4 text-theme-accent"></i>
+                <span>Salin Email (sattarbarakati@gmail.com)</span>
+            </button>
             <a href="https://wa.me/6285218403629?text=Halo%20Sattar%20(Owen),%20saya%20tertarik%20untuk%20diskusi%20proyek%20atau%20servis..." target="_blank" rel="noopener noreferrer" class="flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl bg-theme-accent font-bold text-sm shadow-md">
                 <i data-lucide="message-square" class="w-4 h-4"></i>
                 <span>Hubungi WhatsApp (0852-1840-3629)</span>
@@ -260,124 +292,281 @@
     <main class="flex-1">
         <div x-data="{
     activeCategory: 'all',
-    filterProject(slug) {
-        return this.activeCategory === 'all' || this.activeCategory === slug;
+    searchQuery: '',
+    showAll: false,
+    matchesProject(slug, haystack, index) {
+        const catOk = this.activeCategory === 'all' || this.activeCategory === slug;
+        const q = this.searchQuery.trim().toLowerCase();
+        const searchOk = q === '' || haystack.toLowerCase().includes(q);
+        if (!catOk || !searchOk) return false;
+        if (this.activeCategory === 'all' && q === '' && !this.showAll) {
+            return index < 6;
+        }
+        return true;
     }
 }" class="space-y-16">
 
-    <!-- HERO SECTION: Dynamic Dual-Theme Problem-Solver Headline -->
-    <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-14 lg:pt-20 pb-6">
-        <div class="max-w-4xl space-y-6">
-            <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-xs font-semibold bg-theme-card text-theme-accent border border-theme-border">
-                <span class="w-2 h-2 rounded-full bg-theme-accent animate-ping"></span>
-                <span>Open for Projects & Field IT Engagements (Ternate & Kepulauan)</span>
+    <!-- HERO SECTION: 2-Column Editorial Layout with Portrait & Executive CTAs -->
+    <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-12 lg:pt-16 pb-4">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-center">
+
+            <!-- Left Column: Editorial Headline & CTAs -->
+            <div class="lg:col-span-7 space-y-6 reveal is-visible">
+                <!-- Fixed 2-layer Live Ping Badge -->
+                <div class="inline-flex items-center gap-2.5 px-3.5 py-1.5 rounded-full text-xs font-semibold bg-theme-card text-theme-accent border border-theme-border">
+                    <span class="relative flex h-2.5 w-2.5 shrink-0">
+                        <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-theme-accent opacity-75"></span>
+                        <span class="relative inline-flex rounded-full h-2.5 w-2.5 bg-theme-accent"></span>
+                    </span>
+                    <span>Tersedia untuk Proyek Web, Jaringan & Remote Work</span>
+                </div>
+
+                <h1 class="font-display text-4xl sm:text-5xl lg:text-[3.75rem] font-bold text-theme-text tracking-tight leading-[1.08]">
+                    Membangun Infrastruktur Digital Maluku Utara. <br>
+                    <span class="text-gradient-accent italic font-semibold">
+                        Dari Web SaaS Hingga Arsitektur Jaringan.
+                    </span>
+                </h1>
+
+                <p class="text-base sm:text-lg text-theme-text/80 max-w-2xl leading-relaxed">
+                    Portofolio resmi <strong>Muh. Sattar Barakati (Owen)</strong> — Full-Stack Web Developer &amp; Field Network Engineer berbasis di Ternate. Menghubungkan rekayasa perangkat lunak modern (<em>Laravel, Next.js, React, AI</em>) dengan eksekusi infrastruktur fisik lapangan (<em>MikroTik PCC, Starlink 3T, &amp; Lab ANBK</em>).
+                </p>
+
+                <!-- Executive Action Buttons -->
+                <div class="flex flex-wrap items-center gap-3 pt-1">
+                    <a href="#proyek" class="px-6 py-3.5 rounded-xl bg-theme-accent font-extrabold text-sm shadow-lg transition hover:scale-105 flex items-center gap-2">
+                        <span>Jelajahi Etalase Proyek</span>
+                        <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                    </a>
+                    <a href="https://www.muhsattarbarakati.my.id/about" class="px-5 py-3.5 rounded-xl bg-theme-card hover:bg-theme-inner text-theme-text font-bold text-sm border border-theme-border hover:border-theme-accent transition flex items-center gap-2">
+                        <i data-lucide="file-text" class="w-4 h-4 text-theme-accent"></i>
+                        <span>Profil &amp; CV Lengkap</span>
+                    </a>
+                    <button
+                        type="button"
+                        @click="copyEmail()"
+                        class="px-4 py-3.5 rounded-xl bg-theme-inner hover:bg-theme-card text-theme-text font-mono text-xs sm:text-sm border border-theme-border hover:border-theme-accent transition flex items-center gap-2 cursor-pointer"
+                        title="Salin alamat email untuk HRD / Penawaran Proyek">
+                        <i data-lucide="copy" class="w-4 h-4 text-theme-accent"></i>
+                        <span>Salin Email</span>
+                    </button>
+                </div>
+
+                <!-- Key Milestones Strip -->
+                <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 pt-6 border-t border-theme-border">
+                    <div class="p-3.5 rounded-2xl bg-theme-card border border-theme-border">
+                        <div class="text-xl sm:text-2xl font-black text-theme-accent font-mono">Rp 25 Jt</div>
+                        <div class="text-[11px] text-theme-muted mt-0.5 font-medium">Kontrak Web Dinas</div>
+                    </div>
+                    <div class="p-3.5 rounded-2xl bg-theme-card border border-theme-border">
+                        <div class="text-xl sm:text-2xl font-black text-theme-text font-mono">16 Proyek</div>
+                        <div class="text-[11px] text-theme-muted mt-0.5 font-medium">Live &amp; Terverifikasi</div>
+                    </div>
+                    <div class="p-3.5 rounded-2xl bg-theme-card border border-theme-border">
+                        <div class="text-xl sm:text-2xl font-black text-theme-accent font-mono">50 Client</div>
+                        <div class="text-[11px] text-theme-muted mt-0.5 font-medium">MikroTik PCC Ujian</div>
+                    </div>
+                    <div class="p-3.5 rounded-2xl bg-theme-card border border-theme-border">
+                        <div class="text-xl sm:text-2xl font-black text-theme-text font-mono">4+ Pulau</div>
+                        <div class="text-[11px] text-theme-muted mt-0.5 font-medium">Ternate, Bacan, Kayoa</div>
+                    </div>
+                </div>
             </div>
 
-            <h1 class="text-4xl sm:text-6xl lg:text-7xl font-black text-theme-text tracking-tight leading-[1.08]">
-                Membangun Infrastruktur Digital Maluku Utara. <br>
-                <span class="text-gradient-accent">
-                    Dari Web SaaS Hingga Arsitektur Jaringan.
-                </span>
-            </h1>
+            <!-- Right Column: Framed Editorial Portrait & Trust Card -->
+            <div class="lg:col-span-5 reveal reveal-delay-1 is-visible">
+                <div class="bento-card rounded-3xl p-4 sm:p-5 relative overflow-hidden">
+                    <div class="relative rounded-2xl overflow-hidden aspect-[4/4.3] bg-theme-inner border border-theme-border">
+                        <img
+                            src="https://www.muhsattarbarakati.my.id/images/sattar-portrait-operator.webp"
+                            alt="Muh. Sattar Barakati (Owen) - Web Developer & Network Engineer Ternate"
+                            width="600"
+                            height="645"
+                            fetchpriority="high"
+                            decoding="async"
+                            class="w-full h-full object-cover object-top">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/75 via-black/15 to-transparent"></div>
 
-            <p class="text-base sm:text-xl text-theme-text/80 max-w-3xl leading-relaxed">
-                Portofolio resmi <strong>Muh. Sattar Barakati (Owen)</strong>. Praktisi IT multidisiplin: teknisi servis panggilan harian sejak semester 5, operator sekolah perancang load balancing 50 laptop ujian, pembuat sistem web dinas Rp 25 juta, hingga installer internet satelit <strong>Starlink</strong> di pulau-pulau 3T (Bacan, Kayoa, Subaim).
+                        <!-- Top Floating Tag -->
+                        <div class="absolute top-3.5 left-3.5 px-3 py-1.5 rounded-xl bg-theme-card/90 backdrop-blur-md border border-theme-border text-[11px] font-mono font-bold text-theme-accent flex items-center gap-1.5">
+                            <i data-lucide="award" class="w-3.5 h-3.5"></i>
+                            <span>Kominfo DTS Certified</span>
+                        </div>
+
+                        <!-- Bottom Editorial Caption -->
+                        <div class="absolute bottom-4 left-4 right-4 text-white">
+                            <p class="font-display text-xl font-bold leading-tight">Muh. Sattar Barakati</p>
+                            <p class="text-xs font-mono text-white/80 mt-0.5 flex items-center gap-1.5">
+                                <i data-lucide="map-pin" class="w-3.5 h-3.5"></i>
+                                <span>Kota Ternate, Maluku Utara • S1 Informatika</span>
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Mini Quick Stack Footer inside Portrait Card -->
+                    <div class="mt-4 flex flex-wrap items-center justify-between gap-2 px-1 text-[11px] font-mono text-theme-muted">
+                        <span class="flex items-center gap-1.5 text-theme-text font-semibold">
+                            <i data-lucide="sparkles" class="w-3.5 h-3.5 text-theme-accent"></i>
+                            Laravel • React • MikroTik • Starlink
+                        </span>
+                        <a href="https://www.muhsattarbarakati.my.id/about" class="text-theme-accent font-bold hover:underline">
+                            Detail Profil →
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- TRUSTED BY / JEJAK INSTANSI STRIP -->
+        <div class="mt-12 pt-8 border-t border-theme-border reveal">
+            <p class="text-[11px] font-mono uppercase tracking-widest text-theme-muted text-center mb-4 font-semibold">
+                Pengalaman &amp; Jejak Implementasi di Instansi, Lembaga Pendidikan, &amp; Klien
             </p>
+            <div class="flex flex-wrap items-center justify-center gap-2.5 sm:gap-3">
+                                <span class="px-3.5 py-1.5 rounded-full bg-theme-card/75 border border-theme-border text-xs font-medium text-theme-text/85 flex items-center gap-1.5">
+                    <i data-lucide="building-2" class="w-3.5 h-3.5 text-theme-accent"></i>
+                    <span>Dinas Kebudayaan Kota Ternate</span>
+                </span>
+                                <span class="px-3.5 py-1.5 rounded-full bg-theme-card/75 border border-theme-border text-xs font-medium text-theme-text/85 flex items-center gap-1.5">
+                    <i data-lucide="building-2" class="w-3.5 h-3.5 text-theme-accent"></i>
+                    <span>MIS Integral Hidayatullah</span>
+                </span>
+                                <span class="px-3.5 py-1.5 rounded-full bg-theme-card/75 border border-theme-border text-xs font-medium text-theme-text/85 flex items-center gap-1.5">
+                    <i data-lucide="building-2" class="w-3.5 h-3.5 text-theme-accent"></i>
+                    <span>SMK Pertanian Modayama</span>
+                </span>
+                                <span class="px-3.5 py-1.5 rounded-full bg-theme-card/75 border border-theme-border text-xs font-medium text-theme-text/85 flex items-center gap-1.5">
+                    <i data-lucide="building-2" class="w-3.5 h-3.5 text-theme-accent"></i>
+                    <span>Universitas Nurul Hasan (UNSAN)</span>
+                </span>
+                                <span class="px-3.5 py-1.5 rounded-full bg-theme-card/75 border border-theme-border text-xs font-medium text-theme-text/85 flex items-center gap-1.5">
+                    <i data-lucide="building-2" class="w-3.5 h-3.5 text-theme-accent"></i>
+                    <span>Ponpes Darussalam Bacan</span>
+                </span>
+                                <span class="px-3.5 py-1.5 rounded-full bg-theme-card/75 border border-theme-border text-xs font-medium text-theme-text/85 flex items-center gap-1.5">
+                    <i data-lucide="building-2" class="w-3.5 h-3.5 text-theme-accent"></i>
+                    <span>Lab. Alnara Medica Surabaya</span>
+                </span>
+                                <span class="px-3.5 py-1.5 rounded-full bg-theme-card/75 border border-theme-border text-xs font-medium text-theme-text/85 flex items-center gap-1.5">
+                    <i data-lucide="building-2" class="w-3.5 h-3.5 text-theme-accent"></i>
+                    <span>Desa Kupal Halmahera Selatan</span>
+                </span>
+                            </div>
+        </div>
+    </section>
 
-            <div class="flex flex-wrap items-center gap-4 pt-2">
-                <a href="#proyek" class="px-6 py-3.5 rounded-xl bg-theme-accent font-extrabold text-sm shadow-lg transition hover:scale-105">
-                    Jelajahi Etalase Proyek
-                </a>
-                <a href="https://www.muhsattarbarakati.my.id/about" class="px-6 py-3.5 rounded-xl bg-theme-card hover:bg-theme-inner text-theme-text font-bold text-sm border border-theme-border hover:border-theme-accent transition flex items-center gap-2">
-                    <i data-lucide="user" class="w-4 h-4 text-theme-accent"></i>
-                    <span>Kisah & Bento Profile</span>
-                </a>
+    <!-- 3 PILAR LAYANAN / KOMPETENSI INTI -->
+    <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 reveal">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div class="bento-card rounded-2xl p-6 space-y-3 hover:-translate-y-1">
+                <div class="w-10 h-10 rounded-xl bg-theme-inner border border-theme-border flex items-center justify-center text-theme-accent">
+                    <i data-lucide="code-2" class="w-5 h-5"></i>
+                </div>
+                <h2 class="font-display text-xl font-bold text-theme-text">Full-Stack Web &amp; SaaS</h2>
+                <p class="text-xs sm:text-sm text-theme-muted leading-relaxed">
+                    Merancang portal dinas, sistem akademik sekolah/kampus, aplikasi klinis, hingga SaaS UMKM dengan Laravel, React/Next.js, Tailwind CSS, Vercel, &amp; Railway.
+                </p>
             </div>
 
-            <!-- Key Milestones Strip -->
-            <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 pt-8 border-t border-theme-border">
-                <div class="p-4 rounded-2xl bg-theme-card border border-theme-border">
-                    <div class="text-2xl font-black text-theme-accent font-mono">Rp 25 Jt</div>
-                    <div class="text-xs text-theme-muted mt-0.5 font-medium">Kontrak Web Dinas (5 Bulan Coding)</div>
+            <div class="bento-card rounded-2xl p-6 space-y-3 hover:-translate-y-1 reveal-delay-1">
+                <div class="w-10 h-10 rounded-xl bg-theme-inner border border-theme-border flex items-center justify-center text-theme-accent">
+                    <i data-lucide="server" class="w-5 h-5"></i>
                 </div>
-                <div class="p-4 rounded-2xl bg-theme-card border border-theme-border">
-                    <div class="text-2xl font-black text-theme-text font-mono">50 Client</div>
-                    <div class="text-xs text-theme-muted mt-0.5 font-medium">Stabil Ujian Sekolah (MikroTik PCC)</div>
+                <h2 class="font-display text-xl font-bold text-theme-text">Network, MikroTik &amp; Starlink</h2>
+                <p class="text-xs sm:text-sm text-theme-muted leading-relaxed">
+                    Konfigurasi Load Balancing PCC multi-ISP untuk 50+ client ujian, failover otomatis, sistem voucher hotspot desa, dan instalasi Starlink lintas pulau 3T.
+                </p>
+            </div>
+
+            <div class="bento-card rounded-2xl p-6 space-y-3 hover:-translate-y-1 reveal-delay-2">
+                <div class="w-10 h-10 rounded-xl bg-theme-inner border border-theme-border flex items-center justify-center text-theme-accent">
+                    <i data-lucide="wrench" class="w-5 h-5"></i>
                 </div>
-                <div class="p-4 rounded-2xl bg-theme-card border border-theme-border">
-                    <div class="text-2xl font-black text-theme-accent font-mono">Sem 5 - Kini</div>
-                    <div class="text-xs text-theme-muted mt-0.5 font-medium">Servis Panggilan Harian Aktif</div>
-                </div>
-                <div class="p-4 rounded-2xl bg-theme-card border border-theme-border">
-                    <div class="text-2xl font-black text-theme-text font-mono">4+ Wilayah</div>
-                    <div class="text-xs text-theme-muted mt-0.5 font-medium">Ternate, Bacan, Kayoa, Subaim</div>
-                </div>
+                <h2 class="font-display text-xl font-bold text-theme-text">Hardware, Lab ANBK &amp; AI Tools</h2>
+                <p class="text-xs sm:text-sm text-theme-muted leading-relaxed">
+                    Servis panggilan harian laptop/PC/printer, rekondisi lab komputer sekolah, utilitas diagnostik Python WMI, hingga otomasi bot berbasis Google Gemini AI.
+                </p>
             </div>
         </div>
     </section>
 
-    <!-- FILTERABLE PROJECT GRID (Alpine.js No-Reload Filtering) -->
-    <section id="proyek" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 space-y-8">
+    <!-- FILTERABLE & SEARCHABLE PROJECT GRID -->
+    <section id="proyek" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 space-y-8">
 
-        <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 border-b border-theme-border pb-6">
-            <div>
-                <span class="text-xs font-mono text-theme-accent uppercase tracking-wider block font-bold">SHOWCASE REKAYASA TEKNOLOGI</span>
-                <h2 class="text-2xl sm:text-3xl font-extrabold text-theme-text mt-1">Daftar Proyek & Implementasi</h2>
-                <p class="text-xs text-theme-muted mt-1">Studi kasus nyata penyelesaian masalah perangkat, jaringan, deployment Vercel, dan software open-source.</p>
+        <!-- Section Header + Live Search -->
+        <div class="space-y-5 border-b border-theme-border pb-6 reveal">
+            <div class="flex flex-col md:flex-row md:items-end justify-between gap-4">
+                <div>
+                    <span class="text-xs font-mono text-theme-accent uppercase tracking-wider block font-bold">SHOWCASE REKAYASA TEKNOLOGI</span>
+                    <h2 class="font-display text-3xl sm:text-4xl font-bold text-theme-text mt-1">Daftar Proyek &amp; Implementasi</h2>
+                    <p class="text-xs sm:text-sm text-theme-muted mt-1">Studi kasus nyata, deployment live Vercel &amp; Railway, serta perangkat lunak open-source.</p>
+                </div>
+
+                <!-- Live Search Box -->
+                <div class="relative w-full md:w-80">
+                    <i data-lucide="search" class="w-4 h-4 text-theme-muted absolute left-3.5 top-1/2 -translate-y-1/2 pointer-events-none"></i>
+                    <input
+                        type="search"
+                        x-model="searchQuery"
+                        placeholder="Cari proyek atau tech (Laravel, MikroTik, AI)..."
+                        aria-label="Cari proyek atau teknologi"
+                        class="w-full pl-10 pr-4 py-2.5 rounded-xl bg-theme-card border border-theme-border text-xs sm:text-sm text-theme-text placeholder:text-theme-muted focus:outline-none focus:border-theme-accent transition">
+                </div>
             </div>
 
-            <!-- Alpine.js Filter Buttons -->
-            <div class="flex flex-wrap items-center gap-2 p-1.5 rounded-2xl bg-theme-card border border-theme-border">
+            <!-- Clean 1-Row Concise Category Filter Pills -->
+                        <div class="flex items-center gap-2 overflow-x-auto pb-1">
                 <button
                     type="button"
                     @click="activeCategory = 'all'"
-                    :class="activeCategory === 'all' ? 'bg-theme-accent font-bold shadow-md' : 'text-theme-muted hover:text-theme-text'"
-                    class="px-4 py-2 rounded-xl text-xs font-semibold transition duration-200 cursor-pointer">
+                    :class="activeCategory === 'all' ? 'bg-theme-accent font-bold shadow-md' : 'bg-theme-card text-theme-muted hover:text-theme-text border border-theme-border'"
+                    class="px-4 py-2 rounded-xl text-xs font-semibold transition duration-200 whitespace-nowrap cursor-pointer">
                     Semua (16)
                 </button>
                                 <button
                     type="button"
                     @click="activeCategory = 'web-dev'"
-                    :class="activeCategory === 'web-dev' ? 'bg-theme-accent font-bold shadow-md' : 'text-theme-muted hover:text-theme-text'"
-                    class="px-4 py-2 rounded-xl text-xs font-semibold transition duration-200 cursor-pointer">
-                    Web Development &amp; SaaS (9)
+                    :class="activeCategory === 'web-dev' ? 'bg-theme-accent font-bold shadow-md' : 'bg-theme-card text-theme-muted hover:text-theme-text border border-theme-border'"
+                    class="px-4 py-2 rounded-xl text-xs font-semibold transition duration-200 whitespace-nowrap cursor-pointer">
+                    Web &amp; SaaS (9)
                 </button>
                                 <button
                     type="button"
                     @click="activeCategory = 'network-hardware'"
-                    :class="activeCategory === 'network-hardware' ? 'bg-theme-accent font-bold shadow-md' : 'text-theme-muted hover:text-theme-text'"
-                    class="px-4 py-2 rounded-xl text-xs font-semibold transition duration-200 cursor-pointer">
-                    Network &amp; Starlink Antar-Pulau (2)
+                    :class="activeCategory === 'network-hardware' ? 'bg-theme-accent font-bold shadow-md' : 'bg-theme-card text-theme-muted hover:text-theme-text border border-theme-border'"
+                    class="px-4 py-2 rounded-xl text-xs font-semibold transition duration-200 whitespace-nowrap cursor-pointer">
+                    Jaringan &amp; Starlink (2)
                 </button>
                                 <button
                     type="button"
                     @click="activeCategory = 'hardware-service'"
-                    :class="activeCategory === 'hardware-service' ? 'bg-theme-accent font-bold shadow-md' : 'text-theme-muted hover:text-theme-text'"
-                    class="px-4 py-2 rounded-xl text-xs font-semibold transition duration-200 cursor-pointer">
-                    Hardware, Lab &amp; Servis Panggilan (3)
+                    :class="activeCategory === 'hardware-service' ? 'bg-theme-accent font-bold shadow-md' : 'bg-theme-card text-theme-muted hover:text-theme-text border border-theme-border'"
+                    class="px-4 py-2 rounded-xl text-xs font-semibold transition duration-200 whitespace-nowrap cursor-pointer">
+                    Hardware &amp; Lab (3)
                 </button>
                                 <button
                     type="button"
                     @click="activeCategory = 'automation-ai'"
-                    :class="activeCategory === 'automation-ai' ? 'bg-theme-accent font-bold shadow-md' : 'text-theme-muted hover:text-theme-text'"
-                    class="px-4 py-2 rounded-xl text-xs font-semibold transition duration-200 cursor-pointer">
-                    Otomatisasi &amp; AI Agent (2)
+                    :class="activeCategory === 'automation-ai' ? 'bg-theme-accent font-bold shadow-md' : 'bg-theme-card text-theme-muted hover:text-theme-text border border-theme-border'"
+                    class="px-4 py-2 rounded-xl text-xs font-semibold transition duration-200 whitespace-nowrap cursor-pointer">
+                    AI &amp; Utilitas (2)
                 </button>
                             </div>
         </div>
 
         <!-- Dynamic Grid -->
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                        <div
-                x-show="filterProject('web-dev')"
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-7">
+                                    <div
+                x-show="matchesProject('web-dev', 'Sistem Informasi Web \u0026 CMS Dinas Kebudayaan Kota Ternate (Kontrak Rp 25 Juta) Dinas Kebudayaan Pemerintah Kota Ternate Milestone besar di Semester 7: Membangun portal resmi dan CMS admin mandiri untuk Dinas Kebudayaan Kota Ternate selama 5 bulan pengerjaan dengan koding manual murni sebelum era otomatisasi AI. Native PHP MySQL Relational DB Custom CMS Admin HTML5 \u0026 CSS3 JavaScript E-Government Portal', 0)"
                 x-transition:enter="transition ease-out duration-300"
                 x-transition:enter-start="opacity-0 transform scale-95"
                 x-transition:enter-end="opacity-100 transform scale-100"
-                class="bento-card rounded-2xl overflow-hidden flex flex-col justify-between group hover:-translate-y-1">
+                class="bento-card rounded-2xl overflow-hidden flex flex-col justify-between group hover:-translate-y-1.5">
 
                 <div>
                     <!-- Thumbnail with client pill -->
-                    <div class="relative h-56 bg-theme-inner overflow-hidden border-b border-theme-border">
+                    <div class="relative h-52 bg-theme-inner overflow-hidden border-b border-theme-border">
                         <img
                             src="https://www.muhsattarbarakati.my.id/images/mockup-web-dinas-real.webp"
                             alt="Sistem Informasi Web &amp; CMS Dinas Kebudayaan Kota Ternate (Kontrak Rp 25 Juta)"
@@ -385,11 +574,11 @@
                             height="675"
                             loading="eager"
                             decoding="async"
-                             fetchpriority="high"                             class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+                            class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
                         <div class="absolute inset-0 bg-gradient-to-t from-black/75 via-transparent to-transparent"></div>
 
                         <div class="absolute top-3 left-3 px-3 py-1 rounded-lg bg-theme-card/95 backdrop-blur-md text-[11px] font-mono border border-theme-border font-bold text-theme-accent">
-                            Web Development &amp; SaaS
+                            Web &amp; SaaS
                         </div>
 
                                                 <div class="absolute bottom-3 left-3 right-3 text-xs text-white truncate font-mono drop-shadow-md">
@@ -398,8 +587,8 @@
                                             </div>
 
                     <!-- Details -->
-                    <div class="p-6 space-y-3">
-                        <h3 class="text-xl font-bold text-theme-text group-hover:text-theme-accent transition leading-snug">
+                    <div class="p-6 space-y-2.5">
+                        <h3 class="font-display text-xl font-bold text-theme-text group-hover:text-theme-accent transition leading-snug">
                             <a href="https://www.muhsattarbarakati.my.id/project/web-dinas-kebudayaan-kota-ternate">
                                 Sistem Informasi Web &amp; CMS Dinas Kebudayaan Kota Ternate (Kontrak Rp 25 Juta)
                             </a>
@@ -411,7 +600,7 @@
                 </div>
 
                 <!-- Footer with Tech Stack & CTAs -->
-                <div class="p-6 pt-0 border-t border-theme-border mt-4 space-y-4">
+                <div class="p-6 pt-0 border-t border-theme-border mt-3 space-y-4">
                     <div class="flex flex-wrap gap-1.5 pt-3">
                                                 <span class="px-2 py-0.5 rounded-md bg-theme-inner text-theme-text text-[11px] font-mono border border-theme-border">
                             Native PHP
@@ -447,16 +636,16 @@
                     </div>
                 </div>
             </div>
-                        <div
-                x-show="filterProject('network-hardware')"
+                                    <div
+                x-show="matchesProject('network-hardware', 'Analisis Kualitas Jaringan Internet \u0026 Implementasi PCC MikroTik (50 Client Ujian) MIS Integral Hidayatullah Kota Ternate (Tempat Kerja Operator \u0026 Riset Skripsi) Implementasi rekayasa jaringan berbasis MikroTik saat menjabat operator di MIS Integral Hidayatullah Kota Ternate, mengeliminasi bottleneck hingga sanggup melayani 50 laptop client ujian serentak tanpa gangguan. MikroTik RouterOS PCC Load Balancing Automated Failover Bandwidth Queue Tree CBT Network Optimization VLAN Subnetting', 1)"
                 x-transition:enter="transition ease-out duration-300"
                 x-transition:enter-start="opacity-0 transform scale-95"
                 x-transition:enter-end="opacity-100 transform scale-100"
-                class="bento-card rounded-2xl overflow-hidden flex flex-col justify-between group hover:-translate-y-1">
+                class="bento-card rounded-2xl overflow-hidden flex flex-col justify-between group hover:-translate-y-1.5">
 
                 <div>
                     <!-- Thumbnail with client pill -->
-                    <div class="relative h-56 bg-theme-inner overflow-hidden border-b border-theme-border">
+                    <div class="relative h-52 bg-theme-inner overflow-hidden border-b border-theme-border">
                         <img
                             src="https://www.muhsattarbarakati.my.id/images/mockup-mikrotik-pcc.webp"
                             alt="Analisis Kualitas Jaringan Internet &amp; Implementasi PCC MikroTik (50 Client Ujian)"
@@ -464,11 +653,11 @@
                             height="675"
                             loading="eager"
                             decoding="async"
-                                                        class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+                            class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
                         <div class="absolute inset-0 bg-gradient-to-t from-black/75 via-transparent to-transparent"></div>
 
                         <div class="absolute top-3 left-3 px-3 py-1 rounded-lg bg-theme-card/95 backdrop-blur-md text-[11px] font-mono border border-theme-border font-bold text-theme-accent">
-                            Network &amp; Starlink Antar-Pulau
+                            Jaringan &amp; Starlink
                         </div>
 
                                                 <div class="absolute bottom-3 left-3 right-3 text-xs text-white truncate font-mono drop-shadow-md">
@@ -477,8 +666,8 @@
                                             </div>
 
                     <!-- Details -->
-                    <div class="p-6 space-y-3">
-                        <h3 class="text-xl font-bold text-theme-text group-hover:text-theme-accent transition leading-snug">
+                    <div class="p-6 space-y-2.5">
+                        <h3 class="font-display text-xl font-bold text-theme-text group-hover:text-theme-accent transition leading-snug">
                             <a href="https://www.muhsattarbarakati.my.id/project/implementasi-pcc-mikrotik-mis-integral-hidayatullah">
                                 Analisis Kualitas Jaringan Internet &amp; Implementasi PCC MikroTik (50 Client Ujian)
                             </a>
@@ -490,7 +679,7 @@
                 </div>
 
                 <!-- Footer with Tech Stack & CTAs -->
-                <div class="p-6 pt-0 border-t border-theme-border mt-4 space-y-4">
+                <div class="p-6 pt-0 border-t border-theme-border mt-3 space-y-4">
                     <div class="flex flex-wrap gap-1.5 pt-3">
                                                 <span class="px-2 py-0.5 rounded-md bg-theme-inner text-theme-text text-[11px] font-mono border border-theme-border">
                             MikroTik RouterOS
@@ -522,16 +711,16 @@
                     </div>
                 </div>
             </div>
-                        <div
-                x-show="filterProject('network-hardware')"
+                                    <div
+                x-show="matchesProject('network-hardware', 'Pemasangan Starlink \u0026 Sistem Voucher WiFi Kepulauan (Bacan, Kayoa, Subaim) Sekolah, Balai Desa \u0026 Warga Komersial (Kayoa, Bacan, Subaim) Penugasan lintas laut dari Ternate ke Bacan, kepulauan Kayoa (Pulau Siko, Pulau Gafi), hingga Subaim untuk instalasi internet satelit Starlink dan sistem billing hotspot voucher MikroTik. Starlink Gen 3 MikroTik Hotspot Mikhmon Voucher System Outdoor Shielded Cat6 Surge Arrester Long-range AP', 2)"
                 x-transition:enter="transition ease-out duration-300"
                 x-transition:enter-start="opacity-0 transform scale-95"
                 x-transition:enter-end="opacity-100 transform scale-100"
-                class="bento-card rounded-2xl overflow-hidden flex flex-col justify-between group hover:-translate-y-1">
+                class="bento-card rounded-2xl overflow-hidden flex flex-col justify-between group hover:-translate-y-1.5">
 
                 <div>
                     <!-- Thumbnail with client pill -->
-                    <div class="relative h-56 bg-theme-inner overflow-hidden border-b border-theme-border">
+                    <div class="relative h-52 bg-theme-inner overflow-hidden border-b border-theme-border">
                         <img
                             src="https://www.muhsattarbarakati.my.id/images/mockup-starlink-island.webp"
                             alt="Pemasangan Starlink &amp; Sistem Voucher WiFi Kepulauan (Bacan, Kayoa, Subaim)"
@@ -539,11 +728,11 @@
                             height="675"
                             loading="eager"
                             decoding="async"
-                                                        class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+                            class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
                         <div class="absolute inset-0 bg-gradient-to-t from-black/75 via-transparent to-transparent"></div>
 
                         <div class="absolute top-3 left-3 px-3 py-1 rounded-lg bg-theme-card/95 backdrop-blur-md text-[11px] font-mono border border-theme-border font-bold text-theme-accent">
-                            Network &amp; Starlink Antar-Pulau
+                            Jaringan &amp; Starlink
                         </div>
 
                                                 <div class="absolute bottom-3 left-3 right-3 text-xs text-white truncate font-mono drop-shadow-md">
@@ -552,8 +741,8 @@
                                             </div>
 
                     <!-- Details -->
-                    <div class="p-6 space-y-3">
-                        <h3 class="text-xl font-bold text-theme-text group-hover:text-theme-accent transition leading-snug">
+                    <div class="p-6 space-y-2.5">
+                        <h3 class="font-display text-xl font-bold text-theme-text group-hover:text-theme-accent transition leading-snug">
                             <a href="https://www.muhsattarbarakati.my.id/project/starlink-voucher-wifi-bacan-kayoa-subaim">
                                 Pemasangan Starlink &amp; Sistem Voucher WiFi Kepulauan (Bacan, Kayoa, Subaim)
                             </a>
@@ -565,7 +754,7 @@
                 </div>
 
                 <!-- Footer with Tech Stack & CTAs -->
-                <div class="p-6 pt-0 border-t border-theme-border mt-4 space-y-4">
+                <div class="p-6 pt-0 border-t border-theme-border mt-3 space-y-4">
                     <div class="flex flex-wrap gap-1.5 pt-3">
                                                 <span class="px-2 py-0.5 rounded-md bg-theme-inner text-theme-text text-[11px] font-mono border border-theme-border">
                             Starlink Gen 3
@@ -597,16 +786,16 @@
                     </div>
                 </div>
             </div>
-                        <div
-                x-show="filterProject('hardware-service')"
+                                    <div
+                x-show="matchesProject('hardware-service', 'Layanan Servis Panggilan MSB \u0026 Rekondisi Massal Lab Sekolah SMK Pertanian Modayama \u0026 Klien Panggilan Harian Ternate Usaha mandiri sejak Semester 5 (2022) hingga kini: perbaikan harian laptop, PC, printer, sharing printer, penggantian LCD, keyboard, baterai, upgrade RAM\/SSD, serta rekondisi massal lab sekolah. Hardware Diagnostics LCD \u0026 Keyboard Replacement SMD Component Repair Network Printer Sharing Thermal Repasting NVMe SSD Upgrade', 3)"
                 x-transition:enter="transition ease-out duration-300"
                 x-transition:enter-start="opacity-0 transform scale-95"
                 x-transition:enter-end="opacity-100 transform scale-100"
-                class="bento-card rounded-2xl overflow-hidden flex flex-col justify-between group hover:-translate-y-1">
+                class="bento-card rounded-2xl overflow-hidden flex flex-col justify-between group hover:-translate-y-1.5">
 
                 <div>
                     <!-- Thumbnail with client pill -->
-                    <div class="relative h-56 bg-theme-inner overflow-hidden border-b border-theme-border">
+                    <div class="relative h-52 bg-theme-inner overflow-hidden border-b border-theme-border">
                         <img
                             src="https://www.muhsattarbarakati.my.id/images/servis-lab-modayama-wide.webp"
                             alt="Layanan Servis Panggilan MSB &amp; Rekondisi Massal Lab Sekolah"
@@ -614,11 +803,11 @@
                             height="675"
                             loading="lazy"
                             decoding="async"
-                                                        class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+                            class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
                         <div class="absolute inset-0 bg-gradient-to-t from-black/75 via-transparent to-transparent"></div>
 
                         <div class="absolute top-3 left-3 px-3 py-1 rounded-lg bg-theme-card/95 backdrop-blur-md text-[11px] font-mono border border-theme-border font-bold text-theme-accent">
-                            Hardware, Lab &amp; Servis Panggilan
+                            Hardware &amp; Lab
                         </div>
 
                                                 <div class="absolute bottom-3 left-3 right-3 text-xs text-white truncate font-mono drop-shadow-md">
@@ -627,8 +816,8 @@
                                             </div>
 
                     <!-- Details -->
-                    <div class="p-6 space-y-3">
-                        <h3 class="text-xl font-bold text-theme-text group-hover:text-theme-accent transition leading-snug">
+                    <div class="p-6 space-y-2.5">
+                        <h3 class="font-display text-xl font-bold text-theme-text group-hover:text-theme-accent transition leading-snug">
                             <a href="https://www.muhsattarbarakati.my.id/project/servis-panggilan-msb-rekondisi-lab">
                                 Layanan Servis Panggilan MSB &amp; Rekondisi Massal Lab Sekolah
                             </a>
@@ -640,7 +829,7 @@
                 </div>
 
                 <!-- Footer with Tech Stack & CTAs -->
-                <div class="p-6 pt-0 border-t border-theme-border mt-4 space-y-4">
+                <div class="p-6 pt-0 border-t border-theme-border mt-3 space-y-4">
                     <div class="flex flex-wrap gap-1.5 pt-3">
                                                 <span class="px-2 py-0.5 rounded-md bg-theme-inner text-theme-text text-[11px] font-mono border border-theme-border">
                             Hardware Diagnostics
@@ -672,16 +861,16 @@
                     </div>
                 </div>
             </div>
-                        <div
-                x-show="filterProject('web-dev')"
+                                    <div
+                x-show="matchesProject('web-dev', 'Portal Layanan Terpadu Sekolah \u0026 Madrasah Modern (Portal Sekolah Pro) SMP Negeri 1 Cerdas Mandiri \/ Portofolio Pendidikan Portal web layanan terpadu sekolah dan madrasah modern dengan efek 3D Tilt Cards, Spotlight Cursor, Flat-JSON Zero MySQL database, serta arsitektur security yang diperketat. PHP Modern Flat-JSON Storage 3D Tilt Interactivity Spotlight Cursor Tailwind CSS Vercel Edge', 4)"
                 x-transition:enter="transition ease-out duration-300"
                 x-transition:enter-start="opacity-0 transform scale-95"
                 x-transition:enter-end="opacity-100 transform scale-100"
-                class="bento-card rounded-2xl overflow-hidden flex flex-col justify-between group hover:-translate-y-1">
+                class="bento-card rounded-2xl overflow-hidden flex flex-col justify-between group hover:-translate-y-1.5">
 
                 <div>
                     <!-- Thumbnail with client pill -->
-                    <div class="relative h-56 bg-theme-inner overflow-hidden border-b border-theme-border">
+                    <div class="relative h-52 bg-theme-inner overflow-hidden border-b border-theme-border">
                         <img
                             src="https://www.muhsattarbarakati.my.id/images/mockup-portal-sekolah.webp"
                             alt="Portal Layanan Terpadu Sekolah &amp; Madrasah Modern (Portal Sekolah Pro)"
@@ -689,11 +878,11 @@
                             height="675"
                             loading="lazy"
                             decoding="async"
-                                                        class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+                            class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
                         <div class="absolute inset-0 bg-gradient-to-t from-black/75 via-transparent to-transparent"></div>
 
                         <div class="absolute top-3 left-3 px-3 py-1 rounded-lg bg-theme-card/95 backdrop-blur-md text-[11px] font-mono border border-theme-border font-bold text-theme-accent">
-                            Web Development &amp; SaaS
+                            Web &amp; SaaS
                         </div>
 
                                                 <div class="absolute bottom-3 left-3 right-3 text-xs text-white truncate font-mono drop-shadow-md">
@@ -702,8 +891,8 @@
                                             </div>
 
                     <!-- Details -->
-                    <div class="p-6 space-y-3">
-                        <h3 class="text-xl font-bold text-theme-text group-hover:text-theme-accent transition leading-snug">
+                    <div class="p-6 space-y-2.5">
+                        <h3 class="font-display text-xl font-bold text-theme-text group-hover:text-theme-accent transition leading-snug">
                             <a href="https://www.muhsattarbarakati.my.id/project/portal-sekolah-pro">
                                 Portal Layanan Terpadu Sekolah &amp; Madrasah Modern (Portal Sekolah Pro)
                             </a>
@@ -715,7 +904,7 @@
                 </div>
 
                 <!-- Footer with Tech Stack & CTAs -->
-                <div class="p-6 pt-0 border-t border-theme-border mt-4 space-y-4">
+                <div class="p-6 pt-0 border-t border-theme-border mt-3 space-y-4">
                     <div class="flex flex-wrap gap-1.5 pt-3">
                                                 <span class="px-2 py-0.5 rounded-md bg-theme-inner text-theme-text text-[11px] font-mono border border-theme-border">
                             PHP Modern
@@ -742,7 +931,7 @@
                         </a>
 
                         <div class="flex items-center gap-2">
-                                                        <a href="https://portal-sekolah-pro.vercel.app" target="_blank" rel="noopener noreferrer" class="px-2.5 py-1 rounded-lg bg-theme-inner hover:bg-theme-card text-theme-text border border-theme-border text-[11px] font-mono flex items-center gap-1 transition" title="Buka Live Deployment di Vercel">
+                                                        <a href="https://portal-sekolah-pro.vercel.app" target="_blank" rel="noopener noreferrer" class="px-2.5 py-1 rounded-lg bg-theme-inner hover:bg-theme-card text-theme-text border border-theme-border text-[11px] font-mono flex items-center gap-1 transition" title="Buka Live Demo">
                                 <i data-lucide="globe" class="w-3 h-3 text-theme-accent"></i>
                                 <span>Demo</span>
                             </a>
@@ -755,16 +944,16 @@
                     </div>
                 </div>
             </div>
-                        <div
-                x-show="filterProject('web-dev')"
+                                    <div
+                x-show="matchesProject('web-dev', 'Smart CBT Pro: Platform Ujian \u0026 Asesmen Digital Sekolah Simulasi Ujian Sekolah \u0026 Madrasah Digital Engine platform Computer-Based Test (CBT) modern, responsif, dan ringan untuk pelaksanaan simulasi asesmen sekolah, ujian semester, serta tes mandiri siswa. TypeScript React \/ Next.js Tailwind CSS LocalStorage Autosave Vercel Serverless', 5)"
                 x-transition:enter="transition ease-out duration-300"
                 x-transition:enter-start="opacity-0 transform scale-95"
                 x-transition:enter-end="opacity-100 transform scale-100"
-                class="bento-card rounded-2xl overflow-hidden flex flex-col justify-between group hover:-translate-y-1">
+                class="bento-card rounded-2xl overflow-hidden flex flex-col justify-between group hover:-translate-y-1.5">
 
                 <div>
                     <!-- Thumbnail with client pill -->
-                    <div class="relative h-56 bg-theme-inner overflow-hidden border-b border-theme-border">
+                    <div class="relative h-52 bg-theme-inner overflow-hidden border-b border-theme-border">
                         <img
                             src="https://www.muhsattarbarakati.my.id/images/mockup-smart-cbt.webp"
                             alt="Smart CBT Pro: Platform Ujian &amp; Asesmen Digital Sekolah"
@@ -772,11 +961,11 @@
                             height="675"
                             loading="lazy"
                             decoding="async"
-                                                        class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+                            class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
                         <div class="absolute inset-0 bg-gradient-to-t from-black/75 via-transparent to-transparent"></div>
 
                         <div class="absolute top-3 left-3 px-3 py-1 rounded-lg bg-theme-card/95 backdrop-blur-md text-[11px] font-mono border border-theme-border font-bold text-theme-accent">
-                            Web Development &amp; SaaS
+                            Web &amp; SaaS
                         </div>
 
                                                 <div class="absolute bottom-3 left-3 right-3 text-xs text-white truncate font-mono drop-shadow-md">
@@ -785,8 +974,8 @@
                                             </div>
 
                     <!-- Details -->
-                    <div class="p-6 space-y-3">
-                        <h3 class="text-xl font-bold text-theme-text group-hover:text-theme-accent transition leading-snug">
+                    <div class="p-6 space-y-2.5">
+                        <h3 class="font-display text-xl font-bold text-theme-text group-hover:text-theme-accent transition leading-snug">
                             <a href="https://www.muhsattarbarakati.my.id/project/smart-cbt-pro">
                                 Smart CBT Pro: Platform Ujian &amp; Asesmen Digital Sekolah
                             </a>
@@ -798,7 +987,7 @@
                 </div>
 
                 <!-- Footer with Tech Stack & CTAs -->
-                <div class="p-6 pt-0 border-t border-theme-border mt-4 space-y-4">
+                <div class="p-6 pt-0 border-t border-theme-border mt-3 space-y-4">
                     <div class="flex flex-wrap gap-1.5 pt-3">
                                                 <span class="px-2 py-0.5 rounded-md bg-theme-inner text-theme-text text-[11px] font-mono border border-theme-border">
                             TypeScript
@@ -825,7 +1014,7 @@
                         </a>
 
                         <div class="flex items-center gap-2">
-                                                        <a href="https://smart-cbt-pro.vercel.app" target="_blank" rel="noopener noreferrer" class="px-2.5 py-1 rounded-lg bg-theme-inner hover:bg-theme-card text-theme-text border border-theme-border text-[11px] font-mono flex items-center gap-1 transition" title="Buka Live Deployment di Vercel">
+                                                        <a href="https://smart-cbt-pro.vercel.app" target="_blank" rel="noopener noreferrer" class="px-2.5 py-1 rounded-lg bg-theme-inner hover:bg-theme-card text-theme-text border border-theme-border text-[11px] font-mono flex items-center gap-1 transition" title="Buka Live Demo">
                                 <i data-lucide="globe" class="w-3 h-3 text-theme-accent"></i>
                                 <span>Demo</span>
                             </a>
@@ -838,16 +1027,16 @@
                     </div>
                 </div>
             </div>
-                        <div
-                x-show="filterProject('web-dev')"
+                                    <div
+                x-show="matchesProject('web-dev', 'Sistem Informasi Desa \u0026 Pelayanan Publik Modern Berbasis Laravel Pemerintah Desa Kupal (Halmahera Selatan) Sistem informasi profil desa terintegrasi dan modul pelayanan publik surat menyurat online berbasis Laravel, Tailwind CSS, dan visualisasi data statistik Chart.js. Laravel Framework Tailwind CSS Chart.js Demografi Blade Engine E-Government Vercel Deployment', 6)"
                 x-transition:enter="transition ease-out duration-300"
                 x-transition:enter-start="opacity-0 transform scale-95"
                 x-transition:enter-end="opacity-100 transform scale-100"
-                class="bento-card rounded-2xl overflow-hidden flex flex-col justify-between group hover:-translate-y-1">
+                class="bento-card rounded-2xl overflow-hidden flex flex-col justify-between group hover:-translate-y-1.5">
 
                 <div>
                     <!-- Thumbnail with client pill -->
-                    <div class="relative h-56 bg-theme-inner overflow-hidden border-b border-theme-border">
+                    <div class="relative h-52 bg-theme-inner overflow-hidden border-b border-theme-border">
                         <img
                             src="https://www.muhsattarbarakati.my.id/images/mockup-web-desa-laravel.webp"
                             alt="Sistem Informasi Desa &amp; Pelayanan Publik Modern Berbasis Laravel"
@@ -855,11 +1044,11 @@
                             height="675"
                             loading="lazy"
                             decoding="async"
-                                                        class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+                            class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
                         <div class="absolute inset-0 bg-gradient-to-t from-black/75 via-transparent to-transparent"></div>
 
                         <div class="absolute top-3 left-3 px-3 py-1 rounded-lg bg-theme-card/95 backdrop-blur-md text-[11px] font-mono border border-theme-border font-bold text-theme-accent">
-                            Web Development &amp; SaaS
+                            Web &amp; SaaS
                         </div>
 
                                                 <div class="absolute bottom-3 left-3 right-3 text-xs text-white truncate font-mono drop-shadow-md">
@@ -868,8 +1057,8 @@
                                             </div>
 
                     <!-- Details -->
-                    <div class="p-6 space-y-3">
-                        <h3 class="text-xl font-bold text-theme-text group-hover:text-theme-accent transition leading-snug">
+                    <div class="p-6 space-y-2.5">
+                        <h3 class="font-display text-xl font-bold text-theme-text group-hover:text-theme-accent transition leading-snug">
                             <a href="https://www.muhsattarbarakati.my.id/project/web-desa-laravel">
                                 Sistem Informasi Desa &amp; Pelayanan Publik Modern Berbasis Laravel
                             </a>
@@ -881,7 +1070,7 @@
                 </div>
 
                 <!-- Footer with Tech Stack & CTAs -->
-                <div class="p-6 pt-0 border-t border-theme-border mt-4 space-y-4">
+                <div class="p-6 pt-0 border-t border-theme-border mt-3 space-y-4">
                     <div class="flex flex-wrap gap-1.5 pt-3">
                                                 <span class="px-2 py-0.5 rounded-md bg-theme-inner text-theme-text text-[11px] font-mono border border-theme-border">
                             Laravel Framework
@@ -908,7 +1097,7 @@
                         </a>
 
                         <div class="flex items-center gap-2">
-                                                        <a href="https://web-desa-laravel.vercel.app" target="_blank" rel="noopener noreferrer" class="px-2.5 py-1 rounded-lg bg-theme-inner hover:bg-theme-card text-theme-text border border-theme-border text-[11px] font-mono flex items-center gap-1 transition" title="Buka Live Deployment di Vercel">
+                                                        <a href="https://web-desa-laravel.vercel.app" target="_blank" rel="noopener noreferrer" class="px-2.5 py-1 rounded-lg bg-theme-inner hover:bg-theme-card text-theme-text border border-theme-border text-[11px] font-mono flex items-center gap-1 transition" title="Buka Live Demo">
                                 <i data-lucide="globe" class="w-3 h-3 text-theme-accent"></i>
                                 <span>Demo</span>
                             </a>
@@ -921,16 +1110,16 @@
                     </div>
                 </div>
             </div>
-                        <div
-                x-show="filterProject('web-dev')"
+                                    <div
+                x-show="matchesProject('web-dev', 'Platform Undangan Nikah Digital Interaktif (The Wedding of Mira \u0026 Yudi) Klien Pernikahan Digital (Mira \u0026 Yudi) Undangan digital interaktif performa tinggi yang dibangun menggunakan React 18, Vite, Tailwind CSS, dan Framer Motion dengan fitur RSVP dan galeri foto WebP adaptif. React 18 Vite Tailwind CSS Framer Motion WebP Optimization Vercel Edge', 7)"
                 x-transition:enter="transition ease-out duration-300"
                 x-transition:enter-start="opacity-0 transform scale-95"
                 x-transition:enter-end="opacity-100 transform scale-100"
-                class="bento-card rounded-2xl overflow-hidden flex flex-col justify-between group hover:-translate-y-1">
+                class="bento-card rounded-2xl overflow-hidden flex flex-col justify-between group hover:-translate-y-1.5">
 
                 <div>
                     <!-- Thumbnail with client pill -->
-                    <div class="relative h-56 bg-theme-inner overflow-hidden border-b border-theme-border">
+                    <div class="relative h-52 bg-theme-inner overflow-hidden border-b border-theme-border">
                         <img
                             src="https://www.muhsattarbarakati.my.id/images/mockup-undangan-saas.webp"
                             alt="Platform Undangan Nikah Digital Interaktif (The Wedding of Mira &amp; Yudi)"
@@ -938,11 +1127,11 @@
                             height="675"
                             loading="lazy"
                             decoding="async"
-                                                        class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+                            class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
                         <div class="absolute inset-0 bg-gradient-to-t from-black/75 via-transparent to-transparent"></div>
 
                         <div class="absolute top-3 left-3 px-3 py-1 rounded-lg bg-theme-card/95 backdrop-blur-md text-[11px] font-mono border border-theme-border font-bold text-theme-accent">
-                            Web Development &amp; SaaS
+                            Web &amp; SaaS
                         </div>
 
                                                 <div class="absolute bottom-3 left-3 right-3 text-xs text-white truncate font-mono drop-shadow-md">
@@ -951,8 +1140,8 @@
                                             </div>
 
                     <!-- Details -->
-                    <div class="p-6 space-y-3">
-                        <h3 class="text-xl font-bold text-theme-text group-hover:text-theme-accent transition leading-snug">
+                    <div class="p-6 space-y-2.5">
+                        <h3 class="font-display text-xl font-bold text-theme-text group-hover:text-theme-accent transition leading-snug">
                             <a href="https://www.muhsattarbarakati.my.id/project/undangan-nikah-digital-interaktif">
                                 Platform Undangan Nikah Digital Interaktif (The Wedding of Mira &amp; Yudi)
                             </a>
@@ -964,7 +1153,7 @@
                 </div>
 
                 <!-- Footer with Tech Stack & CTAs -->
-                <div class="p-6 pt-0 border-t border-theme-border mt-4 space-y-4">
+                <div class="p-6 pt-0 border-t border-theme-border mt-3 space-y-4">
                     <div class="flex flex-wrap gap-1.5 pt-3">
                                                 <span class="px-2 py-0.5 rounded-md bg-theme-inner text-theme-text text-[11px] font-mono border border-theme-border">
                             React 18
@@ -991,7 +1180,7 @@
                         </a>
 
                         <div class="flex items-center gap-2">
-                                                        <a href="https://undangan-nikah-three-navy.vercel.app" target="_blank" rel="noopener noreferrer" class="px-2.5 py-1 rounded-lg bg-theme-inner hover:bg-theme-card text-theme-text border border-theme-border text-[11px] font-mono flex items-center gap-1 transition" title="Buka Live Deployment di Vercel">
+                                                        <a href="https://undangan-nikah-three-navy.vercel.app" target="_blank" rel="noopener noreferrer" class="px-2.5 py-1 rounded-lg bg-theme-inner hover:bg-theme-card text-theme-text border border-theme-border text-[11px] font-mono flex items-center gap-1 transition" title="Buka Live Demo">
                                 <i data-lucide="globe" class="w-3 h-3 text-theme-accent"></i>
                                 <span>Demo</span>
                             </a>
@@ -1004,16 +1193,16 @@
                     </div>
                 </div>
             </div>
-                        <div
-                x-show="filterProject('web-dev')"
+                                    <div
+                x-show="matchesProject('web-dev', 'Clean \u0026 Fresh: Sistem Manajemen \u0026 Kasir Laundry POS Real-Time Usaha Jasa Laundry \u0026 UMKM Sistem POS kasir laundry dengan fitur pelacakan status cucian pelanggan secara real-time via kode resi, kalkulasi tarif kiloan\/satuan, dan rekap omzet harian. PHP Point of Sale (POS) Real-time Tracking Tailwind CSS Railway MySQL Vercel Deployment', 8)"
                 x-transition:enter="transition ease-out duration-300"
                 x-transition:enter-start="opacity-0 transform scale-95"
                 x-transition:enter-end="opacity-100 transform scale-100"
-                class="bento-card rounded-2xl overflow-hidden flex flex-col justify-between group hover:-translate-y-1">
+                class="bento-card rounded-2xl overflow-hidden flex flex-col justify-between group hover:-translate-y-1.5">
 
                 <div>
                     <!-- Thumbnail with client pill -->
-                    <div class="relative h-56 bg-theme-inner overflow-hidden border-b border-theme-border">
+                    <div class="relative h-52 bg-theme-inner overflow-hidden border-b border-theme-border">
                         <img
                             src="https://www.muhsattarbarakati.my.id/images/mockup-laundry-system.webp"
                             alt="Clean &amp; Fresh: Sistem Manajemen &amp; Kasir Laundry POS Real-Time"
@@ -1021,11 +1210,11 @@
                             height="675"
                             loading="lazy"
                             decoding="async"
-                                                        class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+                            class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
                         <div class="absolute inset-0 bg-gradient-to-t from-black/75 via-transparent to-transparent"></div>
 
                         <div class="absolute top-3 left-3 px-3 py-1 rounded-lg bg-theme-card/95 backdrop-blur-md text-[11px] font-mono border border-theme-border font-bold text-theme-accent">
-                            Web Development &amp; SaaS
+                            Web &amp; SaaS
                         </div>
 
                                                 <div class="absolute bottom-3 left-3 right-3 text-xs text-white truncate font-mono drop-shadow-md">
@@ -1034,8 +1223,8 @@
                                             </div>
 
                     <!-- Details -->
-                    <div class="p-6 space-y-3">
-                        <h3 class="text-xl font-bold text-theme-text group-hover:text-theme-accent transition leading-snug">
+                    <div class="p-6 space-y-2.5">
+                        <h3 class="font-display text-xl font-bold text-theme-text group-hover:text-theme-accent transition leading-snug">
                             <a href="https://www.muhsattarbarakati.my.id/project/laundry-management-system-pos">
                                 Clean &amp; Fresh: Sistem Manajemen &amp; Kasir Laundry POS Real-Time
                             </a>
@@ -1047,7 +1236,7 @@
                 </div>
 
                 <!-- Footer with Tech Stack & CTAs -->
-                <div class="p-6 pt-0 border-t border-theme-border mt-4 space-y-4">
+                <div class="p-6 pt-0 border-t border-theme-border mt-3 space-y-4">
                     <div class="flex flex-wrap gap-1.5 pt-3">
                                                 <span class="px-2 py-0.5 rounded-md bg-theme-inner text-theme-text text-[11px] font-mono border border-theme-border">
                             PHP
@@ -1074,7 +1263,7 @@
                         </a>
 
                         <div class="flex items-center gap-2">
-                                                        <a href="https://laundrysystem-blush.vercel.app" target="_blank" rel="noopener noreferrer" class="px-2.5 py-1 rounded-lg bg-theme-inner hover:bg-theme-card text-theme-text border border-theme-border text-[11px] font-mono flex items-center gap-1 transition" title="Buka Live Deployment di Vercel">
+                                                        <a href="https://laundrysystem-blush.vercel.app" target="_blank" rel="noopener noreferrer" class="px-2.5 py-1 rounded-lg bg-theme-inner hover:bg-theme-card text-theme-text border border-theme-border text-[11px] font-mono flex items-center gap-1 transition" title="Buka Live Demo">
                                 <i data-lucide="globe" class="w-3 h-3 text-theme-accent"></i>
                                 <span>Demo</span>
                             </a>
@@ -1087,16 +1276,16 @@
                     </div>
                 </div>
             </div>
-                        <div
-                x-show="filterProject('hardware-service')"
+                                    <div
+                x-show="matchesProject('hardware-service', 'MSB Hardware Diagnostic Tool (Titan Edition) Karya Open Source untuk Teknisi Lapangan Aplikasi diagnostik hardware portable untuk teknisi komputer: inspeksi mendalam kesehatan baterai laptop (BMS cycle count \u0026 wear level), benchmark NVMe\/CPU, dan generator laporan servis. Python 3 WMI \u0026 OS Telemetry Battery BMS Inspector NVMe SMART Telemetry CPU Benchmark GitHub Repository', 9)"
                 x-transition:enter="transition ease-out duration-300"
                 x-transition:enter-start="opacity-0 transform scale-95"
                 x-transition:enter-end="opacity-100 transform scale-100"
-                class="bento-card rounded-2xl overflow-hidden flex flex-col justify-between group hover:-translate-y-1">
+                class="bento-card rounded-2xl overflow-hidden flex flex-col justify-between group hover:-translate-y-1.5">
 
                 <div>
                     <!-- Thumbnail with client pill -->
-                    <div class="relative h-56 bg-theme-inner overflow-hidden border-b border-theme-border">
+                    <div class="relative h-52 bg-theme-inner overflow-hidden border-b border-theme-border">
                         <img
                             src="https://www.muhsattarbarakati.my.id/images/mockup-hardware-diag.webp"
                             alt="MSB Hardware Diagnostic Tool (Titan Edition)"
@@ -1104,11 +1293,11 @@
                             height="675"
                             loading="lazy"
                             decoding="async"
-                                                        class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+                            class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
                         <div class="absolute inset-0 bg-gradient-to-t from-black/75 via-transparent to-transparent"></div>
 
                         <div class="absolute top-3 left-3 px-3 py-1 rounded-lg bg-theme-card/95 backdrop-blur-md text-[11px] font-mono border border-theme-border font-bold text-theme-accent">
-                            Hardware, Lab &amp; Servis Panggilan
+                            Hardware &amp; Lab
                         </div>
 
                                                 <div class="absolute bottom-3 left-3 right-3 text-xs text-white truncate font-mono drop-shadow-md">
@@ -1117,8 +1306,8 @@
                                             </div>
 
                     <!-- Details -->
-                    <div class="p-6 space-y-3">
-                        <h3 class="text-xl font-bold text-theme-text group-hover:text-theme-accent transition leading-snug">
+                    <div class="p-6 space-y-2.5">
+                        <h3 class="font-display text-xl font-bold text-theme-text group-hover:text-theme-accent transition leading-snug">
                             <a href="https://www.muhsattarbarakati.my.id/project/msb-hardware-diagnostic-tool">
                                 MSB Hardware Diagnostic Tool (Titan Edition)
                             </a>
@@ -1130,7 +1319,7 @@
                 </div>
 
                 <!-- Footer with Tech Stack & CTAs -->
-                <div class="p-6 pt-0 border-t border-theme-border mt-4 space-y-4">
+                <div class="p-6 pt-0 border-t border-theme-border mt-3 space-y-4">
                     <div class="flex flex-wrap gap-1.5 pt-3">
                                                 <span class="px-2 py-0.5 rounded-md bg-theme-inner text-theme-text text-[11px] font-mono border border-theme-border">
                             Python 3
@@ -1166,16 +1355,16 @@
                     </div>
                 </div>
             </div>
-                        <div
-                x-show="filterProject('hardware-service')"
+                                    <div
+                x-show="matchesProject('hardware-service', 'Amunisi Teknisi Lapangan: All-in-One Field Engineering Toolkit Toolkit Operasional Servis MSB Kumpulan skrip otomasi perbaikan Windows untuk teknisi: perbaikan sharing printer error 0x0000011b dalam 1-klik, preparasi jaringan lab ANBK, serta parser panic log smartphone. Batch Scripting PowerShell Windows Registry Tweak ANBK Optimization Printer Sharing 0x11b Fix GitHub Repository', 10)"
                 x-transition:enter="transition ease-out duration-300"
                 x-transition:enter-start="opacity-0 transform scale-95"
                 x-transition:enter-end="opacity-100 transform scale-100"
-                class="bento-card rounded-2xl overflow-hidden flex flex-col justify-between group hover:-translate-y-1">
+                class="bento-card rounded-2xl overflow-hidden flex flex-col justify-between group hover:-translate-y-1.5">
 
                 <div>
                     <!-- Thumbnail with client pill -->
-                    <div class="relative h-56 bg-theme-inner overflow-hidden border-b border-theme-border">
+                    <div class="relative h-52 bg-theme-inner overflow-hidden border-b border-theme-border">
                         <img
                             src="https://www.muhsattarbarakati.my.id/images/mockup-amunisi-teknisi.webp"
                             alt="Amunisi Teknisi Lapangan: All-in-One Field Engineering Toolkit"
@@ -1183,11 +1372,11 @@
                             height="675"
                             loading="lazy"
                             decoding="async"
-                                                        class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+                            class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
                         <div class="absolute inset-0 bg-gradient-to-t from-black/75 via-transparent to-transparent"></div>
 
                         <div class="absolute top-3 left-3 px-3 py-1 rounded-lg bg-theme-card/95 backdrop-blur-md text-[11px] font-mono border border-theme-border font-bold text-theme-accent">
-                            Hardware, Lab &amp; Servis Panggilan
+                            Hardware &amp; Lab
                         </div>
 
                                                 <div class="absolute bottom-3 left-3 right-3 text-xs text-white truncate font-mono drop-shadow-md">
@@ -1196,8 +1385,8 @@
                                             </div>
 
                     <!-- Details -->
-                    <div class="p-6 space-y-3">
-                        <h3 class="text-xl font-bold text-theme-text group-hover:text-theme-accent transition leading-snug">
+                    <div class="p-6 space-y-2.5">
+                        <h3 class="font-display text-xl font-bold text-theme-text group-hover:text-theme-accent transition leading-snug">
                             <a href="https://www.muhsattarbarakati.my.id/project/amunisi-teknisi-lapangan">
                                 Amunisi Teknisi Lapangan: All-in-One Field Engineering Toolkit
                             </a>
@@ -1209,7 +1398,7 @@
                 </div>
 
                 <!-- Footer with Tech Stack & CTAs -->
-                <div class="p-6 pt-0 border-t border-theme-border mt-4 space-y-4">
+                <div class="p-6 pt-0 border-t border-theme-border mt-3 space-y-4">
                     <div class="flex flex-wrap gap-1.5 pt-3">
                                                 <span class="px-2 py-0.5 rounded-md bg-theme-inner text-theme-text text-[11px] font-mono border border-theme-border">
                             Batch Scripting
@@ -1245,16 +1434,16 @@
                     </div>
                 </div>
             </div>
-                        <div
-                x-show="filterProject('automation-ai')"
+                                    <div
+                x-show="matchesProject('automation-ai', 'Radar Loker AI Bot: Autonomous Scraper \u0026 Gemini AI Filter Proyek R\u0026D Otomasi AI Bot autonomous AI yang secara berkala men-scrape feed Instagram lowongan kerja regional Maluku Utara, memfilter kualifikasi relevan menggunakan Google Gemini AI, dan mengirimkan alert ke Telegram. Python Google Gemini AI API Instagram Web Scraping Telegram Bot API GitHub Actions CI\/CD Automated Scheduler', 11)"
                 x-transition:enter="transition ease-out duration-300"
                 x-transition:enter-start="opacity-0 transform scale-95"
                 x-transition:enter-end="opacity-100 transform scale-100"
-                class="bento-card rounded-2xl overflow-hidden flex flex-col justify-between group hover:-translate-y-1">
+                class="bento-card rounded-2xl overflow-hidden flex flex-col justify-between group hover:-translate-y-1.5">
 
                 <div>
                     <!-- Thumbnail with client pill -->
-                    <div class="relative h-56 bg-theme-inner overflow-hidden border-b border-theme-border">
+                    <div class="relative h-52 bg-theme-inner overflow-hidden border-b border-theme-border">
                         <img
                             src="https://www.muhsattarbarakati.my.id/images/mockup-radar-loker.webp"
                             alt="Radar Loker AI Bot: Autonomous Scraper &amp; Gemini AI Filter"
@@ -1262,11 +1451,11 @@
                             height="675"
                             loading="lazy"
                             decoding="async"
-                                                        class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+                            class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
                         <div class="absolute inset-0 bg-gradient-to-t from-black/75 via-transparent to-transparent"></div>
 
                         <div class="absolute top-3 left-3 px-3 py-1 rounded-lg bg-theme-card/95 backdrop-blur-md text-[11px] font-mono border border-theme-border font-bold text-theme-accent">
-                            Otomatisasi &amp; AI Agent
+                            AI &amp; Utilitas
                         </div>
 
                                                 <div class="absolute bottom-3 left-3 right-3 text-xs text-white truncate font-mono drop-shadow-md">
@@ -1275,8 +1464,8 @@
                                             </div>
 
                     <!-- Details -->
-                    <div class="p-6 space-y-3">
-                        <h3 class="text-xl font-bold text-theme-text group-hover:text-theme-accent transition leading-snug">
+                    <div class="p-6 space-y-2.5">
+                        <h3 class="font-display text-xl font-bold text-theme-text group-hover:text-theme-accent transition leading-snug">
                             <a href="https://www.muhsattarbarakati.my.id/project/radar-loker-bot-gemini-ai">
                                 Radar Loker AI Bot: Autonomous Scraper &amp; Gemini AI Filter
                             </a>
@@ -1288,7 +1477,7 @@
                 </div>
 
                 <!-- Footer with Tech Stack & CTAs -->
-                <div class="p-6 pt-0 border-t border-theme-border mt-4 space-y-4">
+                <div class="p-6 pt-0 border-t border-theme-border mt-3 space-y-4">
                     <div class="flex flex-wrap gap-1.5 pt-3">
                                                 <span class="px-2 py-0.5 rounded-md bg-theme-inner text-theme-text text-[11px] font-mono border border-theme-border">
                             Python
@@ -1324,16 +1513,16 @@
                     </div>
                 </div>
             </div>
-                        <div
-                x-show="filterProject('web-dev')"
+                                    <div
+                x-show="matchesProject('web-dev', 'Portal Terintegrasi Laboratorium Alnara Medica Surabaya \u0026 Mini-LIS Laboratorium Klinis Alnara Medica Surabaya (D-III TLM) Portal laboratorium klinis terintegrasi mencakup 11 layanan pemeriksaan medis, denah 2 lantai seluas 1.600 m\u00b2, katalog 16 instrumen medis senilai Rp 13,08 M, Mini-LIS online, serta modul evaluasi akademik. Next.js \/ React Tailwind CSS Mini-LIS System Clinical Portal Vercel Edge GitHub', 12)"
                 x-transition:enter="transition ease-out duration-300"
                 x-transition:enter-start="opacity-0 transform scale-95"
                 x-transition:enter-end="opacity-100 transform scale-100"
-                class="bento-card rounded-2xl overflow-hidden flex flex-col justify-between group hover:-translate-y-1">
+                class="bento-card rounded-2xl overflow-hidden flex flex-col justify-between group hover:-translate-y-1.5">
 
                 <div>
                     <!-- Thumbnail with client pill -->
-                    <div class="relative h-56 bg-theme-inner overflow-hidden border-b border-theme-border">
+                    <div class="relative h-52 bg-theme-inner overflow-hidden border-b border-theme-border">
                         <img
                             src="https://www.muhsattarbarakati.my.id/images/mockup-alnara-medica.webp"
                             alt="Portal Terintegrasi Laboratorium Alnara Medica Surabaya &amp; Mini-LIS"
@@ -1341,11 +1530,11 @@
                             height="675"
                             loading="lazy"
                             decoding="async"
-                                                        class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+                            class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
                         <div class="absolute inset-0 bg-gradient-to-t from-black/75 via-transparent to-transparent"></div>
 
                         <div class="absolute top-3 left-3 px-3 py-1 rounded-lg bg-theme-card/95 backdrop-blur-md text-[11px] font-mono border border-theme-border font-bold text-theme-accent">
-                            Web Development &amp; SaaS
+                            Web &amp; SaaS
                         </div>
 
                                                 <div class="absolute bottom-3 left-3 right-3 text-xs text-white truncate font-mono drop-shadow-md">
@@ -1354,8 +1543,8 @@
                                             </div>
 
                     <!-- Details -->
-                    <div class="p-6 space-y-3">
-                        <h3 class="text-xl font-bold text-theme-text group-hover:text-theme-accent transition leading-snug">
+                    <div class="p-6 space-y-2.5">
+                        <h3 class="font-display text-xl font-bold text-theme-text group-hover:text-theme-accent transition leading-snug">
                             <a href="https://www.muhsattarbarakati.my.id/project/laboratorium-alnara-medica-surabaya">
                                 Portal Terintegrasi Laboratorium Alnara Medica Surabaya &amp; Mini-LIS
                             </a>
@@ -1367,7 +1556,7 @@
                 </div>
 
                 <!-- Footer with Tech Stack & CTAs -->
-                <div class="p-6 pt-0 border-t border-theme-border mt-4 space-y-4">
+                <div class="p-6 pt-0 border-t border-theme-border mt-3 space-y-4">
                     <div class="flex flex-wrap gap-1.5 pt-3">
                                                 <span class="px-2 py-0.5 rounded-md bg-theme-inner text-theme-text text-[11px] font-mono border border-theme-border">
                             Next.js / React
@@ -1394,7 +1583,7 @@
                         </a>
 
                         <div class="flex items-center gap-2">
-                                                        <a href="https://alnara-medica-web.vercel.app" target="_blank" rel="noopener noreferrer" class="px-2.5 py-1 rounded-lg bg-theme-inner hover:bg-theme-card text-theme-text border border-theme-border text-[11px] font-mono flex items-center gap-1 transition" title="Buka Live Deployment di Vercel">
+                                                        <a href="https://alnara-medica-web.vercel.app" target="_blank" rel="noopener noreferrer" class="px-2.5 py-1 rounded-lg bg-theme-inner hover:bg-theme-card text-theme-text border border-theme-border text-[11px] font-mono flex items-center gap-1 transition" title="Buka Live Demo">
                                 <i data-lucide="globe" class="w-3 h-3 text-theme-accent"></i>
                                 <span>Demo</span>
                             </a>
@@ -1407,16 +1596,16 @@
                     </div>
                 </div>
             </div>
-                        <div
-                x-show="filterProject('web-dev')"
+                                    <div
+                x-show="matchesProject('web-dev', 'Portal Resmi Multi-Unit \u0026 PSB Online Pondok Pesantren Darussalam Bacan Pondok Pesantren Darussalam Bacan (Halmahera Selatan) Portal informasi resmi multi-unit pendidikan dan sistem Pendaftaran Santri Baru (PSB) Online untuk Pondok Pesantren Darussalam Bacan yang cepat, informatif, dan responsif di smartphone wali santri. Next.js \/ React Tailwind CSS PSB Online CMS Berita Dinamis Vercel Deployment GitHub', 13)"
                 x-transition:enter="transition ease-out duration-300"
                 x-transition:enter-start="opacity-0 transform scale-95"
                 x-transition:enter-end="opacity-100 transform scale-100"
-                class="bento-card rounded-2xl overflow-hidden flex flex-col justify-between group hover:-translate-y-1">
+                class="bento-card rounded-2xl overflow-hidden flex flex-col justify-between group hover:-translate-y-1.5">
 
                 <div>
                     <!-- Thumbnail with client pill -->
-                    <div class="relative h-56 bg-theme-inner overflow-hidden border-b border-theme-border">
+                    <div class="relative h-52 bg-theme-inner overflow-hidden border-b border-theme-border">
                         <img
                             src="https://www.muhsattarbarakati.my.id/images/mockup-ponpes-darussalam.webp"
                             alt="Portal Resmi Multi-Unit &amp; PSB Online Pondok Pesantren Darussalam Bacan"
@@ -1424,11 +1613,11 @@
                             height="675"
                             loading="lazy"
                             decoding="async"
-                                                        class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+                            class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
                         <div class="absolute inset-0 bg-gradient-to-t from-black/75 via-transparent to-transparent"></div>
 
                         <div class="absolute top-3 left-3 px-3 py-1 rounded-lg bg-theme-card/95 backdrop-blur-md text-[11px] font-mono border border-theme-border font-bold text-theme-accent">
-                            Web Development &amp; SaaS
+                            Web &amp; SaaS
                         </div>
 
                                                 <div class="absolute bottom-3 left-3 right-3 text-xs text-white truncate font-mono drop-shadow-md">
@@ -1437,8 +1626,8 @@
                                             </div>
 
                     <!-- Details -->
-                    <div class="p-6 space-y-3">
-                        <h3 class="text-xl font-bold text-theme-text group-hover:text-theme-accent transition leading-snug">
+                    <div class="p-6 space-y-2.5">
+                        <h3 class="font-display text-xl font-bold text-theme-text group-hover:text-theme-accent transition leading-snug">
                             <a href="https://www.muhsattarbarakati.my.id/project/portal-ponpes-darussalam-bacan">
                                 Portal Resmi Multi-Unit &amp; PSB Online Pondok Pesantren Darussalam Bacan
                             </a>
@@ -1450,7 +1639,7 @@
                 </div>
 
                 <!-- Footer with Tech Stack & CTAs -->
-                <div class="p-6 pt-0 border-t border-theme-border mt-4 space-y-4">
+                <div class="p-6 pt-0 border-t border-theme-border mt-3 space-y-4">
                     <div class="flex flex-wrap gap-1.5 pt-3">
                                                 <span class="px-2 py-0.5 rounded-md bg-theme-inner text-theme-text text-[11px] font-mono border border-theme-border">
                             Next.js / React
@@ -1477,7 +1666,7 @@
                         </a>
 
                         <div class="flex items-center gap-2">
-                                                        <a href="https://web-ponpes-darusalam.vercel.app" target="_blank" rel="noopener noreferrer" class="px-2.5 py-1 rounded-lg bg-theme-inner hover:bg-theme-card text-theme-text border border-theme-border text-[11px] font-mono flex items-center gap-1 transition" title="Buka Live Deployment di Vercel">
+                                                        <a href="https://web-ponpes-darusalam.vercel.app" target="_blank" rel="noopener noreferrer" class="px-2.5 py-1 rounded-lg bg-theme-inner hover:bg-theme-card text-theme-text border border-theme-border text-[11px] font-mono flex items-center gap-1 transition" title="Buka Live Demo">
                                 <i data-lucide="globe" class="w-3 h-3 text-theme-accent"></i>
                                 <span>Demo</span>
                             </a>
@@ -1490,16 +1679,16 @@
                     </div>
                 </div>
             </div>
-                        <div
-                x-show="filterProject('web-dev')"
+                                    <div
+                x-show="matchesProject('web-dev', 'Portal Resmi Kampus Universitas Nurul Hasan Bacan (UNSAN) Universitas Nurul Hasan (UNSAN) Bacan, Maluku Utara Website portal akademik resmi Universitas Nurul Hasan Bacan yang menyajikan informasi fakultas, program studi, penerimaan mahasiswa baru, dan layanan informasi kampus secara modern. Modern Web App Tailwind CSS Academic Portal Responsive UI Vercel Edge', 14)"
                 x-transition:enter="transition ease-out duration-300"
                 x-transition:enter-start="opacity-0 transform scale-95"
                 x-transition:enter-end="opacity-100 transform scale-100"
-                class="bento-card rounded-2xl overflow-hidden flex flex-col justify-between group hover:-translate-y-1">
+                class="bento-card rounded-2xl overflow-hidden flex flex-col justify-between group hover:-translate-y-1.5">
 
                 <div>
                     <!-- Thumbnail with client pill -->
-                    <div class="relative h-56 bg-theme-inner overflow-hidden border-b border-theme-border">
+                    <div class="relative h-52 bg-theme-inner overflow-hidden border-b border-theme-border">
                         <img
                             src="https://www.muhsattarbarakati.my.id/images/mockup-kampus-unsan.webp"
                             alt="Portal Resmi Kampus Universitas Nurul Hasan Bacan (UNSAN)"
@@ -1507,11 +1696,11 @@
                             height="675"
                             loading="lazy"
                             decoding="async"
-                                                        class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+                            class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
                         <div class="absolute inset-0 bg-gradient-to-t from-black/75 via-transparent to-transparent"></div>
 
                         <div class="absolute top-3 left-3 px-3 py-1 rounded-lg bg-theme-card/95 backdrop-blur-md text-[11px] font-mono border border-theme-border font-bold text-theme-accent">
-                            Web Development &amp; SaaS
+                            Web &amp; SaaS
                         </div>
 
                                                 <div class="absolute bottom-3 left-3 right-3 text-xs text-white truncate font-mono drop-shadow-md">
@@ -1520,8 +1709,8 @@
                                             </div>
 
                     <!-- Details -->
-                    <div class="p-6 space-y-3">
-                        <h3 class="text-xl font-bold text-theme-text group-hover:text-theme-accent transition leading-snug">
+                    <div class="p-6 space-y-2.5">
+                        <h3 class="font-display text-xl font-bold text-theme-text group-hover:text-theme-accent transition leading-snug">
                             <a href="https://www.muhsattarbarakati.my.id/project/portal-kampus-unsan-bacan">
                                 Portal Resmi Kampus Universitas Nurul Hasan Bacan (UNSAN)
                             </a>
@@ -1533,7 +1722,7 @@
                 </div>
 
                 <!-- Footer with Tech Stack & CTAs -->
-                <div class="p-6 pt-0 border-t border-theme-border mt-4 space-y-4">
+                <div class="p-6 pt-0 border-t border-theme-border mt-3 space-y-4">
                     <div class="flex flex-wrap gap-1.5 pt-3">
                                                 <span class="px-2 py-0.5 rounded-md bg-theme-inner text-theme-text text-[11px] font-mono border border-theme-border">
                             Modern Web App
@@ -1560,7 +1749,7 @@
                         </a>
 
                         <div class="flex items-center gap-2">
-                                                        <a href="https://campus-portal-eosin.vercel.app" target="_blank" rel="noopener noreferrer" class="px-2.5 py-1 rounded-lg bg-theme-inner hover:bg-theme-card text-theme-text border border-theme-border text-[11px] font-mono flex items-center gap-1 transition" title="Buka Live Deployment di Vercel">
+                                                        <a href="https://campus-portal-eosin.vercel.app" target="_blank" rel="noopener noreferrer" class="px-2.5 py-1 rounded-lg bg-theme-inner hover:bg-theme-card text-theme-text border border-theme-border text-[11px] font-mono flex items-center gap-1 transition" title="Buka Live Demo">
                                 <i data-lucide="globe" class="w-3 h-3 text-theme-accent"></i>
                                 <span>Demo</span>
                             </a>
@@ -1569,16 +1758,16 @@
                     </div>
                 </div>
             </div>
-                        <div
-                x-show="filterProject('automation-ai')"
+                                    <div
+                x-show="matchesProject('automation-ai', 'OmniPDF Offline: 28 Alat Pengolahan PDF Lengkap (100% Client-Side) Produk Utilitas Publik Open Source (Railway Cloud) Suite pengolahan dokumen PDF lengkap berisi 28 alat (merge, split, compress, convert, proteksi, watermark, dll.) yang memproses file 100% offline\/lokal di browser demi privasi dokumen maksimal. Web PDF Engine 28 PDF Tools 100% Privacy Offline Railway Cloud Modern UI GitHub', 15)"
                 x-transition:enter="transition ease-out duration-300"
                 x-transition:enter-start="opacity-0 transform scale-95"
                 x-transition:enter-end="opacity-100 transform scale-100"
-                class="bento-card rounded-2xl overflow-hidden flex flex-col justify-between group hover:-translate-y-1">
+                class="bento-card rounded-2xl overflow-hidden flex flex-col justify-between group hover:-translate-y-1.5">
 
                 <div>
                     <!-- Thumbnail with client pill -->
-                    <div class="relative h-56 bg-theme-inner overflow-hidden border-b border-theme-border">
+                    <div class="relative h-52 bg-theme-inner overflow-hidden border-b border-theme-border">
                         <img
                             src="https://www.muhsattarbarakati.my.id/images/mockup-omnipdf-suite.webp"
                             alt="OmniPDF Offline: 28 Alat Pengolahan PDF Lengkap (100% Client-Side)"
@@ -1586,11 +1775,11 @@
                             height="675"
                             loading="lazy"
                             decoding="async"
-                                                        class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+                            class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
                         <div class="absolute inset-0 bg-gradient-to-t from-black/75 via-transparent to-transparent"></div>
 
                         <div class="absolute top-3 left-3 px-3 py-1 rounded-lg bg-theme-card/95 backdrop-blur-md text-[11px] font-mono border border-theme-border font-bold text-theme-accent">
-                            Otomatisasi &amp; AI Agent
+                            AI &amp; Utilitas
                         </div>
 
                                                 <div class="absolute bottom-3 left-3 right-3 text-xs text-white truncate font-mono drop-shadow-md">
@@ -1599,8 +1788,8 @@
                                             </div>
 
                     <!-- Details -->
-                    <div class="p-6 space-y-3">
-                        <h3 class="text-xl font-bold text-theme-text group-hover:text-theme-accent transition leading-snug">
+                    <div class="p-6 space-y-2.5">
+                        <h3 class="font-display text-xl font-bold text-theme-text group-hover:text-theme-accent transition leading-snug">
                             <a href="https://www.muhsattarbarakati.my.id/project/omnipdf-offline-suite-railway">
                                 OmniPDF Offline: 28 Alat Pengolahan PDF Lengkap (100% Client-Side)
                             </a>
@@ -1612,7 +1801,7 @@
                 </div>
 
                 <!-- Footer with Tech Stack & CTAs -->
-                <div class="p-6 pt-0 border-t border-theme-border mt-4 space-y-4">
+                <div class="p-6 pt-0 border-t border-theme-border mt-3 space-y-4">
                     <div class="flex flex-wrap gap-1.5 pt-3">
                                                 <span class="px-2 py-0.5 rounded-md bg-theme-inner text-theme-text text-[11px] font-mono border border-theme-border">
                             Web PDF Engine
@@ -1639,7 +1828,7 @@
                         </a>
 
                         <div class="flex items-center gap-2">
-                                                        <a href="https://omnidpf-suite-production.up.railway.app" target="_blank" rel="noopener noreferrer" class="px-2.5 py-1 rounded-lg bg-theme-inner hover:bg-theme-card text-theme-text border border-theme-border text-[11px] font-mono flex items-center gap-1 transition" title="Buka Live Deployment di Vercel">
+                                                        <a href="https://omnidpf-suite-production.up.railway.app" target="_blank" rel="noopener noreferrer" class="px-2.5 py-1 rounded-lg bg-theme-inner hover:bg-theme-card text-theme-text border border-theme-border text-[11px] font-mono flex items-center gap-1 transition" title="Buka Live Demo">
                                 <i data-lucide="globe" class="w-3 h-3 text-theme-accent"></i>
                                 <span>Demo</span>
                             </a>
@@ -1654,30 +1843,43 @@
             </div>
                     </div>
 
+        <!-- Show All / Collapse Toggle (Eliminates Scroll Fatigue on First Visit) -->
+        <div x-show="activeCategory === 'all' && searchQuery.trim() === ''" class="flex justify-center pt-4">
+            <button
+                type="button"
+                @click="showAll = !showAll; $nextTick(() => { if (window.renderIcons) window.renderIcons(); })"
+                class="px-6 py-3 rounded-2xl bg-theme-card hover:bg-theme-inner text-theme-text font-mono text-xs sm:text-sm font-bold border border-theme-border hover:border-theme-accent transition flex items-center gap-2 shadow-sm cursor-pointer">
+                <span x-show="!showAll">Tampilkan Semua 16 Proyek</span>
+                <span x-show="showAll" x-cloak>Tampilkan 6 Proyek Unggulan Saja</span>
+                <span x-show="!showAll"><i data-lucide="chevron-down" class="w-4 h-4 text-theme-accent"></i></span>
+                <span x-show="showAll" x-cloak><i data-lucide="chevron-up" class="w-4 h-4 text-theme-accent"></i></span>
+            </button>
+        </div>
+
     </section>
 
-    <!-- CALL TO ACTION (CTA): Direct WhatsApp Discussion -->
-    <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+    <!-- CALL TO ACTION (CTA): Direct WhatsApp & Email Discussion -->
+    <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 reveal">
         <div class="bento-card rounded-3xl p-8 sm:p-12 relative overflow-hidden border border-theme-border">
             <div class="max-w-2xl space-y-4 relative z-10">
-                <span class="text-xs font-mono text-theme-accent uppercase tracking-widest block font-bold">SIAP UNTUK PENUGASAN LAPANGAN</span>
-                <h2 class="text-2xl sm:text-4xl font-extrabold text-theme-text tracking-tight">
-                    Punya Masalah Sistem, Laptop, atau Jaringan Sekolah & Desa?
+                <span class="text-xs font-mono text-theme-accent uppercase tracking-widest block font-bold">SIAP UNTUK PENUGASAN LAPANGAN &amp; REMOTE</span>
+                <h2 class="font-display text-3xl sm:text-4xl font-bold text-theme-text tracking-tight">
+                    Punya Proyek Web, Sistem Jaringan, atau Kebutuhan IT Instansi?
                 </h2>
                 <p class="text-theme-text/80 text-sm sm:text-base leading-relaxed">
-                    Konsultasikan langsung dengan <strong>Muh. Sattar Barakati (Owen)</strong>. Baik untuk perbaikan perangkat darurat, persiapan lab komputer ujian, voucher internet desa, maupun pembuatan aplikasi digital.
+                    Konsultasikan langsung dengan <strong>Muh. Sattar Barakati (Owen)</strong>. Terbuka untuk peluang kerja <em>full-time / remote</em>, proyek aplikasi web &amp; SaaS, persiapan lab ujian sekolah, hingga instalasi Starlink kepulauan.
                 </p>
-                <div class="pt-4 flex flex-wrap items-center gap-4">
-                    <a href="https://wa.me/6285218403629?text=Halo%20Sattar,%20saya%20melihat%20portofolio%20Anda%20dan%20ingin%20berdiskusi%20tentang%20proyek/servis..." target="_blank" rel="noopener noreferrer" class="px-8 py-4 rounded-xl bg-theme-accent font-bold text-sm sm:text-base flex items-center gap-3 shadow-xl transition hover:scale-105">
+                <div class="pt-4 flex flex-wrap items-center gap-3">
+                    <a href="https://wa.me/6285218403629?text=Halo%20Sattar,%20saya%20melihat%20portofolio%20Anda%20dan%20ingin%20berdiskusi%20tentang%20proyek/servis..." target="_blank" rel="noopener noreferrer" class="px-7 py-3.5 rounded-xl bg-theme-accent font-bold text-sm sm:text-base flex items-center gap-2.5 shadow-xl transition hover:scale-105">
                         <i data-lucide="message-square" class="w-5 h-5"></i>
-                        <span>Mari Diskusi (WhatsApp: 0852-1840-3629)</span>
+                        <span>WhatsApp (0852-1840-3629)</span>
                     </a>
-                    <a href="tel:085218403629" class="px-6 py-4 rounded-xl bg-theme-inner hover:bg-theme-card text-theme-text font-mono text-sm border border-theme-border transition flex items-center gap-2">
-                        <i data-lucide="phone" class="w-4 h-4 text-theme-accent"></i>
-                        <span>Telepon: 0852-1840-3629</span>
-                    </a>
-                    <a href="https://www.muhsattarbarakati.my.id/about" class="px-6 py-4 rounded-xl bg-theme-inner hover:bg-theme-card text-theme-text font-mono text-sm border border-theme-border transition">
-                        Buka Bento Profile
+                    <button type="button" @click="copyEmail()" class="px-5 py-3.5 rounded-xl bg-theme-inner hover:bg-theme-card text-theme-text font-mono text-xs sm:text-sm border border-theme-border hover:border-theme-accent transition flex items-center gap-2 cursor-pointer">
+                        <i data-lucide="mail" class="w-4 h-4 text-theme-accent"></i>
+                        <span>sattarbarakati@gmail.com</span>
+                    </button>
+                    <a href="https://www.muhsattarbarakati.my.id/about" class="px-5 py-3.5 rounded-xl bg-theme-inner hover:bg-theme-card text-theme-text font-mono text-xs sm:text-sm border border-theme-border transition">
+                        Buka Bento Profile &amp; CV
                     </a>
                 </div>
             </div>
@@ -1691,9 +1893,12 @@
     <footer class="border-t border-theme-border bg-theme-card py-12 text-xs text-theme-muted font-mono mt-20">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-6">
             <div>
-                <p class="text-theme-text font-bold text-sm">Muh. Sattar Barakati (Owen)</p>
+                <p class="font-display text-theme-text font-bold text-base">Muh. Sattar Barakati (Owen)</p>
                 <p class="text-theme-muted mt-1">Amasing Bukit Sere, 02 Juli 2002 • Kalumata, Kota Ternate</p>
-                <p class="text-theme-muted mt-0.5">Operator MIS Integral Hidayatullah • WhatsApp/Telp: <span class="text-theme-accent font-bold">0852-1840-3629</span></p>
+                <p class="text-theme-muted mt-0.5">
+                    Email: <button type="button" @click="copyEmail()" class="text-theme-accent hover:underline font-bold cursor-pointer">sattarbarakati@gmail.com</button>
+                    • WA: <span class="text-theme-accent font-bold">0852-1840-3629</span>
+                </p>
             </div>
             <div class="flex items-center gap-6 text-sm">
                 <a href="https://www.linkedin.com/in/muh-sattar-barakati-16b48a2b6/" target="_blank" rel="noopener noreferrer" class="hover:text-theme-accent font-semibold transition">LinkedIn</a>
@@ -1702,5 +1907,38 @@
             </div>
         </div>
     </footer>
+
+    <!-- Floating Scroll-to-Top Button -->
+    <button
+        type="button"
+        x-show="showScrollTop"
+        x-cloak
+        x-transition:enter="transition ease-out duration-200"
+        x-transition:enter-start="opacity-0 translate-y-4"
+        x-transition:enter-end="opacity-100 translate-y-0"
+        x-transition:leave="transition ease-in duration-150"
+        x-transition:leave-start="opacity-100 translate-y-0"
+        x-transition:leave-end="opacity-0 translate-y-4"
+        @click="window.scrollTo({ top: 0, behavior: 'smooth' })"
+        aria-label="Kembali ke atas"
+        class="fixed bottom-6 right-6 z-40 w-11 h-11 rounded-full bg-theme-accent shadow-xl flex items-center justify-center hover:scale-110 transition cursor-pointer no-print">
+        <i data-lucide="arrow-up" class="w-5 h-5"></i>
+    </button>
+
+    <!-- Copy Email Toast -->
+    <div
+        x-show="toastVisible"
+        x-cloak
+        x-transition:enter="transition ease-out duration-200"
+        x-transition:enter-start="opacity-0 translate-y-4"
+        x-transition:enter-end="opacity-100 translate-y-0"
+        x-transition:leave="transition ease-in duration-150"
+        x-transition:leave-start="opacity-100 translate-y-0"
+        x-transition:leave-end="opacity-0 translate-y-4"
+        role="status"
+        class="fixed bottom-6 left-1/2 -translate-x-1/2 z-50 px-5 py-3 rounded-2xl bg-theme-card border border-theme-accent text-theme-text text-xs font-mono font-bold shadow-2xl flex items-center gap-2 no-print">
+        <i data-lucide="check-circle-2" class="w-4 h-4 text-theme-accent"></i>
+        <span x-text="toastMessage"></span>
+    </div>
 </body>
 </html>
