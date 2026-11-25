@@ -3,4 +3,4 @@ Allow: /
 Disallow: /admin/
 Disallow: /admin/*
 
-Sitemap: {{ url('/sitemap.xml') }}
+Sitemap: https://www.muhsattarbarakati.my.id/sitemap.xml
